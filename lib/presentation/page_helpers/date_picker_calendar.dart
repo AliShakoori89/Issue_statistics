@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
-import '../../logic/bloc/set_date_bloc/bloc.dart';
-import '../../logic/bloc/set_date_bloc/event.dart';
-import '../../logic/bloc/set_date_bloc/state.dart';
+import '../bloc/set_date_bloc/bloc.dart';
+import '../bloc/set_date_bloc/event.dart';
+import '../bloc/set_date_bloc/state.dart';
 
 
 class DatePickerCalendar extends StatefulWidget {
@@ -114,8 +114,8 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
         child: Container(
           height: height / 20,
           margin: EdgeInsets.only(
-            right: width / 10,
-            left: width / 10,
+            right: width / 8,
+            left: width / 8,
           ),
           decoration: BoxDecoration(
               boxShadow: [
@@ -123,14 +123,14 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                   color: Colors.grey[400]!.withOpacity(0.5),
                 )
           ],
-              borderRadius: BorderRadius.circular(20)),
+              borderRadius: BorderRadius.circular(5)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
                 color: Colors.black,
                 Icons.calendar_today,
-                size: width / 20,
+                size: width / 25,
               ),
               SizedBox(
                 width: width / 20,
@@ -142,7 +142,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                       .toPersianDigit(),
                   style: TextStyle(
                     color: Colors.black,
-                      fontSize: width / 15)),
+                      fontSize: width / 20)),
             ],
           ),
         ),

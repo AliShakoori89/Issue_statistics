@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:issue_statistics/logic/bloc/set_date_bloc/state.dart';
-
-import '../../../data/repositories/date_time_repository.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
+import '../../../logic/repositories/date_time_repository.dart';
 import 'event.dart';
 
 
