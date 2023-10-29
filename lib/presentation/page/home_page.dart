@@ -68,20 +68,53 @@ class MyHomePage extends StatelessWidget {
                       children: [
                         BlocBuilder<NumberOfIssuesBloc, NumberOfIssuesState>(
                             builder: (context, state) {
-                              return Container(
-                                color: Colors.grey,
-                                height: 200,
-                                width: 200,
-                                child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap:true,// -> Add this here
-                                  itemCount: state.numberOfIssue.length,
-                                  itemBuilder: (BuildContext context, int index){
-                                    return Text( state.numberOfIssue[index].count,
-                                    style: TextStyle(fontSize: 50),);
-                                  },
-                                ),
-                              );
+
+                              print("111111111111111               "+state.status.toString());
+                              if(state.status.isLoading){
+                                print("22222222222222222                   "+state.numberOfIssue.length.toString());
+                                return const Center(child: CircularProgressIndicator());
+                              }
+                              if (state.status.isSuccess){
+                                print("333333333333333333                   "+state.numberOfIssue.length.toString());
+                                return Container(
+                                  color: Colors.white,
+                                  height: 200,
+                                  width: 200,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    shrinkWrap:true,// -> Add this here
+                                    itemCount: state.numberOfIssue.length,
+                                    itemBuilder: (BuildContext context, int index){
+                                      return Text( state.numberOfIssue[0].count!,
+                                        style: TextStyle(fontSize: 50, color: Colors.black),);
+                                    },
+                                  ),
+                                );
+                              }
+                              if (state.status.isError) {
+                                print('4444444444444444444444');
+                                return const SizedBox(
+                                  height: 500,
+                                  child: Center(
+                                      child: Text('Error',
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 19))),
+                                );
+                              } else {
+                                print('55555555555555555555555');
+                                return const Padding(
+                                  padding: EdgeInsets.only(top: 300),
+                                  child: Center(
+                                      child: Text('Your app don\'t have internet',
+                                          style: TextStyle(
+                                              color: Colors.grey,
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 19))),
+                                );
+                              }
+
                             }),
                         SizedBox(
                           height: height / 80,

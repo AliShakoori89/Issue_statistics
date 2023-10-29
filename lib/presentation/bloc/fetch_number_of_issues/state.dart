@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 import '../../../data/model/response_model.dart';
 
 enum NumberOfIssuesStatus { initial, success, error, loading }
@@ -31,7 +30,7 @@ class NumberOfIssuesState extends Equatable {
   }) {
     return NumberOfIssuesState(
       status: status ?? this.status,
-      numberOfIssue: numberOfIssue ?? this.numberOfIssue,
+      numberOfIssue: numberOfIssue ?? numberOfIssue,
     );
   }
 }

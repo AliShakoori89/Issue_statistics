@@ -1,16 +1,16 @@
 class ResponseModel {
-  final String caName;
-  final String profileName;
-  final String status;
-  final String count;
-  final String registerCount;
-  final String issueCount;
-  final String revokeCount;
+  String? caName;
+  String? profileName;
+  String? status;
+  String? count;
+  String? registerCount;
+  String? issueCount;
+  String? revokeCount;
 
 
-  ResponseModel({required this.caName, required this.profileName,
-    required this.status, required this.count, required this.registerCount,
-    required this.issueCount, required this.revokeCount});
+  ResponseModel({ this.caName, this.profileName,
+    this.status, this.count, this.registerCount,
+    this.issueCount, this.revokeCount});
 
   factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
     caName: json['caName'],
