@@ -8,7 +8,8 @@ class NumberOfIssuesRepository {
 
   Future<dynamic> getNumberOfIssues(String reportKey, String customerCode) async {
     print("8888888888888888");
-    var body = jsonEncode({"reportkey":"4b8ngUfvEnA/4AiSB76+kqz2Ztk=","customercode":"10320874334","startdate":"2023/10/27","enddate":"2023/10/27","type":"PerCA"});
+    var body = jsonEncode({"reportkey":"u39ttGp4ayh9aKDP5En0W7Ykgh4=","customercode":"10100834967",
+      "startdate":"2023/10/28","enddate":"2023/10/28","type":"PerCA"});
     print("99999999999999999999");
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     print("10 10 10 10 10 10 10 10");
