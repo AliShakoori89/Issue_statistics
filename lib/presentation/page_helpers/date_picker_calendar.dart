@@ -114,12 +114,26 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
             }
           }
 
+          DateTime g = DateTime.parse(date);
+          Jalali j = Jalali(g.year, g.month, g.day);
+          Gregorian j2g1 = j.toGregorian();
+          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
+
+          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: date, month: month));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+              date: gregorianDate,
+              month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadMonthEvent());
+          BlocProvider.of<NumberOfIssuesPendarBloc>(context)
+              .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
+          BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+              .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
         },
         child: Container(
           height: height / 20,
@@ -168,9 +182,6 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
 
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
 
-          print("1111111111              "+gregorianDate);
-          print("1111111111              "+gregorianMonth);
-
           BlocProvider.of<SetDateBloc>(context)
               .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
@@ -211,8 +222,6 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
-
-          print("1111111111              "+j2g1.toString());
 
           BlocProvider.of<SetDateBloc>(context)
               .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
