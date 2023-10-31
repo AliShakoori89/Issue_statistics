@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues/bloc.dart';
-import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues/event.dart';
-import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues/state.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/event.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/fetch_number_of_issues_pendar/bloc.dart';
+import '../bloc/fetch_number_of_issues_pendar/event.dart';
+import '../bloc/fetch_number_of_issues_pendar/state.dart';
 import '../page_helpers/date_picker_calendar.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -14,11 +17,17 @@ class MyHomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    BlocProvider.of<NumberOfIssuesBloc>(context)
-        .add(GetNumberOfIssuesEvent(
-        customerCode: "10320408934",
-        reportKey: "0j0UVtan1zl+TOzFJioZemMx93A="
-    ));
+    // BlocProvider.of<NumberOfIssuesBloc>(context)
+    //     .add(GetNumberOfIssuesEvent(
+    //     customerCode: "10101586520",
+    //     reportKey: "0S2DXd7ISt3nGSL8DqSi+zKpMA0="
+    // ));
+
+    BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+        .add(GetNumberOfIssuesFanarEvent());
+
+    BlocProvider.of<NumberOfIssuesPendarBloc>(context)
+        .add(GetNumberOfIssuesPendarEvent());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -61,206 +70,298 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: height / 50,
                 ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        BlocBuilder<NumberOfIssuesBloc, NumberOfIssuesState>(
-                            builder: (context, state) {
-
-                              print("111111111111111               "+state.status.toString());
-                              if(state.status.isLoading){
-                                print("22222222222222222                   "+state.numberOfIssue.length.toString());
-                                return const Center(child: CircularProgressIndicator());
-                              }
-                              if (state.status.isSuccess){
-                                print("333333333333333333                   "+state.numberOfIssue.length.toString());
-                                return Container(
-                                  color: Colors.white,
-                                  height: 200,
-                                  width: 200,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.vertical,
-                                    shrinkWrap:true,// -> Add this here
-                                    itemCount: state.numberOfIssue.length,
-                                    itemBuilder: (BuildContext context, int index){
-                                      return Text( state.numberOfIssue[0].count!,
-                                        style: TextStyle(fontSize: 50, color: Colors.black),);
-                                    },
-                                  ),
-                                );
-                              }
-                              if (state.status.isError) {
-                                print('4444444444444444444444');
-                                return const SizedBox(
-                                  height: 500,
-                                  child: Center(
-                                      child: Text('Error',
-                                          style: TextStyle(
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 19))),
-                                );
-                              } else {
-                                print('55555555555555555555555');
-                                return const Padding(
-                                  padding: EdgeInsets.only(top: 300),
-                                  child: Center(
-                                      child: Text('Your app don\'t have internet',
-                                          style: TextStyle(
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 19))),
-                                );
-                              }
-
-                            }),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("شرکت عصر دانش افزار",
-                            style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("توسعه تجارت الكترونيك تنيان",
-                            style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("راهكار هوشمند امن - اسپارا",
-                            style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("توسعه اطلاعات و ارتباطات آی تی ساز",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("کیاهوشان آریا ",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("توسعه نوین همراه کیش",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("تابان آتی پرداز",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("ژرف اندیشان هوشمند دیبارایان",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("پردازش اطلاعات مالی پارت (فنار)",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("بانک تجارت (فنار)",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text(
-                            "پیشگامان اعتماد دیجیتال ایرانیان - ایران ساین",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("فن آوران اعتماد راهبر",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    SizedBox(
-                      height: height / 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("تعداد کل گواهی های شرکت فنار",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                  ],
-                ),
+              BlocBuilder<NumberOfIssuesFanarBloc, NumberOfIssuesFanarState>(
+                  builder: (context, state) {
+                if (state.status.isLoading) {
+                  return const Center(
+                      child: SizedBox(
+                          height: 10,
+                          width: 10,
+                          child: CircularProgressIndicator()));
+                }
+                if (state.status.isSuccess) {
+                  return Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForAsrDaneshAfzarCo.isNotEmpty
+                                ? state
+                                    .numberOfIssueForAsrDaneshAfzarCo[0].count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("شرکت عصر دانش افزار",
+                              style: TextStyle(color: Colors.black)),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForToseeTejaratTeniyanCo
+                                    .isNotEmpty
+                                ? state.numberOfIssueForToseeTejaratTeniyanCo[0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("توسعه تجارت الكترونيك تنيان",
+                              style: TextStyle(color: Colors.black)),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForRahkarHushmandAmnCo.isNotEmpty
+                                ? state.numberOfIssueForRahkarHushmandAmnCo[0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("راهكار هوشمند امن - اسپارا",
+                              style: TextStyle(color: Colors.black)),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state
+                                    .numberOfIssueForToseeEttelaatVaErtebatatITSazaCo
+                                    .isNotEmpty
+                                ? state
+                                    .numberOfIssueForToseeEttelaatVaErtebatatITSazaCo[
+                                        0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("توسعه اطلاعات و ارتباطات آی تی ساز",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForKiyakushanAriyaCo.isNotEmpty
+                                ? state
+                                    .numberOfIssueForKiyakushanAriyaCo[0].count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("کیاهوشان آریا ",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForToseeNovinHamrahKishCo
+                                    .isNotEmpty
+                                ? state
+                                    .numberOfIssueForToseeNovinHamrahKishCo[0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("توسعه نوین همراه کیش",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForTabanAtiPardazCo.isNotEmpty
+                                ? state
+                                    .numberOfIssueForTabanAtiPardazCo[0].count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("تابان آتی پرداز",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state
+                                    .numberOfIssueForZherfAndishanHushmandDibaRayanCo
+                                    .isNotEmpty
+                                ? state
+                                    .numberOfIssueForZherfAndishanHushmandDibaRayanCo[
+                                        0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("ژرف اندیشان هوشمند دیبارایان",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForPardazeshEttelaatMaliPartCo
+                                    .isNotEmpty
+                                ? state
+                                    .numberOfIssueForPardazeshEttelaatMaliPartCo[
+                                        0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("پردازش اطلاعات مالی پارت (فنار)",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForBankTejaratCo.isNotEmpty
+                                ? state.numberOfIssueForBankTejaratCo[0].count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("بانک تجارت (فنار)",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state
+                                    .numberOfIssueForPishgamanEtemadDijitalIraniyanCo
+                                    .isNotEmpty
+                                ? state
+                                    .numberOfIssueForPishgamanEtemadDijitalIraniyanCo[
+                                        0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text(
+                              "پیشگامان اعتماد دیجیتال ایرانیان - ایران ساین",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.numberOfIssueForFanAvaranEtemadRaahbatCo
+                                    .isNotEmpty
+                                ? state
+                                    .numberOfIssueForFanAvaranEtemadRaahbatCo[0]
+                                    .count
+                                    .toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("فن آوران اعتماد راهبر",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                      SizedBox(
+                        height: height / 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            state.faanarAllNumberOfIssue != 0
+                                ? state.faanarAllNumberOfIssue.toString()
+                                : 0.toString(),
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          SizedBox(
+                            height: height / 80,
+                          ),
+                          const Text("تعداد کل گواهی های شرکت فنار",
+                              style: TextStyle(color: Colors.black))
+                        ],
+                      ),
+                    ],
+                  );
+                }
+                if (state.status.isError) {
+                  return const SizedBox(
+                    height: 500,
+                    child: Center(
+                        child: Text('Error',
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 19))),
+                  );
+                } else {
+                  return const Padding(
+                    padding: EdgeInsets.only(top: 300),
+                    child: Center(
+                        child: Text('Your app don\'t have internet',
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 19))),
+                  );
+                }
+              }),
                 SizedBox(
                   height: height / 50,
                 ),
@@ -268,90 +369,159 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: height / 50,
                 ),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("پردازش اطلاعات مالی پارت (پندار)",
-                            style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("بانک تجارت (پندار)",
-                            style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("بانک پارسیان(دیبا رایان)",
-                            style: TextStyle(color: Colors.black)),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("شبکه کاران سما",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("شرکت فناوری و راه حلهای هوشمند سپهر",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("بانک ملت",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                    SizedBox(
-                      height: height / 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("200"),
-                        SizedBox(
-                          height: height / 80,
-                        ),
-                        const Text("تعداد کل گواهی های شرکت پندار",
-                            style: TextStyle(color: Colors.black))
-                      ],
-                    ),
-                  ],
-                ),
+                BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
+                    builder: (context, state) {
+                      if (state.status.isLoading) {
+                        return const Center(
+                            child: SizedBox(
+                                height: 10,
+                                width: 10,
+                                child: CircularProgressIndicator()));
+                      }
+                      if (state.status.isSuccess) {
+                        return Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.numberOfIssueForPardazeshMaliPartCo.isNotEmpty
+                                      ? state.numberOfIssueForPardazeshMaliPartCo[0].count.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("پردازش اطلاعات مالی پارت (پندار)",
+                                    style: TextStyle(color: Colors.black)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.numberOfIssueForBankTejaratCo.isNotEmpty
+                                      ? state.numberOfIssueForBankTejaratCo[0].count.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("بانک تجارت (پندار)",
+                                    style: TextStyle(color: Colors.black)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.numberOfIssueForBankParsiyanCo.isNotEmpty
+                                      ? state.numberOfIssueForBankParsiyanCo[0].count.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("بانک پارسیان(دیبا رایان)",
+                                    style: TextStyle(color: Colors.black)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.numberOfIssueForShabakeKaranSamaCo.isNotEmpty
+                                      ? state.numberOfIssueForShabakeKaranSamaCo[0].count.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("شبکه کاران سما",
+                                    style: TextStyle(color: Colors.black))
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.isNotEmpty
+                                      ? state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0].count.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("شرکت فناوری و راه حلهای هوشمند سپهر",
+                                    style: TextStyle(color: Colors.black))
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.numberOfIssueForBankMellat.isNotEmpty
+                                      ? state.numberOfIssueForBankMellat[0].count.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("بانک ملت",
+                                    style: TextStyle(color: Colors.black))
+                              ],
+                            ),
+                            SizedBox(
+                              height: height / 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.pendarAllNumberOfIssue != 0
+                                      ? state.pendarAllNumberOfIssue.toString()
+                                      : 0.toString(),
+                                  style: const TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  height: height / 80,
+                                ),
+                                const Text("تعداد کل گواهی های شرکت پندار",
+                                    style: TextStyle(color: Colors.black))
+                              ],
+                            ),
+                          ],
+                        );
+                      }
+                      if (state.status.isError) {
+                        return const SizedBox(
+                          height: 500,
+                          child: Center(
+                              child: Text('Error',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 19))),
+                        );
+                      } else {
+                        return const Padding(
+                          padding: EdgeInsets.only(top: 300),
+                          child: Center(
+                              child: Text('Your app don\'t have internet',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 19))),
+                        );
+                      }
+                    }),
+
               ],
             )
           ),

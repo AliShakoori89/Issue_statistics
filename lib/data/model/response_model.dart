@@ -1,11 +1,11 @@
 class ResponseModel {
   String? caName;
   String? profileName;
-  String? status;
-  String? count;
-  String? registerCount;
-  String? issueCount;
-  String? revokeCount;
+  bool? status;
+  int? count;
+  int? registerCount;
+  int? issueCount;
+  int? revokeCount;
 
 
   ResponseModel({ this.caName, this.profileName,

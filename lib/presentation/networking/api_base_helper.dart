@@ -21,19 +21,17 @@ class ApiBaseHelper {
   //   }
   // }
 
-  Future<dynamic> post(String url, dynamic body, {String query = ''}) async {
+  Future<dynamic> post(String url, dynamic body) async {
     try {
       final Uri address =
       Uri.parse(url);
       Map<String, String> headers;
       headers = {
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
       };
       http.Response response = await http.post(address, body: body, headers: headers);
-      print("12 12 12 12 12 12           ${response.body}");
       return response;
     } on SocketException {
-      print("13 13 13 13 13 13 13 13 13 13 13");
       throw FetchDataException('No Internet connection');
     }
   }
