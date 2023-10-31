@@ -3,5 +3,9 @@ abstract class NumberOfIssuesFanarEvent{
 }
 
 class GetNumberOfIssuesFanarEvent extends NumberOfIssuesFanarEvent {
-  const GetNumberOfIssuesFanarEvent();
+  final String date;
+
+  GetNumberOfIssuesFanarEvent({required this.date});
+
+  List<Object> get props => [date];
 }

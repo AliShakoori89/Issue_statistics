@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/event.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/event.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/event.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-
-import '../bloc/set_date_bloc/bloc.dart';
-import '../bloc/set_date_bloc/event.dart';
-import '../bloc/set_date_bloc/state.dart';
 
 
 class DatePickerCalendar extends StatefulWidget {
@@ -110,28 +113,29 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
               "${picked.year}-0${picked.month}-0${picked.day}";
             }
           }
+
+          BlocProvider.of<SetDateBloc>(context)
+              .add(WriteDateEvent(date: date, month: month));
+          BlocProvider.of<SetDateBloc>(context)
+              .add(ReadDateEvent());
+          BlocProvider.of<SetDateBloc>(context)
+              .add(ReadMonthEvent());
         },
         child: Container(
           height: height / 20,
           margin: EdgeInsets.only(
-            right: width / 8,
-            left: width / 8,
+            right: width / 10,
+            left: width / 10,
           ),
+          // key: keyButton2,
           decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey[400]!.withOpacity(0.5),
-                )
-          ],
-              borderRadius: BorderRadius.circular(5)),
+              borderRadius: BorderRadius.circular(20)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(
-                color: Colors.black,
                 Icons.calendar_today,
-                size: width / 25,
-              ),
+                size: width / 20),
               SizedBox(
                 width: width / 20,
               ),
@@ -141,7 +145,6 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                       .format(DateTime.parse(date))
                       .toPersianDigit(),
                   style: TextStyle(
-                    color: Colors.black,
                       fontSize: width / 20)),
             ],
           ),
@@ -158,24 +161,37 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           date =
           "${DateTime.parse(DateFormat('yyyy-MM-dd').format(DateTime.parse(date))).add(const Duration(days: -1))}";
 
+          DateTime g = DateTime.parse(date);
+          Jalali j = Jalali(g.year, g.month, g.day);
+          Gregorian j2g1 = j.toGregorian();
+          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
+
+          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+
+          print("1111111111              "+gregorianDate);
+          print("1111111111              "+gregorianMonth);
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: date, month: month));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: DateFormat('yyyy-MM-dd')
-                  .format(DateTime.parse(date))
-                  .toString(),
-              month: DateFormat('yyyy-MM')
-                  .format(DateTime.parse(date))
-                  .toString()));
+              date: gregorianDate,
+              month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadMonthEvent());
+          BlocProvider.of<NumberOfIssuesPendarBloc>(context)
+              .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
+          BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+              .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
         },
         child: SizedBox(
           width: width / 20,
           height: height / 40,
-          child: Icon(Icons.arrow_back_ios),
+          child: Image.asset(
+              key: keyBottomNavigation2,
+              // key: keyButton1,
+              "assets/main_page_first_container_logo/left_arrow.png"),
         ),
       ),
     );
@@ -189,24 +205,36 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           date =
           "${DateTime.parse(DateFormat('yyyy-MM-dd').format(DateTime.parse(date))).add(const Duration(days: 1))}";
 
+          DateTime g = DateTime.parse(date);
+          Jalali j = Jalali(g.year, g.month, g.day);
+          Gregorian j2g1 = j.toGregorian();
+          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
+
+          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+
+          print("1111111111              "+j2g1.toString());
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: date, month: month));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: DateFormat('yyyy-MM-dd')
-                  .format(DateTime.parse(date))
-                  .toString(),
-              month: DateFormat('yyyy-MM')
-                  .format(DateTime.parse(date))
-                  .toString()));
+              date: gregorianDate,
+              month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadMonthEvent());
+          BlocProvider.of<NumberOfIssuesPendarBloc>(context)
+              .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
+          BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+              .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
         },
         child: SizedBox(
           width: width / 20,
           height: height / 40,
-          child: Icon(Icons.arrow_forward_ios),
+          child: Image.asset(
+            key: keyBottomNavigation4,
+            "assets/main_page_first_container_logo/right_arrow.png",
+          ),
         ),
       ),
     );

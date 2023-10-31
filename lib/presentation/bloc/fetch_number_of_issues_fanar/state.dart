@@ -26,7 +26,7 @@ class NumberOfIssuesFanarState extends Equatable {
     List<ResponseModel>? numberOfIssueForBankTejaratCo,
     List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
     List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbatCo,
-    int? faanarAllNumberOfIssue
+    int? faanarAllNumberOfIssue,
   }):
         numberOfIssueForAsrDaneshAfzarCo = numberOfIssueForAsrDaneshAfzarCo ?? const [],
         numberOfIssueForToseeTejaratTeniyanCo = numberOfIssueForToseeTejaratTeniyanCo ?? const [],
@@ -98,7 +98,7 @@ class NumberOfIssuesFanarState extends Equatable {
       numberOfIssueForBankTejaratCo: numberOfIssueForBankTejaratCo ?? this.numberOfIssueForBankTejaratCo,
       numberOfIssueForPishgamanEtemadDijitalIraniyanCo: numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? this.numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
       numberOfIssueForFanAvaranEtemadRaahbatCo: numberOfIssueForFanAvaranEtemadRaahbatCo ?? this.numberOfIssueForFanAvaranEtemadRaahbatCo,
-      faanarAllNumberOfIssue: faanarAllNumberOfIssue ?? this.faanarAllNumberOfIssue
+      faanarAllNumberOfIssue: faanarAllNumberOfIssue ?? this.faanarAllNumberOfIssue,
     );
   }
 }

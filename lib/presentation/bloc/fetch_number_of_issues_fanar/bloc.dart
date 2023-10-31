@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:issue_statistics/data/model/response_model.dart';
+import 'package:issue_statistics/logic/repositories/date_time_repository.dart';
 import 'package:issue_statistics/logic/repositories/number_of_issues_repository.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/state.dart';
@@ -9,8 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIssuesFanarState> {
 
   NumberOfIssuesRepository numberOfIssuesRepository;
+  SetDateRepository setDateRepository;
 
-  NumberOfIssuesFanarBloc(this.numberOfIssuesRepository) : super(
+  NumberOfIssuesFanarBloc(this.numberOfIssuesRepository, this.setDateRepository) : super(
       const NumberOfIssuesFanarState()){
     on<GetNumberOfIssuesFanarEvent>(_mapNumberOfIssuesEventToState);
   }
@@ -20,51 +23,53 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
     try {
       emit(state.copyWith(status: NumberOfIssuesFanarStatus.loading));
 
-      final responSenumberOfIssueForAsrDaneshAfzarCo = await numberOfIssuesRepository.getNumberOfIssuesForAsrDaneshAfzarCo();
+      print("bloc                   "+event.date);
+
+      final responSenumberOfIssueForAsrDaneshAfzarCo = await numberOfIssuesRepository.getNumberOfIssuesForAsrDaneshAfzarCo(event.date);
       Iterable l = json.decode(responSenumberOfIssueForAsrDaneshAfzarCo.body);
       List<ResponseModel> numberOfIssueForAsrDaneshAfzarCo = List<ResponseModel>.from(l.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForToseeTejaratTeniyanCo = await numberOfIssuesRepository.getNumberOfIssuesForToseeTejaratTeniyanCo();
+      final responseNumberOfIssueForToseeTejaratTeniyanCo = await numberOfIssuesRepository.getNumberOfIssuesForToseTejaratElectronicTenianCo(event.date);
       Iterable l2 = json.decode(responseNumberOfIssueForToseeTejaratTeniyanCo.body);
       List<ResponseModel> numberOfIssueForToseeTejaratTeniyanCo = List<ResponseModel>.from(l2.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForRahkarHushmandAmnCo = await numberOfIssuesRepository.getNumberOfIssueForRahkarHushmandAmnCo();
+      final responseNumberOfIssueForRahkarHushmandAmnCo = await numberOfIssuesRepository.getNumberOfIssueForRahkarHushmandAmnCo(event.date);
       Iterable l3 = json.decode(responseNumberOfIssueForRahkarHushmandAmnCo.body);
       List<ResponseModel> numberOfIssueForRahkarHushmandAmnCo = List<ResponseModel>.from(l3.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo = await numberOfIssuesRepository.getNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo();
+      final responseNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo = await numberOfIssuesRepository.getNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo(event.date);
       Iterable l4 = json.decode(responseNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo.body);
       List<ResponseModel> numberOfIssueForToseeEttelaatVaErtebatatITSazaCo = List<ResponseModel>.from(l4.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForKiyakushanAriyaCo = await numberOfIssuesRepository.getNumberOfIssueForKiyakushanAriyaCo();
+      final responseNumberOfIssueForKiyakushanAriyaCo = await numberOfIssuesRepository.getNumberOfIssueForKiyakushanAriyaCo(event.date);
       Iterable l5 = json.decode(responseNumberOfIssueForKiyakushanAriyaCo.body);
       List<ResponseModel> numberOfIssueForKiyakushanAriyaCo = List<ResponseModel>.from(l5.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForToseeNovinHamrahKishCo = await numberOfIssuesRepository.getNumberOfIssueForToseeNovinHamrahKishCo();
+      final responseNumberOfIssueForToseeNovinHamrahKishCo = await numberOfIssuesRepository.getNumberOfIssueForToseeNovinHamrahKishCo(event.date);
       Iterable l6 = json.decode(responseNumberOfIssueForToseeNovinHamrahKishCo.body);
       List<ResponseModel> numberOfIssueForToseeNovinHamrahKishCo = List<ResponseModel>.from(l6.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForTabanAtiPardazCo = await numberOfIssuesRepository.getNumberOfIssueForTabanAtiPardazCo();
+      final responseNumberOfIssueForTabanAtiPardazCo = await numberOfIssuesRepository.getNumberOfIssueForTabanAtiPardazCo(event.date);
       Iterable l7 = json.decode(responseNumberOfIssueForTabanAtiPardazCo.body);
       List<ResponseModel> numberOfIssueForTabanAtiPardazCo = List<ResponseModel>.from(l7.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForZherfAndishanHushmandDibaRayanCo = await numberOfIssuesRepository.getNumberOfIssueForZherfAndishanHushmandDibaRayanCo();
+      final responseNumberOfIssueForZherfAndishanHushmandDibaRayanCo = await numberOfIssuesRepository.getNumberOfIssueForZherfAndishanHushmandDibaRayanCo(event.date);
       Iterable l8 = json.decode(responseNumberOfIssueForZherfAndishanHushmandDibaRayanCo.body);
       List<ResponseModel> numberOfIssueForZherfAndishanHushmandDibaRayanCo = List<ResponseModel>.from(l8.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForPardazeshEttelaatMaliPartCo = await numberOfIssuesRepository.getNumberOfIssueForPardazeshEttelaatMaliPartCoFanaar();
+      final responseNumberOfIssueForPardazeshEttelaatMaliPartCo = await numberOfIssuesRepository.getNumberOfIssueForPardazeshEttelaatMaliPartCoFanaar(event.date);
       Iterable l9 = json.decode(responseNumberOfIssueForPardazeshEttelaatMaliPartCo.body);
       List<ResponseModel> numberOfIssueForPardazeshEttelaatMaliPartCo = List<ResponseModel>.from(l9.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoFanaar();
+      final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoFanaar(event.date);
       Iterable l10 = json.decode(responseNumberOfIssueForBankTejaratCo.body);
       List<ResponseModel> numberOfIssueForBankTejaratCo = List<ResponseModel>.from(l10.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForPishgamanEtemadDijitalIraniyanCo = await numberOfIssuesRepository.getNumberOfIssueForPishgamanEtemadDijitalIraniyanCo();
+      final responseNumberOfIssueForPishgamanEtemadDijitalIraniyanCo = await numberOfIssuesRepository.getNumberOfIssueForPishgamanEtemadDijitalIraniyanCo(event.date);
       Iterable l11 = json.decode(responseNumberOfIssueForPishgamanEtemadDijitalIraniyanCo.body);
       List<ResponseModel> numberOfIssueForPishgamanEtemadDijitalIraniyanCo = List<ResponseModel>.from(l11.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForFanAvaranEtemadRaahbatCo = await numberOfIssuesRepository.getNumberOfIssueForFanAvaranEtemadRaahbatCo();
+      final responseNumberOfIssueForFanAvaranEtemadRaahbatCo = await numberOfIssuesRepository.getNumberOfIssueForFanAvaranEtemadRaahbatCo(event.date);
       Iterable l12 = json.decode(responseNumberOfIssueForFanAvaranEtemadRaahbatCo.body);
       List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbatCo = List<ResponseModel>.from(l12.map((model)=> ResponseModel.fromJson(model)));
 

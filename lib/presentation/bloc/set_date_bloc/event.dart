@@ -1,4 +1,3 @@
-
 abstract class SetDateEvent{
   List<Object> get props => [];
 }
@@ -42,4 +41,62 @@ class ReduceDateEvent extends SetDateEvent{
   List<Object> get props => [date, month];
 }
 
-
+// class SumExpensePerMonthEvent extends SetDateEvent {
+//   final String month;
+//
+//   SumExpensePerMonthEvent(
+//       {required this.month});
+//
+//   @override
+//   List<Object> get props => [month];
+// }
+//
+// class SumExpensePerDateEvent extends SetDateEvent {
+//   final String date;
+//
+//   SumExpensePerDateEvent(
+//       {required this.date});
+//
+//   @override
+//   List<Object> get props => [date];
+// }
+//
+// class CalculateCashPerMonthEvent extends SetDateEvent{
+//   final String month;
+//
+//   CalculateCashPerMonthEvent(
+//       {required this.month});
+//
+//   @override
+//   List<Object> get props => [month];
+// }
+//
+// class FetchIncomeEvent extends SetDateEvent {
+//   final String month;
+//
+//   FetchIncomeEvent(
+//       {required this.month});
+//
+//   @override
+//   List<Object> get props => [month];
+// }
+//
+// class FetchAllIncomeItemsEvent extends SetDateEvent {
+//   final String month;
+//
+//   FetchAllIncomeItemsEvent(
+//       {required this.month});
+//
+//   @override
+//   List<Object> get props => [month];
+// }
+//
+// class FetchExpensesItemsEvent extends SetDateEvent {
+//   final String date;
+//
+//   FetchExpensesItemsEvent(
+//       {required this.date});
+//
+//   @override
+//   List<Object> get props => [date];
+// }

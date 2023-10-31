@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/state.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/fetch_number_of_issues_pendar/bloc.dart';
-import '../bloc/fetch_number_of_issues_pendar/event.dart';
-import '../bloc/fetch_number_of_issues_pendar/state.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/event.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/state.dart';
 import '../page_helpers/date_picker_calendar.dart';
+import 'package:intl/intl.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -23,11 +24,16 @@ class MyHomePage extends StatelessWidget {
     //     reportKey: "0S2DXd7ISt3nGSL8DqSi+zKpMA0="
     // ));
 
+    final now = DateTime.now();
+    String  selectedDate = DateFormat('yyyy/MM/dd').format(now);
+
+    print("selectedDate           "+selectedDate);
+
     BlocProvider.of<NumberOfIssuesFanarBloc>(context)
-        .add(GetNumberOfIssuesFanarEvent());
+        .add(GetNumberOfIssuesFanarEvent(date: selectedDate));
 
     BlocProvider.of<NumberOfIssuesPendarBloc>(context)
-        .add(GetNumberOfIssuesPendarEvent());
+        .add(GetNumberOfIssuesPendarEvent(date: selectedDate));
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -70,7 +76,7 @@ class MyHomePage extends StatelessWidget {
                 SizedBox(
                   height: height / 50,
                 ),
-              BlocBuilder<NumberOfIssuesFanarBloc, NumberOfIssuesFanarState>(
+                BlocBuilder<NumberOfIssuesFanarBloc, NumberOfIssuesFanarState>(
                   builder: (context, state) {
                 if (state.status.isLoading) {
                   return const Center(

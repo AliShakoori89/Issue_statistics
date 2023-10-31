@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:issue_statistics/logic/repositories/date_time_repository.dart';
 import 'package:issue_statistics/logic/repositories/number_of_issues_repository.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
 import 'package:issue_statistics/presentation/page/home_page.dart';
-import 'logic/repositories/date_time_repository.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,14 +20,14 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (BuildContext context) =>
-              SetDateBloc(SetDateRepository())),
+            create: (BuildContext context) =>
+                SetDateBloc(NumberOfIssuesRepository(), SetDateRepository())),
         BlocProvider(
           create: (BuildContext context) =>
-              NumberOfIssuesFanarBloc(NumberOfIssuesRepository())),
+              NumberOfIssuesFanarBloc(NumberOfIssuesRepository(), SetDateRepository())),
         BlocProvider(
             create: (BuildContext context) =>
-                NumberOfIssuesPendarBloc(NumberOfIssuesRepository()))
+                NumberOfIssuesPendarBloc(NumberOfIssuesRepository(), SetDateRepository()))
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -3,5 +3,9 @@ abstract class NumberOfIssuesPendarEvent{
 }
 
 class GetNumberOfIssuesPendarEvent extends NumberOfIssuesPendarEvent {
-  const GetNumberOfIssuesPendarEvent();
+  final String date;
+
+  GetNumberOfIssuesPendarEvent({required this.date});
+
+  List<Object> get props => [date];
 }

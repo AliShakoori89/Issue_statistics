@@ -1,15 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:issue_statistics/logic/repositories/date_time_repository.dart';
+import 'package:issue_statistics/logic/repositories/number_of_issues_repository.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/event.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
-import '../../../logic/repositories/date_time_repository.dart';
-import 'event.dart';
-
 
 class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
 
+  NumberOfIssuesRepository numberOfIssuesRepository = NumberOfIssuesRepository();
   SetDateRepository setDateRepository = SetDateRepository();
 
-  SetDateBloc(this.setDateRepository) : super(
-      const SetDateState()){
+  SetDateBloc(this.numberOfIssuesRepository, this.setDateRepository) : super(
+      const SetDateState()) {
     on<ReadDateEvent>(_mapReadDateEventToState);
     on<ReadMonthEvent>(_mapReadDateMonthEventToState);
     on<WriteDateEvent>(_mapWriteDateEventToState);
@@ -18,8 +19,8 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     on<ReduceDateEvent>(_mapReduceDateEventToState);
   }
 
-  void _mapReadDateEventToState(
-      ReadDateEvent event, Emitter<SetDateState> emit) async {
+  void _mapReadDateEventToState(ReadDateEvent event,
+      Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
       final String date = await setDateRepository.readDate();
@@ -34,8 +35,8 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     }
   }
 
-  void _mapReadDateMonthEventToState(
-      ReadMonthEvent event, Emitter<SetDateState> emit) async {
+  void _mapReadDateMonthEventToState(ReadMonthEvent event,
+      Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
       final String month = await setDateRepository.readMonth();
@@ -50,11 +51,11 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     }
   }
 
-  void _mapWriteDateEventToState(
-      WriteDateEvent event, Emitter<SetDateState> emit) async {
+  void _mapWriteDateEventToState(WriteDateEvent event,
+      Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
-      await setDateRepository.writeDate(event.date , event.month);
+      await setDateRepository.writeDate(event.date, event.month);
       emit(
         state.copyWith(
           status: SetDateStatus.success,
@@ -65,8 +66,8 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     }
   }
 
-  void _mapInitialDateEventToState(
-      InitialDateEvent event, Emitter<SetDateState> emit) async {
+  void _mapInitialDateEventToState(InitialDateEvent event,
+      Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
       await setDateRepository.initialDate();
@@ -84,8 +85,8 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     }
   }
 
-  void _mapAddNextDateEventToState(
-      AddToDateEvent event, Emitter<SetDateState> emit) async {
+  void _mapAddNextDateEventToState(AddToDateEvent event,
+      Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
       await setDateRepository.addToDate(event.date, event.month);
@@ -100,8 +101,8 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     }
   }
 
-  void _mapReduceDateEventToState(
-      ReduceDateEvent event, Emitter<SetDateState> emit) async {
+  void _mapReduceDateEventToState(ReduceDateEvent event,
+      Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
 

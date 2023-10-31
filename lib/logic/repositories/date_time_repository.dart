@@ -59,4 +59,8 @@ class SetDateRepository {
     await prefs.setString('date', date);
     await prefs.setString('dateMonth', month);
   }
+
+  // Future<List<ExpenseModel>> getAllExpensesItemsRepo(String date) async {
+  //   return await helper.getAllExpensesItems(date);
+  // }
 }
