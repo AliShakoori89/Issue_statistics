@@ -155,7 +155,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
               ),
               Text(
                   key: keyBottomNavigation3,
-                  DateFormat('yyyy-MM-dd')
+                  DateFormat('yyyy / MM / dd')
                       .format(DateTime.parse(date))
                       .toPersianDigit(),
                   style: TextStyle(

@@ -7,10 +7,31 @@ import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/state.dart';
 import '../page_helpers/date_picker_calendar.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' as intl;
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  late TextEditingController controller;
+  final _formKey = GlobalKey<FormState>();
+
+  // @override
+  // void initState() {
+  //   controller = TextEditingController();
+  //   super.initState();
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +39,8 @@ class MyHomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    // BlocProvider.of<NumberOfIssuesBloc>(context)
-    //     .add(GetNumberOfIssuesEvent(
-    //     customerCode: "10101586520",
-    //     reportKey: "0S2DXd7ISt3nGSL8DqSi+zKpMA0="
-    // ));
-
     final now = DateTime.now();
-    String  selectedDate = DateFormat('yyyy/MM/dd').format(now);
-
-    print("selectedDate           "+selectedDate);
+    String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
 
     BlocProvider.of<NumberOfIssuesFanarBloc>(context)
         .add(GetNumberOfIssuesFanarEvent(date: selectedDate));
@@ -78,6 +91,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 BlocBuilder<NumberOfIssuesFanarBloc, NumberOfIssuesFanarState>(
                   builder: (context, state) {
+
                 if (state.status.isLoading) {
                   return const Center(
                       child: SizedBox(
@@ -147,14 +161,8 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            state
-                                    .numberOfIssueForToseeEttelaatVaErtebatatITSazaCo
-                                    .isNotEmpty
-                                ? state
-                                    .numberOfIssueForToseeEttelaatVaErtebatatITSazaCo[
-                                        0]
-                                    .count
-                                    .toString()
+                            state.numberOfIssueForToseeEttelaatVaErtebatatITSazaCo.isNotEmpty
+                                ? state.numberOfIssueForToseeEttelaatVaErtebatatITSazaCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -170,9 +178,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Text(
                             state.numberOfIssueForKiyakushanAriyaCo.isNotEmpty
-                                ? state
-                                    .numberOfIssueForKiyakushanAriyaCo[0].count
-                                    .toString()
+                                ? state.numberOfIssueForKiyakushanAriyaCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -187,12 +193,8 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            state.numberOfIssueForToseeNovinHamrahKishCo
-                                    .isNotEmpty
-                                ? state
-                                    .numberOfIssueForToseeNovinHamrahKishCo[0]
-                                    .count
-                                    .toString()
+                            state.numberOfIssueForToseeNovinHamrahKishCo.isNotEmpty
+                                ? state.numberOfIssueForToseeNovinHamrahKishCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -208,9 +210,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Text(
                             state.numberOfIssueForTabanAtiPardazCo.isNotEmpty
-                                ? state
-                                    .numberOfIssueForTabanAtiPardazCo[0].count
-                                    .toString()
+                                ? state.numberOfIssueForTabanAtiPardazCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -225,14 +225,8 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            state
-                                    .numberOfIssueForZherfAndishanHushmandDibaRayanCo
-                                    .isNotEmpty
-                                ? state
-                                    .numberOfIssueForZherfAndishanHushmandDibaRayanCo[
-                                        0]
-                                    .count
-                                    .toString()
+                            state.numberOfIssueForZherfAndishanHushmandDibaRayanCo.isNotEmpty
+                                ? state.numberOfIssueForZherfAndishanHushmandDibaRayanCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -247,13 +241,8 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            state.numberOfIssueForPardazeshEttelaatMaliPartCo
-                                    .isNotEmpty
-                                ? state
-                                    .numberOfIssueForPardazeshEttelaatMaliPartCo[
-                                        0]
-                                    .count
-                                    .toString()
+                            state.numberOfIssueForPardazeshEttelaatMaliPartCo.isNotEmpty
+                                ? state.numberOfIssueForPardazeshEttelaatMaliPartCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -269,8 +258,7 @@ class MyHomePage extends StatelessWidget {
                         children: [
                           Text(
                             state.numberOfIssueForBankTejaratCo.isNotEmpty
-                                ? state.numberOfIssueForBankTejaratCo[0].count
-                                    .toString()
+                                ? state.numberOfIssueForBankTejaratCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -285,14 +273,8 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            state
-                                    .numberOfIssueForPishgamanEtemadDijitalIraniyanCo
-                                    .isNotEmpty
-                                ? state
-                                    .numberOfIssueForPishgamanEtemadDijitalIraniyanCo[
-                                        0]
-                                    .count
-                                    .toString()
+                            state.numberOfIssueForPishgamanEtemadDijitalIraniyanCo.isNotEmpty
+                                ? state.numberOfIssueForPishgamanEtemadDijitalIraniyanCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -308,12 +290,8 @@ class MyHomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            state.numberOfIssueForFanAvaranEtemadRaahbatCo
-                                    .isNotEmpty
-                                ? state
-                                    .numberOfIssueForFanAvaranEtemadRaahbatCo[0]
-                                    .count
-                                    .toString()
+                            state.numberOfIssueForFanAvaranEtemadRaahbatCo.isNotEmpty
+                                ? state.numberOfIssueForFanAvaranEtemadRaahbatCo[0].count.toString()
                                 : 0.toString(),
                             style: const TextStyle(color: Colors.black),
                           ),
@@ -377,6 +355,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
                     builder: (context, state) {
+
                       if (state.status.isLoading) {
                         return const Center(
                             child: SizedBox(
@@ -486,22 +465,7 @@ class MyHomePage extends StatelessWidget {
                             SizedBox(
                               height: height / 30,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.pendarAllNumberOfIssue != 0
-                                      ? state.pendarAllNumberOfIssue.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("تعداد کل گواهی های شرکت پندار",
-                                    style: TextStyle(color: Colors.black))
-                              ],
-                            ),
+
                           ],
                         );
                       }
@@ -527,6 +491,99 @@ class MyHomePage extends StatelessWidget {
                         );
                       }
                     }),
+                Row(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        BlocBuilder<NumberOfIssuesFanarBloc, NumberOfIssuesFanarState>(
+                            builder: (context, state) {
+
+                              int allFanarIssues = state.faanarAllNumberOfIssue;
+
+                              return BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
+                                  builder: (context, state) {
+
+                                    int pendarIssues = state.pendarAllNumberOfIssue;
+                                    int allPendarIssues = 0;
+
+                                    return Row(
+                                      children: [
+                                        GestureDetector(
+                                            onTap: (){
+                                              showDialog(
+                                                context: context,
+                                                builder: (ctx) => AlertDialog(
+                                                  backgroundColor: Colors.white ,
+                                                  shape: const RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.all(Radius.circular(20.0))),
+                                                  title: Directionality(
+                                                    textDirection: TextDirection.rtl,
+                                                    child: Text("تعداد کل گواهی های صادره را وارد نمایید :",
+                                                        style: TextStyle(
+                                                            fontSize: width / 30,
+                                                            fontWeight: FontWeight.w900,
+                                                            color: Colors.black)),
+                                                  ),
+                                                  content: SizedBox(
+                                                    height: 50 ,
+                                                    width: 50,
+                                                    child: TextFormField(
+                                                      controller: controller,
+                                                      decoration: InputDecoration(
+                                                        border: OutlineInputBorder(),
+                                                        hintText: 'تعداد کل گواهی',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  actions: <Widget>[
+                                                    Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 15,
+                                                          bottom: 15
+                                                      ),
+                                                      child: Align(
+                                                        alignment: Alignment.centerLeft,
+                                                        child: SizedBox(
+                                                          height: 50 ,
+                                                          width: 60,
+                                                          child: ElevatedButton(
+                                                              style: ElevatedButton.styleFrom(
+                                                                  backgroundColor: Colors.green
+                                                              ),
+                                                              onPressed: (){
+                                                                allPendarIssues = int.parse(controller.text) - (pendarIssues+allFanarIssues);
+                                                                print(allPendarIssues);
+                                                              },
+                                                              child: Text("ثبت", style: TextStyle(
+                                                                  fontSize: width / 20
+                                                              ),)),),
+                                                      ),
+                                                    )
+
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                            child: Icon(Icons.help, size: 15,)),
+                                        const Text("تعداد کل گواهی های شرکت پندار",
+                                            textDirection: TextDirection.rtl,
+                                            style: TextStyle(color: Colors.black)),
+                                        // Text(controller.text.isNotEmpty
+                                        //     ? "${int.parse(controller.text)-(allPendarIssues+allFanarIssues)}"
+                                        //     : "0")
+
+                                      ],
+                                    );
+
+                                  });
+                            }),
+                      ],
+                    ),
+
+                  ],
+                )
 
               ],
             )

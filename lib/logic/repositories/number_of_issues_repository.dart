@@ -63,14 +63,14 @@ class NumberOfIssuesRepository {
     return response;
   }
 
-  Future<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoFanaar(String date) async {
+  Future<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoFanar(String date) async {
     var body = jsonEncode({"reportkey":"4b8ngUfvEnA/4AiSB76+kqz2Ztk=","customercode":"10320874334",
       "startdate":date,"enddate":date,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  Future<dynamic> getNumberOfIssueForBankTejaratCoFanaar(String date) async {
+  Future<dynamic> getNumberOfIssueForBankTejaratCoFanar(String date) async {
     var body = jsonEncode({"reportkey":"fpLNU2BPeWZE0lNdK/FfeqAXcn4=","customercode":"10100834460",
       "startdate":date,"enddate":date,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
@@ -91,11 +91,11 @@ class NumberOfIssuesRepository {
     return response;
   }
 
-  Future<int> getfaanarAllNumberOfIssue(
+  int getFanarAllNumberOfIssue(
       int? numberOfIssueForFanAvaranEtemadRaahbatCoCount,
       int? numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount,
-      int? numberOfIssueForBankTejaratCoCount,
-      int? numberOfIssueForPardazeshEttelaatMaliPartCoCount,
+      int? numberOfIssueForBankTejaratCoCountFanar,
+      int? numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar,
       int? numberOfIssueForZherfAndishanHushmandDibaRayanCoCount,
       int? numberOfIssueForTabanAtiPardazCoCount,
       int? numberOfIssueForToseeNovinHamrahKishCoCount,
@@ -103,11 +103,11 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount,
       int? numberOfIssueForRahkarHushmandAmnCoCount,
       int? numberOfIssuesForToseeTejaratTeniyanCoCount,
-      int? numberOfIssuesForAsrDaneshAfzarCoCount) async {
+      int? numberOfIssuesForAsrDaneshAfzarCoCount) {
     int sum = numberOfIssueForFanAvaranEtemadRaahbatCoCount! +
         numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount! +
-        numberOfIssueForBankTejaratCoCount! +
-        numberOfIssueForPardazeshEttelaatMaliPartCoCount! +
+        numberOfIssueForBankTejaratCoCountFanar! +
+        numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar! +
         numberOfIssueForZherfAndishanHushmandDibaRayanCoCount! +
         numberOfIssueForTabanAtiPardazCoCount! +
         numberOfIssueForToseeNovinHamrahKishCoCount! +
@@ -164,15 +164,15 @@ class NumberOfIssuesRepository {
     return response;
   }
 
-  Future<int> getPendarAllNumberOfIssue(
-      int? numberOfIssueForPardazeshMaliPartCoCount,
-      int? numberOfIssueForBankTejaratCoCount,
+  int getPendarAllNumberOfIssue(
+      int? numberOfIssueForPardazeshMaliPartCoCountPendar,
+      int? numberOfIssueForBankTejaratCoCountPendar,
       int? numberOfIssueForBankParsiyanCoCount,
       int? numberOfIssueForShabakeKaranSamaCoCount,
       int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCoCount,
-      int? numberOfIssueForBankMellatCount) async {
-    int sum = numberOfIssueForPardazeshMaliPartCoCount! +
-        numberOfIssueForBankTejaratCoCount! +
+      int? numberOfIssueForBankMellatCount){
+    int sum = numberOfIssueForPardazeshMaliPartCoCountPendar! +
+        numberOfIssueForBankTejaratCoCountPendar! +
         numberOfIssueForBankParsiyanCoCount! +
         numberOfIssueForShabakeKaranSamaCoCount! +
         numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCoCount! +
@@ -180,4 +180,7 @@ class NumberOfIssuesRepository {
 
     return sum;
   }
+
+
+
 }

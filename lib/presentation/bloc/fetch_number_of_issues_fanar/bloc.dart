@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:issue_statistics/data/model/response_model.dart';
 import 'package:issue_statistics/logic/repositories/date_time_repository.dart';
 import 'package:issue_statistics/logic/repositories/number_of_issues_repository.dart';
@@ -22,8 +20,6 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
       GetNumberOfIssuesFanarEvent event, Emitter<NumberOfIssuesFanarState> emit) async {
     try {
       emit(state.copyWith(status: NumberOfIssuesFanarStatus.loading));
-
-      print("bloc                   "+event.date);
 
       final responSenumberOfIssueForAsrDaneshAfzarCo = await numberOfIssuesRepository.getNumberOfIssuesForAsrDaneshAfzarCo(event.date);
       Iterable l = json.decode(responSenumberOfIssueForAsrDaneshAfzarCo.body);
@@ -57,11 +53,11 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
       Iterable l8 = json.decode(responseNumberOfIssueForZherfAndishanHushmandDibaRayanCo.body);
       List<ResponseModel> numberOfIssueForZherfAndishanHushmandDibaRayanCo = List<ResponseModel>.from(l8.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForPardazeshEttelaatMaliPartCo = await numberOfIssuesRepository.getNumberOfIssueForPardazeshEttelaatMaliPartCoFanaar(event.date);
+      final responseNumberOfIssueForPardazeshEttelaatMaliPartCo = await numberOfIssuesRepository.getNumberOfIssueForPardazeshEttelaatMaliPartCoFanar(event.date);
       Iterable l9 = json.decode(responseNumberOfIssueForPardazeshEttelaatMaliPartCo.body);
       List<ResponseModel> numberOfIssueForPardazeshEttelaatMaliPartCo = List<ResponseModel>.from(l9.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoFanaar(event.date);
+      final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoFanar(event.date);
       Iterable l10 = json.decode(responseNumberOfIssueForBankTejaratCo.body);
       List<ResponseModel> numberOfIssueForBankTejaratCo = List<ResponseModel>.from(l10.map((model)=> ResponseModel.fromJson(model)));
 
@@ -73,7 +69,7 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
       Iterable l12 = json.decode(responseNumberOfIssueForFanAvaranEtemadRaahbatCo.body);
       List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbatCo = List<ResponseModel>.from(l12.map((model)=> ResponseModel.fromJson(model)));
 
-      final faanarAllNumberOfIssue = await numberOfIssuesRepository.getfaanarAllNumberOfIssue(
+      final faanarAllNumberOfIssue = await numberOfIssuesRepository.getFanarAllNumberOfIssue(
         numberOfIssueForFanAvaranEtemadRaahbatCo.isNotEmpty ? numberOfIssueForFanAvaranEtemadRaahbatCo[0].count : 0 ,
         numberOfIssueForPishgamanEtemadDijitalIraniyanCo.isNotEmpty ? numberOfIssueForPishgamanEtemadDijitalIraniyanCo[0].count : 0 ,
         numberOfIssueForBankTejaratCo.isNotEmpty ? numberOfIssueForBankTejaratCo[0].count : 0 ,
@@ -104,11 +100,11 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
           numberOfIssueForPishgamanEtemadDijitalIraniyanCo: numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
           numberOfIssueForFanAvaranEtemadRaahbatCo: numberOfIssueForFanAvaranEtemadRaahbatCo,
           faanarAllNumberOfIssue: faanarAllNumberOfIssue
-
         ),
       );
     } catch (error) {
       emit(state.copyWith(status: NumberOfIssuesFanarStatus.error));
     }
   }
+
 }

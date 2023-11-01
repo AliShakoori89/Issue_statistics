@@ -63,7 +63,7 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
             numberOfIssueForShabakeKaranSamaCo: numberOfIssueForShabakeKaranSamaCo,
             numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo: numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
             numberOfIssueForBankMellat: numberOfIssueForBankMellat,
-            pendarAllNumberOfIssue: PendarAllNumberOfIssue
+            pendarAllNumberOfIssue: PendarAllNumberOfIssue,
         ),
       );
     } catch (error) {
