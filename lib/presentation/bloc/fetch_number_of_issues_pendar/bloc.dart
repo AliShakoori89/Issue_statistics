@@ -45,14 +45,19 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       Iterable l6 = json.decode(responseNumberOfIssueForBankMellat.body);
       List<ResponseModel> numberOfIssueForBankMellat = List<ResponseModel>.from(l6.map((model)=> ResponseModel.fromJson(model)));
 
-      final PendarAllNumberOfIssue = await numberOfIssuesRepository.getPendarAllNumberOfIssue(
+      final sumAllPendarWrapper = await numberOfIssuesRepository.getPendarAllNumberOfIssue(
         numberOfIssueForPardazeshMaliPartCo.isNotEmpty ? numberOfIssueForPardazeshMaliPartCo[0].count : 0 ,
         numberOfIssueForBankTejaratCo.isNotEmpty ? numberOfIssueForBankTejaratCo[0].count : 0 ,
         numberOfIssueForBankParsiyanCo.isNotEmpty ? numberOfIssueForBankParsiyanCo[0].count : 0 ,
         numberOfIssueForShabakeKaranSamaCo.isNotEmpty ? numberOfIssueForShabakeKaranSamaCo[0].count : 0 ,
         numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.isNotEmpty ? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0].count : 0 ,
-          numberOfIssueForBankMellat.isNotEmpty ? numberOfIssueForBankMellat[0].count : 0
+        numberOfIssueForBankMellat.isNotEmpty ? numberOfIssueForBankMellat[0].count : 0 ,
       );
+
+      await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.date, sumAllPendarWrapper);
+      // var allIssue = await numberOfIssuesRepository.readAllIssuePerDateNumber(event.date);
+      // var calculate = await numberOfIssuesRepository.calculatePendarNumberOfIssueAndSum(event.date, allIssue);
+
 
       emit(
         state.copyWith(
@@ -62,10 +67,11 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
             numberOfIssueForBankParsiyanCo: numberOfIssueForBankParsiyanCo,
             numberOfIssueForShabakeKaranSamaCo: numberOfIssueForShabakeKaranSamaCo,
             numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo: numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
-            numberOfIssueForBankMellat: numberOfIssueForBankMellat,
-            pendarAllNumberOfIssue: PendarAllNumberOfIssue,
-        ),
+            numberOfIssueForBankMellat: numberOfIssueForBankMellat),
+
       );
+
+
     } catch (error) {
       emit(state.copyWith(status: NumberOfIssuesPendarStatus.error));
     }

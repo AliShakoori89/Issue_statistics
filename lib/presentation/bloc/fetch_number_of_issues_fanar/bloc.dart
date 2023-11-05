@@ -84,6 +84,8 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
         numberOfIssueForAsrDaneshAfzarCo.isNotEmpty ? numberOfIssueForAsrDaneshAfzarCo[0].count : 0
       );
 
+      await numberOfIssuesRepository.writeFanarAllNumberOfIssues(event.date, faanarAllNumberOfIssue);
+
       emit(
         state.copyWith(
           status: NumberOfIssuesFanarStatus.success,

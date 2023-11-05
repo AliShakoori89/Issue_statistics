@@ -119,17 +119,22 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           Gregorian j2g1 = j.toGregorian();
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
-          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+          // String gregorianMonth = "${j2g1.year}/${j2g1.month}";
 
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+          //     date: gregorianDate,
+          //     month: gregorianMonth));
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(ReadDateEvent());
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(ReadMonthEvent());
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: gregorianDate,
-              month: gregorianMonth));
+              .add(CalculatePendarNumberOfIssueAndSumEvent(date: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadDateEvent());
-          BlocProvider.of<SetDateBloc>(context)
-              .add(ReadMonthEvent());
+              .add(ReadAllIssuePerDateEvent(date: gregorianDate));
+
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesFanarBloc>(context)
@@ -180,17 +185,21 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           Gregorian j2g1 = j.toGregorian();
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
-          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
-
+          // String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+          //
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+          //     date: gregorianDate,
+          //     month: gregorianMonth));
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(ReadDateEvent());
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(ReadMonthEvent());
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: gregorianDate,
-              month: gregorianMonth));
+              .add(CalculatePendarNumberOfIssueAndSumEvent(date: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadDateEvent());
-          BlocProvider.of<SetDateBloc>(context)
-              .add(ReadMonthEvent());
+              .add(ReadAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesFanarBloc>(context)
@@ -221,17 +230,21 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           Gregorian j2g1 = j.toGregorian();
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
-          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
-
+          // String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+          //
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+          //     date: gregorianDate,
+          //     month: gregorianMonth));
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(ReadDateEvent());
+          // BlocProvider.of<SetDateBloc>(context)
+          //     .add(ReadMonthEvent());
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: gregorianDate,
-              month: gregorianMonth));
+              .add(CalculatePendarNumberOfIssueAndSumEvent(date: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadDateEvent());
-          BlocProvider.of<SetDateBloc>(context)
-              .add(ReadMonthEvent());
+              .add(ReadAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesFanarBloc>(context)

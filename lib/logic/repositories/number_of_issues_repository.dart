@@ -1,5 +1,6 @@
 import 'dart:convert';
 import '../../presentation/networking/api_base_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class NumberOfIssuesRepository {
@@ -181,6 +182,18 @@ class NumberOfIssuesRepository {
     return sum;
   }
 
+  writePendarAllNumberOfIssues(String date, int pendarAllNumberOfIssue) async {
+    print("writePendarAllNumberOfIssues");
+    print("writePendarAllNumberOfIssues                   "+date+"            "+ pendarAllNumberOfIssue.toString());
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('WritePendarAllNumberOfIssues$date', pendarAllNumberOfIssue);
+  }
+
+  writeFanarAllNumberOfIssues(String date, int fanarAllNumberOfIssue) async {
+    print("writeFanarAllNumberOfIssues                   "+date+"            "+ fanarAllNumberOfIssue.toString());
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('WriteFanarAllNumberOfIssues$date', fanarAllNumberOfIssue);
+  }
 
 
 }

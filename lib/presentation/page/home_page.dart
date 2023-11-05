@@ -6,7 +6,11 @@ import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/state.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/event.dart';
+import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
 import '../page_helpers/date_picker_calendar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart' as intl;
 
 class MyHomePage extends StatefulWidget {
@@ -19,19 +23,38 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   late TextEditingController controller;
-  final _formKey = GlobalKey<FormState>();
 
-  // @override
-  // void initState() {
-  //   controller = TextEditingController();
-  //   super.initState();
-  // }
+  @override
+  void initState() {
+    controller = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  // Future checkFirstSeen() async {
+  //   SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.getBool('seen') == null || prefs.getBool('seen') == false
+  //       ? await prefs.setBool('seen', false)
+  //       : await prefs.setBool('seen', true);
   //
-  // @override
-  // void dispose() {
-  //   controller.dispose();
-  //   super.dispose();
+  //   if (prefs.getBool('seen') == false) {
+  //     await prefs.setBool('seen', true);
+  //     final now = DateTime.now();
+  //     String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
+  //
+  //     BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+  //         .add(GetNumberOfIssuesFanarEvent(date: selectedDate));
+  //
+  //
+  //   }
   // }
+
+  // void afterFirstLayout(BuildContext context) => checkFirstSeen();
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +65,19 @@ class _MyHomePageState extends State<MyHomePage> {
     final now = DateTime.now();
     String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
 
+    BlocProvider.of<NumberOfIssuesPendarBloc>(context)
+        .add(GetNumberOfIssuesPendarEvent(date: selectedDate));
+
+    BlocProvider.of<SetDateBloc>(context)
+        .add(CalculatePendarNumberOfIssueAndSumEvent(date: selectedDate));
+
+    BlocProvider.of<SetDateBloc>(context)
+        .add(ReadAllIssuePerDateEvent(date: selectedDate));
+
     BlocProvider.of<NumberOfIssuesFanarBloc>(context)
         .add(GetNumberOfIssuesFanarEvent(date: selectedDate));
 
-    BlocProvider.of<NumberOfIssuesPendarBloc>(context)
-        .add(GetNumberOfIssuesPendarEvent(date: selectedDate));
+    // checkFirstSeen();
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -353,161 +384,142 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   height: height / 50,
                 ),
-                BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
-                    builder: (context, state) {
-
-                      if (state.status.isLoading) {
-                        return const Center(
-                            child: SizedBox(
-                                height: 10,
-                                width: 10,
-                                child: CircularProgressIndicator()));
-                      }
-                      if (state.status.isSuccess) {
-                        return Column(
+            BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
+                builder: (context, state) {
+                  if (state.status.isLoading) {
+                    return const Center(
+                        child: SizedBox(
+                            height: 10,
+                            width: 10,
+                            child: CircularProgressIndicator()));
+                  }
+                  if (state.status.isSuccess) {
+                    return Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.numberOfIssueForPardazeshMaliPartCo.isNotEmpty
-                                      ? state.numberOfIssueForPardazeshMaliPartCo[0].count.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("پردازش اطلاعات مالی پارت (پندار)",
-                                    style: TextStyle(color: Colors.black)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.numberOfIssueForBankTejaratCo.isNotEmpty
-                                      ? state.numberOfIssueForBankTejaratCo[0].count.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("بانک تجارت (پندار)",
-                                    style: TextStyle(color: Colors.black)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.numberOfIssueForBankParsiyanCo.isNotEmpty
-                                      ? state.numberOfIssueForBankParsiyanCo[0].count.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("بانک پارسیان(دیبا رایان)",
-                                    style: TextStyle(color: Colors.black)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.numberOfIssueForShabakeKaranSamaCo.isNotEmpty
-                                      ? state.numberOfIssueForShabakeKaranSamaCo[0].count.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("شبکه کاران سما",
-                                    style: TextStyle(color: Colors.black))
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.isNotEmpty
-                                      ? state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0].count.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("شرکت فناوری و راه حلهای هوشمند سپهر",
-                                    style: TextStyle(color: Colors.black))
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  state.numberOfIssueForBankMellat.isNotEmpty
-                                      ? state.numberOfIssueForBankMellat[0].count.toString()
-                                      : 0.toString(),
-                                  style: const TextStyle(color: Colors.black),
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                const Text("بانک ملت",
-                                    style: TextStyle(color: Colors.black))
-                              ],
+                            Text(
+                              state.numberOfIssueForPardazeshMaliPartCo.isNotEmpty
+                                  ? state.numberOfIssueForPardazeshMaliPartCo[0].count.toString()
+                                  : 0.toString(),
+                              style: const TextStyle(color: Colors.black),
                             ),
                             SizedBox(
-                              height: height / 30,
+                              height: height / 80,
                             ),
-
+                            const Text("پردازش اطلاعات مالی پارت (پندار)",
+                                style: TextStyle(color: Colors.black)),
                           ],
-                        );
-                      }
-                      if (state.status.isError) {
-                        return const SizedBox(
-                          height: 500,
-                          child: Center(
-                              child: Text('Error',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 19))),
-                        );
-                      } else {
-                        return const Padding(
-                          padding: EdgeInsets.only(top: 300),
-                          child: Center(
-                              child: Text('Your app don\'t have internet',
-                                  style: TextStyle(
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 19))),
-                        );
-                      }
-                    }),
-                Row(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        BlocBuilder<NumberOfIssuesFanarBloc, NumberOfIssuesFanarState>(
-                            builder: (context, state) {
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.numberOfIssueForBankTejaratCo.isNotEmpty
+                                  ? state.numberOfIssueForBankTejaratCo[0].count.toString()
+                                  : 0.toString(),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: height / 80,
+                            ),
+                            const Text("بانک تجارت (پندار)",
+                                style: TextStyle(color: Colors.black)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.numberOfIssueForBankParsiyanCo.isNotEmpty
+                                  ? state.numberOfIssueForBankParsiyanCo[0].count.toString()
+                                  : 0.toString(),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: height / 80,
+                            ),
+                            const Text("بانک پارسیان(دیبا رایان)",
+                                style: TextStyle(color: Colors.black)),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.numberOfIssueForShabakeKaranSamaCo.isNotEmpty
+                                  ? state.numberOfIssueForShabakeKaranSamaCo[0].count.toString()
+                                  : 0.toString(),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: height / 80,
+                            ),
+                            const Text("شبکه کاران سما",
+                                style: TextStyle(color: Colors.black))
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.isNotEmpty
+                                  ? state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0].count.toString()
+                                  : 0.toString(),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: height / 80,
+                            ),
+                            const Text("شرکت فناوری و راه حلهای هوشمند سپهر",
+                                style: TextStyle(color: Colors.black))
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              state.numberOfIssueForBankMellat.isNotEmpty
+                                  ? state.numberOfIssueForBankMellat[0].count.toString()
+                                  : 0.toString(),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            SizedBox(
+                              height: height / 80,
+                            ),
+                            const Text("بانک ملت",
+                                style: TextStyle(color: Colors.black))
+                          ],
+                        ),
+                        BlocBuilder<SetDateBloc, SetDateState>(
+                          builder: (context, state){
+                            return Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    BlocBuilder<SetDateBloc, SetDateState>(
+                                        builder: (context, state){
+                                          print("22222222222                "+state.calculate.toString());
+                                          return Text(state.calculate.toString());
+                                        }),
 
-                              int allFanarIssues = state.faanarAllNumberOfIssue;
-
-                              return BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
-                                  builder: (context, state) {
-
-                                    int pendarIssues = state.pendarAllNumberOfIssue;
-                                    int allPendarIssues = 0;
-
-                                    return Row(
+                                    SizedBox(
+                                      height: height / 80,
+                                    ),
+                                    const Text("شرکت پندار کوشک ایمن",
+                                        style: TextStyle(color: Colors.black))
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: height / 30,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(state.allIssue.toString()),
+                                    Row(
                                       children: [
                                         GestureDetector(
                                             onTap: (){
@@ -546,19 +558,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                                       child: Align(
                                                         alignment: Alignment.centerLeft,
                                                         child: SizedBox(
-                                                          height: 50 ,
-                                                          width: 60,
-                                                          child: ElevatedButton(
-                                                              style: ElevatedButton.styleFrom(
-                                                                  backgroundColor: Colors.green
-                                                              ),
-                                                              onPressed: (){
-                                                                allPendarIssues = int.parse(controller.text) - (pendarIssues+allFanarIssues);
-                                                                print(allPendarIssues);
-                                                              },
-                                                              child: Text("ثبت", style: TextStyle(
-                                                                  fontSize: width / 20
-                                                              ),)),),
+                                                            height: 50 ,
+                                                            width: 60,
+                                                            child: ElevatedButton(
+                                                                style: ElevatedButton.styleFrom(
+                                                                    backgroundColor: Colors.green
+                                                                ),
+                                                                onPressed: () {
+                                                                  final setDateBloc = BlocProvider.of<SetDateBloc>(context);
+                                                                  setDateBloc.add(
+                                                                      AddAllIssuePerDateEvent(
+                                                                          date: state.date,
+                                                                          allIssuePerDate: int.parse(controller.text)));
+                                                                  Navigator.of(ctx).pop();
+                                                                },
+                                                                child: Text(
+                                                                  "ثبت", style: TextStyle(
+                                                                    fontSize: width / 25
+                                                                ),))),
                                                       ),
                                                     )
 
@@ -570,21 +587,38 @@ class _MyHomePageState extends State<MyHomePage> {
                                         const Text("تعداد کل گواهی های شرکت پندار",
                                             textDirection: TextDirection.rtl,
                                             style: TextStyle(color: Colors.black)),
-                                        // Text(controller.text.isNotEmpty
-                                        //     ? "${int.parse(controller.text)-(allPendarIssues+allFanarIssues)}"
-                                        //     : "0")
-
                                       ],
-                                    );
-
-                                  });
-                            }),
+                                    )
+                                  ],
+                                )
+                              ],
+                            );
+                          })
                       ],
-                    ),
-
-                  ],
-                )
-
+                    );
+                  }
+                  if (state.status.isError) {
+                    return const SizedBox(
+                      height: 500,
+                      child: Center(
+                          child: Text('Error',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 19))),
+                    );
+                  } else {
+                    return const Padding(
+                      padding: EdgeInsets.only(top: 300),
+                      child: Center(
+                          child: Text('Your app don\'t have internet',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 19))),
+                    );
+                  }
+                })
               ],
             )
           ),

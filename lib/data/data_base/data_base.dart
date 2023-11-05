@@ -9,24 +9,11 @@ class DatabaseHelper {
   static const _databaseName = "MyDatabase.db";
   static const _databaseVersion = 1;
 
-  static const expenseTable = 'expenseTable';
-  static const columnExpenseId = 'id';
-  static const columnExpenseDate = 'expenseDate';
-  static const columnExpenseMonth = 'expenseMonth';
-  static const columnExpenseCategory = 'expenseCategory';
-  static const columnExpense = 'expense';
-  static const columnExpenseDescription = 'expenseDescription';
-  static const columnExpenseIconType = 'expenseIconType';
-
-  static const incomeTable = 'incomeTable';
-  static const columnIncomeId = 'id';
-  static const columnIncomeDate = 'incomeDate';
-  static const columnIncomeMonth = 'incomeMonth';
-  static const columnIncomeCategory = "incomeCategory";
-  static const columnIncome = "income";
-  static const columnIncomeDescription = "incomeDescription";
-  static const columnIncomeIconType = "incomeIconType";
-
+  static const issueTable = 'issueTable';
+  static const columnId = 'id';
+  static const columnIssueDate = 'issueDate';
+  static const columnIssueMonth = 'issueMonth';
+  static const columnIssueNumber = 'issueNumber';
 
   DatabaseHelper._privateConstructor();
 
@@ -45,25 +32,11 @@ class DatabaseHelper {
   }
 
   Future _onCreate(Database db, int version) async {
-    await db.execute('CREATE TABLE $expenseTable ('
-        '$columnExpenseId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
-        '$columnExpenseDate TEXT,'
-        '$columnExpenseMonth TEXT,'
-        '$columnExpenseCategory TEXT,'
-        '$columnExpense INTEGER,'
-        '$columnExpenseDescription TEXT,'
-        '$columnExpenseIconType TEXT'
-        ')'
-    );
-
-    await db.execute('CREATE TABLE $incomeTable ('
-        '$columnIncomeId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
-        '$columnIncomeDate TEXT,'
-        '$columnIncomeMonth TEXT,'
-        '$columnIncomeCategory TEXT,'
-        '$columnIncome INTEGER,'
-        '$columnIncomeDescription TEXT,'
-        '$columnIncomeIconType TEXT'
+    await db.execute('CREATE TABLE $issueTable ('
+        '$columnId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
+        '$columnIssueDate TEXT,'
+        '$columnIssueMonth TEXT,'
+        '$columnIssueNumber TEXT'
         ')'
     );
   }

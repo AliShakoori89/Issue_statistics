@@ -16,42 +16,42 @@ class SetDateState extends Equatable {
     String? date,
     String? month,
     String? selectDate,
-    String? expensesPerMonth,
-    String? expensesPerDate,
+    int? allIssue,
+    int? calculate,
   }): date = date ?? '' ,
         month = month ?? '',
         selectDate = selectDate ?? '',
-        expensesPerMonth = expensesPerMonth ?? "",
-        expensesPerDate = expensesPerDate ?? "";
+        allIssue = allIssue ?? 0,
+        calculate = calculate ?? 0;
 
 
   final SetDateStatus status;
   final String date;
   final String month;
   final String selectDate;
-  final String expensesPerMonth;
-  final String expensesPerDate;
+  final int allIssue;
+  final int calculate;
 
   @override
   // TODO: implement props
-  List<Object> get props => [status, date, month, selectDate, expensesPerMonth,
-    expensesPerDate];
+  List<Object> get props => [status, date, month, selectDate, allIssue,
+    calculate];
 
   SetDateState copyWith({
     SetDateStatus? status,
     String? date,
     String? month,
     String? selectDate,
-    String? expensesPerMonth,
-    String? expensesPerDate
+    int? allIssue,
+    int? calculate
   }) {
     return SetDateState(
         status: status ?? this.status,
         date: date ?? this.date,
         month: month ?? this.month,
         selectDate: selectDate ?? this.selectDate,
-        expensesPerMonth: expensesPerMonth ?? this.expensesPerMonth,
-        expensesPerDate: expensesPerDate ?? this.expensesPerDate,
+        allIssue: allIssue ?? this.allIssue,
+        calculate: calculate ?? this.calculate
     );
   }
 }
