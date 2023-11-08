@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
                 SetDateBloc(SetDateRepository())),
         BlocProvider(
           create: (BuildContext context) =>
-              NumberOfIssuesFanarBloc(NumberOfIssuesRepository(), SetDateRepository())),
+              NumberOfFanarIssuesBloc(NumberOfIssuesRepository(), SetDateRepository())),
         BlocProvider(
             create: (BuildContext context) =>
                 NumberOfIssuesPendarBloc(NumberOfIssuesRepository(), SetDateRepository()))

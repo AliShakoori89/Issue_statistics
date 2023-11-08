@@ -48,13 +48,23 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
       var height = MediaQuery.of(context).size.height;
       var width = MediaQuery.of(context).size.width;
 
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          leftArrow(context, width, height),
-          optionalDatePicker(context, height, width),
-          rightArrow(context, width, height),
-        ],
+      return Container(
+        margin: EdgeInsets.only(
+          top: 20,
+          bottom: 20
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15)
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            leftArrow(context, width, height),
+            optionalDatePicker(context, height, width),
+            rightArrow(context, width, height),
+          ],
+        ),
       );
     });
   }
@@ -119,7 +129,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
 
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
-          BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+          BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
           print("gregorianDate                     "+gregorianDate);
           BlocProvider.of<SetDateBloc>(context)
@@ -182,7 +192,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
               .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
-          BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+          BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
@@ -224,7 +234,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
               .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
-          BlocProvider.of<NumberOfIssuesFanarBloc>(context)
+          BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));

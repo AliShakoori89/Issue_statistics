@@ -10,9 +10,9 @@ extension NumberOfIssuesStatusX on NumberOfIssuesFanarStatus {
   bool get isLoading => this == NumberOfIssuesFanarStatus.loading;
 }
 
-class NumberOfIssuesFanarState extends Equatable {
+class NumberOfFanarIssuesState extends Equatable {
 
-  const NumberOfIssuesFanarState({
+  const NumberOfFanarIssuesState({
     this.status = NumberOfIssuesFanarStatus.initial,
     List<ResponseModel>? numberOfIssueForAsrDaneshAfzarCo,
     List<ResponseModel>? numberOfIssueForToseeTejaratTeniyanCo,
@@ -75,7 +75,7 @@ class NumberOfIssuesFanarState extends Equatable {
     numberOfIssueFinTekParsCo, fanarAllNumberOfIssue
   ];
 
-  NumberOfIssuesFanarState copyWith({
+  NumberOfFanarIssuesState copyWith({
     NumberOfIssuesFanarStatus? status,
     List<ResponseModel>? numberOfIssueForAsrDaneshAfzarCo,
     List<ResponseModel>? numberOfIssueForToseeTejaratTeniyanCo,
@@ -93,7 +93,7 @@ class NumberOfIssuesFanarState extends Equatable {
     List<ResponseModel>? numberOfIssueFinTekParsCo,
     int? fanarAllNumberOfIssue
   }) {
-    return NumberOfIssuesFanarState(
+    return NumberOfFanarIssuesState(
       status: status ?? this.status,
       numberOfIssueForAsrDaneshAfzarCo: numberOfIssueForAsrDaneshAfzarCo ?? numberOfIssueForAsrDaneshAfzarCo,
       numberOfIssueForToseeTejaratTeniyanCo: numberOfIssueForToseeTejaratTeniyanCo ?? this.numberOfIssueForToseeTejaratTeniyanCo,

@@ -6,18 +6,18 @@ import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIssuesFanarState> {
+class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFanarIssuesState> {
 
   NumberOfIssuesRepository numberOfIssuesRepository;
   SetDateRepository setDateRepository;
 
-  NumberOfIssuesFanarBloc(this.numberOfIssuesRepository, this.setDateRepository) : super(
-      const NumberOfIssuesFanarState()){
+  NumberOfFanarIssuesBloc(this.numberOfIssuesRepository, this.setDateRepository) : super(
+      const NumberOfFanarIssuesState()){
     on<GetNumberOfIssuesFanarEvent>(_mapNumberOfIssuesEventToState);
   }
 
   void _mapNumberOfIssuesEventToState(
-      GetNumberOfIssuesFanarEvent event, Emitter<NumberOfIssuesFanarState> emit) async {
+      GetNumberOfIssuesFanarEvent event, Emitter<NumberOfFanarIssuesState> emit) async {
     try {
       emit(state.copyWith(status: NumberOfIssuesFanarStatus.loading));
 
