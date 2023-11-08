@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:issue_statistics/data/model/issue_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -12,8 +13,8 @@ class DatabaseHelper {
   static const issueTable = 'issueTable';
   static const columnId = 'id';
   static const columnIssueDate = 'issueDate';
-  static const columnIssueMonth = 'issueMonth';
-  static const columnIssueNumber = 'issueNumber';
+  static const columnAllFanarIssueNumberPerDate = 'allFanarIssueNumberPerDate';
+  static const columnAllIssueNumberPerDate = 'allIssueNumberNumber';
 
   DatabaseHelper._privateConstructor();
 
@@ -35,12 +36,47 @@ class DatabaseHelper {
     await db.execute('CREATE TABLE $issueTable ('
         '$columnId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
         '$columnIssueDate TEXT,'
-        '$columnIssueMonth TEXT,'
-        '$columnIssueNumber TEXT'
+        '$columnAllFanarIssueNumberPerDate INTEGER,'
+        '$columnAllIssueNumberPerDate INTEGER'
         ')'
     );
   }
 
-//******************************************************************************
+  Future<bool> addNumberOfIssue(IssueModel issueModel) async {
+    var dbExpense = await database;
+    await dbExpense.insert(issueTable, issueModel.toJson(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
+    return true;
+  }
 
+  Future<String> readNumberOfIssuePerDate(String? date) async {
+
+    var dbExpense = await database;
+    var result = await dbExpense.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
+    if(result.isEmpty) {
+      return '0';
+    }else{
+      Object? value = result[result.length-1][columnAllIssueNumberPerDate];
+      print("valueeeeeeeee                "+value.toString());
+      if (value == null){
+        return '0';
+      }else{
+        return "$value";
+      }
+    }
+  }
+
+  Future<String> calculatePendarNumberOfIssue(String? date) async {
+    var dbExpense = await database;
+    var allIssues = await dbExpense.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
+    Object? value1 = allIssues[allIssues.length-1][columnAllIssueNumberPerDate];
+    var fanarCoNumberOfIssue = await dbExpense.rawQuery("SELECT $columnAllFanarIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
+    Object? value2 = fanarCoNumberOfIssue[0][columnAllFanarIssueNumberPerDate];
+    if (value1 == null){
+      return '0';
+    }else{
+      var pendarCoNumberOfIssue = int.parse(value1.toString()) - int.parse(value2.toString());
+      return "$pendarCoNumberOfIssue";
+    }
+  }
 }

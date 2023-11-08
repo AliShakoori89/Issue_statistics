@@ -1,23 +1,25 @@
+import 'package:issue_statistics/data/model/issue_model.dart';
+
 abstract class SetDateEvent{
   List<Object> get props => [];
 }
 
-// class InitialDateEvent extends SetDateEvent {}
+class InitialDateEvent extends SetDateEvent {}
 //
-// class ReadDateEvent extends SetDateEvent {}
+class ReadDateEvent extends SetDateEvent {}
 //
 // class ReadMonthEvent extends SetDateEvent {}
 //
-// class WriteDateEvent extends SetDateEvent {
-//   final String date;
-//   final String month;
-//
-//   WriteDateEvent(
-//       {required this.date, required this.month});
-//
-//   @override
-//   List<Object> get props => [date, month];
-// }
+class WriteDateEvent extends SetDateEvent {
+  final String date;
+  final String month;
+
+  WriteDateEvent(
+      {required this.date, required this.month});
+
+  @override
+  List<Object> get props => [date, month];
+}
 
 class AddToDateEvent extends SetDateEvent{
   final String date;
@@ -41,34 +43,32 @@ class ReduceDateEvent extends SetDateEvent{
   List<Object> get props => [date, month];
 }
 
-class ReadAllIssuePerDateEvent extends SetDateEvent {
+class AddNumberOfIssueEvent extends SetDateEvent {
 
+  final IssueModel issueModel;
   final String date;
 
-  ReadAllIssuePerDateEvent(
+  AddNumberOfIssueEvent(
+      {required this.issueModel, required this.date});
+
+  @override
+  List<Object> get props => [issueModel, date];
+}
+
+class ReadNumberOfIssuePerDateEvent extends SetDateEvent {
+  final String date;
+
+  ReadNumberOfIssuePerDateEvent(
       {required this.date});
 
   @override
   List<Object> get props => [date];
 }
 
-class AddAllIssuePerDateEvent extends SetDateEvent {
-
-  final String date;
-  final int allIssuePerDate;
-
-  AddAllIssuePerDateEvent(
-      {required this.allIssuePerDate, required this.date});
-
-  @override
-  List<Object> get props => [allIssuePerDate, date];
-}
-
-class CalculatePendarNumberOfIssueAndSumEvent extends SetDateEvent {
-
+class CalculatePendarNumberOfIssue extends SetDateEvent {
   final String date;
 
-  CalculatePendarNumberOfIssueAndSumEvent(
+  CalculatePendarNumberOfIssue(
       {required this.date});
 
   @override

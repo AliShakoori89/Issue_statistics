@@ -45,7 +45,7 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       Iterable l6 = json.decode(responseNumberOfIssueForBankMellat.body);
       List<ResponseModel> numberOfIssueForBankMellat = List<ResponseModel>.from(l6.map((model)=> ResponseModel.fromJson(model)));
 
-      final sumAllPendarWrapper = await numberOfIssuesRepository.getPendarAllNumberOfIssue(
+      final pendarAllNumberOfIssue = await numberOfIssuesRepository.getPendarAllNumberOfIssue(
         numberOfIssueForPardazeshMaliPartCo.isNotEmpty ? numberOfIssueForPardazeshMaliPartCo[0].count : 0 ,
         numberOfIssueForBankTejaratCo.isNotEmpty ? numberOfIssueForBankTejaratCo[0].count : 0 ,
         numberOfIssueForBankParsiyanCo.isNotEmpty ? numberOfIssueForBankParsiyanCo[0].count : 0 ,
@@ -54,7 +54,7 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
         numberOfIssueForBankMellat.isNotEmpty ? numberOfIssueForBankMellat[0].count : 0 ,
       );
 
-      await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.date, sumAllPendarWrapper);
+      await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.date, pendarAllNumberOfIssue);
       // var allIssue = await numberOfIssuesRepository.readAllIssuePerDateNumber(event.date);
       // var calculate = await numberOfIssuesRepository.calculatePendarNumberOfIssueAndSum(event.date, allIssue);
 
@@ -67,8 +67,8 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
             numberOfIssueForBankParsiyanCo: numberOfIssueForBankParsiyanCo,
             numberOfIssueForShabakeKaranSamaCo: numberOfIssueForShabakeKaranSamaCo,
             numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo: numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
-            numberOfIssueForBankMellat: numberOfIssueForBankMellat),
-
+            numberOfIssueForBankMellat: numberOfIssueForBankMellat,
+            pendarAllNumberOfIssue: pendarAllNumberOfIssue),
       );
 
 

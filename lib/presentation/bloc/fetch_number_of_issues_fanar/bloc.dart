@@ -65,11 +65,21 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
       Iterable l11 = json.decode(responseNumberOfIssueForPishgamanEtemadDijitalIraniyanCo.body);
       List<ResponseModel> numberOfIssueForPishgamanEtemadDijitalIraniyanCo = List<ResponseModel>.from(l11.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForFanAvaranEtemadRaahbatCo = await numberOfIssuesRepository.getNumberOfIssueForFanAvaranEtemadRaahbatCo(event.date);
-      Iterable l12 = json.decode(responseNumberOfIssueForFanAvaranEtemadRaahbatCo.body);
+      final responseNumberOfIssueForFanAvaranEtemadRaahbarCo = await numberOfIssuesRepository.getNumberOfIssueForFanAvaranEtemadRaahbarCo(event.date);
+      Iterable l12 = json.decode(responseNumberOfIssueForFanAvaranEtemadRaahbarCo.body);
       List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbatCo = List<ResponseModel>.from(l12.map((model)=> ResponseModel.fromJson(model)));
 
+      final responseNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo = await numberOfIssuesRepository.getNumberOfIssueForGrouhTejaratElectronicSadraKiyantCo(event.date);
+      Iterable l13 = json.decode(responseNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo.body);
+      List<ResponseModel> numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = List<ResponseModel>.from(l13.map((model)=> ResponseModel.fromJson(model)));
+
+      final responseNumberOfIssueForFinTekParsCo = await numberOfIssuesRepository.getNumberOfIssueForFinTekParsCo(event.date);
+      Iterable l14 = json.decode(responseNumberOfIssueForFinTekParsCo.body);
+      List<ResponseModel> numberOfIssueForFinTekParsCo = List<ResponseModel>.from(l14.map((model)=> ResponseModel.fromJson(model)));
+
       final faanarAllNumberOfIssue = await numberOfIssuesRepository.getFanarAllNumberOfIssue(
+        numberOfIssueForFinTekParsCo.isNotEmpty ? numberOfIssueForFinTekParsCo[0].count : 0,
+        numberOfIssueForGrouhTejaratElectronicSadraKiyanCo.isNotEmpty ? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo[0].count : 0,
         numberOfIssueForFanAvaranEtemadRaahbatCo.isNotEmpty ? numberOfIssueForFanAvaranEtemadRaahbatCo[0].count : 0 ,
         numberOfIssueForPishgamanEtemadDijitalIraniyanCo.isNotEmpty ? numberOfIssueForPishgamanEtemadDijitalIraniyanCo[0].count : 0 ,
         numberOfIssueForBankTejaratCo.isNotEmpty ? numberOfIssueForBankTejaratCo[0].count : 0 ,
@@ -101,7 +111,9 @@ class NumberOfIssuesFanarBloc extends Bloc<NumberOfIssuesFanarEvent, NumberOfIss
           numberOfIssueForBankTejaratCo: numberOfIssueForBankTejaratCo,
           numberOfIssueForPishgamanEtemadDijitalIraniyanCo: numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
           numberOfIssueForFanAvaranEtemadRaahbatCo: numberOfIssueForFanAvaranEtemadRaahbatCo,
-          faanarAllNumberOfIssue: faanarAllNumberOfIssue
+          numberOfIssueForGrouhTejaratElectronicSadraKiyanCo: numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+          numberOfIssueFinTekParsCo: numberOfIssueForFinTekParsCo,
+          fanarAllNumberOfIssue: faanarAllNumberOfIssue
         ),
       );
     } catch (error) {

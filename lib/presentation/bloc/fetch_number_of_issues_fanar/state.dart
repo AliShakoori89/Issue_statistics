@@ -26,7 +26,9 @@ class NumberOfIssuesFanarState extends Equatable {
     List<ResponseModel>? numberOfIssueForBankTejaratCo,
     List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
     List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbatCo,
-    int? faanarAllNumberOfIssue,
+    List<ResponseModel>? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+    List<ResponseModel>? numberOfIssueFinTekParsCo,
+    int? fanarAllNumberOfIssue,
   }):
         numberOfIssueForAsrDaneshAfzarCo = numberOfIssueForAsrDaneshAfzarCo ?? const [],
         numberOfIssueForToseeTejaratTeniyanCo = numberOfIssueForToseeTejaratTeniyanCo ?? const [],
@@ -40,7 +42,9 @@ class NumberOfIssuesFanarState extends Equatable {
         numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? const [],
         numberOfIssueForPishgamanEtemadDijitalIraniyanCo = numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? const [],
         numberOfIssueForFanAvaranEtemadRaahbatCo = numberOfIssueForFanAvaranEtemadRaahbatCo ?? const [],
-        faanarAllNumberOfIssue = faanarAllNumberOfIssue ?? 0;
+        numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? const [],
+        numberOfIssueFinTekParsCo = numberOfIssueFinTekParsCo ?? const [],
+        fanarAllNumberOfIssue = fanarAllNumberOfIssue ?? 0;
 
   final NumberOfIssuesFanarStatus status;
   final List<ResponseModel> numberOfIssueForAsrDaneshAfzarCo;
@@ -55,7 +59,9 @@ class NumberOfIssuesFanarState extends Equatable {
   final List<ResponseModel> numberOfIssueForBankTejaratCo;
   final List<ResponseModel> numberOfIssueForPishgamanEtemadDijitalIraniyanCo;
   final List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbatCo;
-  final int faanarAllNumberOfIssue;
+  final List<ResponseModel> numberOfIssueForGrouhTejaratElectronicSadraKiyanCo;
+  final List<ResponseModel> numberOfIssueFinTekParsCo;
+  final int fanarAllNumberOfIssue;
 
   @override
   // TODO: implement props
@@ -65,7 +71,8 @@ class NumberOfIssuesFanarState extends Equatable {
     numberOfIssueForToseeNovinHamrahKishCo, numberOfIssueForTabanAtiPardazCo,
     numberOfIssueForZherfAndishanHushmandDibaRayanCo, numberOfIssueForPardazeshEttelaatMaliPartCo,
     numberOfIssueForBankTejaratCo, numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-    numberOfIssueForFanAvaranEtemadRaahbatCo, faanarAllNumberOfIssue
+    numberOfIssueForFanAvaranEtemadRaahbatCo, numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+    numberOfIssueFinTekParsCo, fanarAllNumberOfIssue
   ];
 
   NumberOfIssuesFanarState copyWith({
@@ -82,7 +89,9 @@ class NumberOfIssuesFanarState extends Equatable {
     List<ResponseModel>? numberOfIssueForBankTejaratCo,
     List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
     List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbatCo,
-    int? faanarAllNumberOfIssue
+    List<ResponseModel>? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+    List<ResponseModel>? numberOfIssueFinTekParsCo,
+    int? fanarAllNumberOfIssue
   }) {
     return NumberOfIssuesFanarState(
       status: status ?? this.status,
@@ -98,7 +107,9 @@ class NumberOfIssuesFanarState extends Equatable {
       numberOfIssueForBankTejaratCo: numberOfIssueForBankTejaratCo ?? this.numberOfIssueForBankTejaratCo,
       numberOfIssueForPishgamanEtemadDijitalIraniyanCo: numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? this.numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
       numberOfIssueForFanAvaranEtemadRaahbatCo: numberOfIssueForFanAvaranEtemadRaahbatCo ?? this.numberOfIssueForFanAvaranEtemadRaahbatCo,
-      faanarAllNumberOfIssue: faanarAllNumberOfIssue ?? this.faanarAllNumberOfIssue,
+      numberOfIssueForGrouhTejaratElectronicSadraKiyanCo: numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? this.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+      numberOfIssueFinTekParsCo: numberOfIssueFinTekParsCo ?? this.numberOfIssueFinTekParsCo,
+      fanarAllNumberOfIssue: fanarAllNumberOfIssue ?? this.fanarAllNumberOfIssue,
     );
   }
 }

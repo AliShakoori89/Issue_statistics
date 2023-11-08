@@ -1,24 +1,23 @@
-class ResponseModel {
+class IssueModel {
   int? id;
   String? issueDate;
-  String? issueMonth;
-  String? issueNumber;
+  int? allFanarIssueNumberPerDate;
+  int? allIssueNumberNumber;
 
+  IssueModel({ this.id, this.issueDate,
+    this.allFanarIssueNumberPerDate, this.allIssueNumberNumber});
 
-  ResponseModel({ this.id, this.issueDate,
-    this.issueMonth, this.issueNumber});
-
-  factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
+  factory IssueModel.fromJson(Map<String, dynamic> json) => IssueModel(
     id: json['id'],
     issueDate: json['issueDate'],
-    issueMonth: json['issueMonth'],
-    issueNumber: json['issueNumber'],
+    allFanarIssueNumberPerDate: json['allFanarIssueNumberPerDate'],
+    allIssueNumberNumber: json['allIssueNumberNumber'],
   );
 
   Map<String, dynamic> toJson() => {
     'id': id,
     'issueDate' : issueDate,
-    'issueMonth' : issueMonth,
-    'issueNumber' : issueNumber,
+    'allFanarIssueNumberPerDate': allFanarIssueNumberPerDate,
+    'allIssueNumberNumber' : allIssueNumberNumber,
   };
 }

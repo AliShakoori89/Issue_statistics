@@ -14,26 +14,13 @@ import 'package:persian_number_utility/persian_number_utility.dart';
 
 class DatePickerCalendar extends StatefulWidget {
 
-  GlobalKey? keyBottomNavigation2;
-  GlobalKey? keyBottomNavigation3;
-  GlobalKey? keyBottomNavigation4;
-
-  DatePickerCalendar({super.key, this.keyBottomNavigation2,
-    this.keyBottomNavigation3, this.keyBottomNavigation4});
+  DatePickerCalendar({super.key});
 
   @override
-  State<DatePickerCalendar> createState() => DatePickerCalendarState(
-      keyBottomNavigation2, keyBottomNavigation3, keyBottomNavigation4
-  );
+  State<DatePickerCalendar> createState() => DatePickerCalendarState();
 }
 
 class DatePickerCalendarState extends State<DatePickerCalendar> {
-
-  GlobalKey? keyBottomNavigation2;
-  GlobalKey? keyBottomNavigation3;
-  GlobalKey? keyBottomNavigation4;
-
-  DatePickerCalendarState(this.keyBottomNavigation2, this.keyBottomNavigation3, this.keyBottomNavigation4);
 
   String label = '';
   Jalali picked = Jalali.now() ;
@@ -49,6 +36,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
   @override
   void initState() {
     selectedDate = DateFormat('yyyy-MM').format(DateTime.parse(Jalali.now().toJalaliDateTime()));
+    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssuePerDateEvent(date: selectedDate));
     super.initState();
   }
 
@@ -119,26 +107,23 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           Gregorian j2g1 = j.toGregorian();
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
-          // String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
 
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-          //     date: gregorianDate,
-          //     month: gregorianMonth));
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(ReadDateEvent());
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(ReadMonthEvent());
           BlocProvider.of<SetDateBloc>(context)
-              .add(CalculatePendarNumberOfIssueAndSumEvent(date: gregorianDate));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+              date: gregorianDate,
+              month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadAllIssuePerDateEvent(date: gregorianDate));
+              .add(ReadDateEvent());
 
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesFanarBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
+          print("gregorianDate                     "+gregorianDate);
+          BlocProvider.of<SetDateBloc>(context)
+              .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
         },
         child: Container(
           height: height / 20,
@@ -159,7 +144,6 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
                 width: width / 20,
               ),
               Text(
-                  key: keyBottomNavigation3,
                   DateFormat('yyyy / MM / dd')
                       .format(DateTime.parse(date))
                       .toPersianDigit(),
@@ -185,31 +169,28 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           Gregorian j2g1 = j.toGregorian();
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
-          // String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
           //
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-          //     date: gregorianDate,
-          //     month: gregorianMonth));
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(ReadDateEvent());
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(ReadMonthEvent());
+          print("gregorianDate                     "+gregorianDate);
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(CalculatePendarNumberOfIssueAndSumEvent(date: gregorianDate));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+              date: gregorianDate,
+              month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadAllIssuePerDateEvent(date: gregorianDate));
+              .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesFanarBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
+          BlocProvider.of<SetDateBloc>(context)
+              .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
         },
         child: SizedBox(
           width: width / 20,
           height: height / 40,
           child: Image.asset(
-              key: keyBottomNavigation2,
               // key: keyButton1,
               "assets/main_page_first_container_logo/left_arrow.png"),
         ),
@@ -230,31 +211,28 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
           Gregorian j2g1 = j.toGregorian();
           String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
-          // String gregorianMonth = "${j2g1.year}/${j2g1.month}";
+          String gregorianMonth = "${j2g1.year}/${j2g1.month}";
           //
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-          //     date: gregorianDate,
-          //     month: gregorianMonth));
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(ReadDateEvent());
-          // BlocProvider.of<SetDateBloc>(context)
-          //     .add(ReadMonthEvent());
+          print("gregorianDate                     "+gregorianDate);
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(CalculatePendarNumberOfIssueAndSumEvent(date: gregorianDate));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+              date: gregorianDate,
+              month: gregorianMonth));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadAllIssuePerDateEvent(date: gregorianDate));
+              .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesFanarBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
+          BlocProvider.of<SetDateBloc>(context)
+              .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
         },
         child: SizedBox(
           width: width / 20,
           height: height / 40,
           child: Image.asset(
-            key: keyBottomNavigation4,
             "assets/main_page_first_container_logo/right_arrow.png",
           ),
         ),
