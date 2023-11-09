@@ -5,14 +5,17 @@ class ErrorNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(top: 300),
+    return const SizedBox(
+      height: 100,
       child: Center(
-          child: Text('Your app don\'t have internet',
-              style: TextStyle(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 19))),
-    );
+          child: Directionality(
+            textDirection: TextDirection.rtl,
+            child: Text('لطفا از اتصال به اینترنت اطمینان حاصل نمایید!',
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 19)),
+          )),
+    );;
   }
 }
