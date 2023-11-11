@@ -5,6 +5,7 @@ import 'package:issue_statistics/logic/repositories/number_of_issues_repository.
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
+import 'package:issue_statistics/presentation/page/daily_statistics_page.dart';
 import 'package:issue_statistics/presentation/page/home_page.dart';
 
 void main() {
@@ -12,7 +13,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
+
 
   // This widget is the root of your application.
   @override

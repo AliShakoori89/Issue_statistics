@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:issue_statistics/data/data_base/data_base.dart';
 import 'package:issue_statistics/data/model/issue_model.dart';
 import 'package:shamsi_date/shamsi_date.dart';
@@ -39,7 +41,7 @@ class SetDateRepository {
     await prefs.setString('dateMonth', month);
   }
 
-  Future<String> readDate() async{
+  FutureOr<String> readDate() async{
     final prefs = await SharedPreferences.getInstance();
     final String? date = prefs.getString('date');
     if(date == ""){
@@ -62,7 +64,7 @@ class SetDateRepository {
     return await helper.addNumberOfIssue(issueModel);
   }
 
-  Future<String> readNumberOfIssuePerDate(String date) async {
+  FutureOr<String> readNumberOfIssuePerDate(String date) async {
     final String allNumberOfIssue = await helper.readNumberOfIssuePerDate(date) ?? "";
     return allNumberOfIssue;
   }

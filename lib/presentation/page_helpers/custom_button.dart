@@ -4,7 +4,8 @@ class CustomButton extends StatelessWidget {
 
   final String buttonName;
 
-  const CustomButton({super.key, required this.buttonName});
+  const CustomButton({Key? key, required this.buttonName}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {

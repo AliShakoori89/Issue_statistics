@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:issue_statistics/data/model/issue_model.dart';
 import 'package:path/path.dart';
@@ -22,7 +23,7 @@ class DatabaseHelper {
 
   static Database? _database;
 
-  Future<Database> get database async =>
+  FutureOr<Database> get database async =>
       _database ??= await _initiateDatabase();
 
   _initiateDatabase() async {
@@ -32,7 +33,7 @@ class DatabaseHelper {
         version: _databaseVersion, onCreate: _onCreate);
   }
 
-  Future _onCreate(Database db, int version) async {
+  FutureOr _onCreate(Database db, int version) async {
     await db.execute('CREATE TABLE $issueTable ('
         '$columnId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
         '$columnIssueDate TEXT,'
@@ -42,14 +43,14 @@ class DatabaseHelper {
     );
   }
 
-  Future<bool> addNumberOfIssue(IssueModel issueModel) async {
+  FutureOr<bool> addNumberOfIssue(IssueModel issueModel) async {
     var dbExpense = await database;
     await dbExpense.insert(issueTable, issueModel.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
     return true;
   }
 
-  Future<String> readNumberOfIssuePerDate(String? date) async {
+  FutureOr<String> readNumberOfIssuePerDate(String? date) async {
 
     var dbExpense = await database;
     var result = await dbExpense.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
@@ -66,7 +67,7 @@ class DatabaseHelper {
     }
   }
 
-  Future<String> calculatePendarNumberOfIssue(String? date) async {
+  FutureOr<String> calculatePendarNumberOfIssue(String? date) async {
     var dbExpense = await database;
     var allIssues = await dbExpense.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
     Object? value1 = allIssues[allIssues.length-1][columnAllIssueNumberPerDate];

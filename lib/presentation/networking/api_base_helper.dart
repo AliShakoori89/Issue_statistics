@@ -21,7 +21,7 @@ class ApiBaseHelper {
   //   }
   // }
 
-  Future<dynamic> post(String url, dynamic body) async {
+  FutureOr<dynamic> post(String url, dynamic body) async {
     try {
       final Uri address =
       Uri.parse(url);

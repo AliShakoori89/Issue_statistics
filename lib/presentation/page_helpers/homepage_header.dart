@@ -4,7 +4,8 @@ class HomePageHeader extends StatelessWidget {
 
   final double width;
   final double height;
-  const HomePageHeader({super.key, required this.width, required this.height});
+
+  const HomePageHeader({Key? key, required this.width, required this.height}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

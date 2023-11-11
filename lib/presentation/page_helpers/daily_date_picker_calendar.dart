@@ -12,15 +12,14 @@ import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 
-class DatePickerCalendar extends StatefulWidget {
-
-  DatePickerCalendar({super.key});
+class DailyDatePickerCalendar extends StatefulWidget {
+  const DailyDatePickerCalendar({Key? key}) : super(key: key);
 
   @override
-  State<DatePickerCalendar> createState() => DatePickerCalendarState();
+  State<DailyDatePickerCalendar> createState() => DailyDatePickerCalendarState();
 }
 
-class DatePickerCalendarState extends State<DatePickerCalendar> {
+class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
 
   String label = '';
   Jalali picked = Jalali.now() ;
@@ -49,7 +48,7 @@ class DatePickerCalendarState extends State<DatePickerCalendar> {
       var width = MediaQuery.of(context).size.width;
 
       return Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           top: 20,
           bottom: 20
         ),
