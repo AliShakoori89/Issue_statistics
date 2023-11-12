@@ -35,7 +35,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
   @override
   void initState() {
     selectedDate = DateFormat('yyyy-MM').format(DateTime.parse(Jalali.now().toJalaliDateTime()));
-    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssuePerDateEvent(date: selectedDate));
+    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssuePerDateEvent(startDate: selectedDate, endDate: selectedDate));
     super.initState();
   }
 
@@ -85,6 +85,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           if (picked != selectedDate) {
             setState(() {
               label = picked.toJalaliDateTime();
+              print("label          :    "+label);
             });
           }
 
@@ -127,12 +128,11 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               .add(ReadDateEvent());
 
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
-              .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
+              .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
-              .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
-          print("gregorianDate                     "+gregorianDate);
+              .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
+              .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianDate, endDate: gregorianDate));
         },
         child: Container(
           height: height / 20,
@@ -190,11 +190,11 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
-              .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
+              .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate ));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
-              .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
+              .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
+              .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianDate, endDate: gregorianDate));
         },
         child: SizedBox(
           width: width / 20,
@@ -232,11 +232,11 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
-              .add(GetNumberOfIssuesPendarEvent(date: gregorianDate));
+              .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
-              .add(GetNumberOfIssuesFanarEvent(date: gregorianDate));
+              .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadNumberOfIssuePerDateEvent(date: gregorianDate));
+              .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianDate, endDate: gregorianDate));
         },
         child: SizedBox(
           width: width / 20,

@@ -7,15 +7,20 @@ import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../bloc/fetch_number_of_issues_fanar/bloc.dart';
+import '../bloc/fetch_number_of_issues_fanar/event.dart';
+import '../bloc/fetch_number_of_issues_pendar/bloc.dart';
+import '../bloc/fetch_number_of_issues_pendar/event.dart';
 
-class DailyDatePickerCalendar extends StatefulWidget {
-  const DailyDatePickerCalendar({Key? key}) : super(key: key);
+
+class SeveralDatePickerCalendar extends StatefulWidget {
+  const SeveralDatePickerCalendar({Key? key}) : super(key: key);
 
   @override
-  State<DailyDatePickerCalendar> createState() => DailyDatePickerCalendarState();
+  State<SeveralDatePickerCalendar> createState() => SeveralDatePickerCalendarState();
 }
 
-class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
+class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
 
   String label = '';
   JalaliRange? picked ;
@@ -31,7 +36,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
   @override
   void initState() {
     selectedDate = DateFormat('yyyy-MM').format(DateTime.parse(Jalali.now().toJalaliDateTime()));
-    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssuePerDateEvent(date: selectedDate));
+    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssuePerDateEvent(startDate: selectedDate, endDate: selectedDate));
     super.initState();
   }
 
@@ -73,17 +78,84 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
         setState(() {
           label =
           "${picked?.start.toJalaliDateTime() ?? ""} ${picked?.end.toJalaliDateTime() ?? ""}";
+          // print("label                               :"+picked?.start.day);
         });
 
+        if (picked?.start.month.toString().length != 1) {
+          if (picked?.start.day.toString().length != 1) {
+            month = "${picked?.start.year}-${picked?.start.month}";
+            date = "${picked?.start.year}-${picked?.start.month}-${picked?.start.day}";
+          } else {
+            month = "${picked?.start.year}-${picked?.start.month}";
+            date =
+            "${picked?.start.year}-${picked?.start.month}-0${picked?.start.day}";
+          }
+        } else {
+          if (picked?.start.day.toString().length != 1) {
+            month = "${picked?.start.year}-0${picked?.start.month}";
+            date =
+            "${picked?.start.year}-0${picked?.start.month}-${picked?.start.day}";
+          } else {
+            month = "${picked?.start.year}-0${picked?.start.month}";
+            date =
+            "${picked?.start.year}-0${picked?.start.month}-0${picked?.start.day}";
+          }
+        }
 
-        // BlocProvider.of<SetDateBloc>(context)
-        //     .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-        // BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-        //     date: gregorianDate,
-        //     month: gregorianMonth));
-        // BlocProvider.of<SetDateBloc>(context)
-        //     .add(ReadDateEvent());
+        DateTime gStart = DateTime.parse(date);
+        Jalali jStart = Jalali(gStart.year, gStart.month, gStart.day);
+        Gregorian j2g1Start = jStart.toGregorian();
+        String gregorianStartDate = "${j2g1Start.year}/${j2g1Start.month}/${j2g1Start.day}";
 
+        String gregorianStartMonth = "${j2g1Start.year}/${j2g1Start.month}";
+
+        if (picked?.end.month.toString().length != 1) {
+          if (picked?.end.day.toString().length != 1) {
+            month = "${picked?.end.year}-${picked?.end.month}";
+            date = "${picked?.end.year}-${picked?.end.month}-${picked?.end.day}";
+          } else {
+            month = "${picked?.end.year}-${picked?.end.month}";
+            date =
+            "${picked?.end.year}-${picked?.end.month}-0${picked?.end.day}";
+          }
+        } else {
+          if (picked?.end.day.toString().length != 1) {
+            month = "${picked?.end.year}-0${picked?.end.month}";
+            date =
+            "${picked?.end.year}-0${picked?.end.month}-${picked?.end.day}";
+          } else {
+            month = "${picked?.end.year}-0${picked?.end.month}";
+            date =
+            "${picked?.end.year}-0${picked?.end.month}-0${picked?.end.day}";
+          }
+        }
+
+        DateTime gEnd = DateTime.parse(date);
+        Jalali jEnd = Jalali(gEnd.year, gEnd.month, gEnd.day);
+        Gregorian j2g1End = jEnd.toGregorian();
+        String gregorianEndDate = "${j2g1End.year}/${j2g1End.month}/${j2g1End.day}";
+
+        String gregorianEndMonth = "${j2g1End.year}/${j2g1End.month}";
+
+        BlocProvider.of<SetDateBloc>(context)
+            .add(WriteDateEvent(date: gregorianStartDate, month: gregorianStartMonth));
+        BlocProvider.of<SetDateBloc>(context)
+            .add(WriteDateEvent(date: gregorianEndDate, month: gregorianEndMonth));
+        BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+            date: gregorianStartDate,
+            month: gregorianStartMonth));
+        BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
+            date: gregorianEndDate,
+            month: gregorianEndMonth));
+        BlocProvider.of<SetDateBloc>(context)
+            .add(ReadDateEvent());
+
+        BlocProvider.of<NumberOfIssuesPendarBloc>(context)
+            .add(GetNumberOfIssuesPendarEvent(startDate: gregorianStartDate, endDate: gregorianEndDate));
+        BlocProvider.of<NumberOfFanarIssuesBloc>(context)
+            .add(GetNumberOfIssuesFanarEvent(startDate: gregorianStartDate, endDate: gregorianEndDate));
+        BlocProvider.of<SetDateBloc>(context)
+            .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianStartDate, endDate: gregorianEndDate));
       },
       child: Container(
         height: height / 20,

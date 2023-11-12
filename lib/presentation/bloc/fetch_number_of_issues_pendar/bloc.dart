@@ -21,27 +21,27 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
     try {
       emit(state.copyWith(status: NumberOfIssuesPendarStatus.loading));
 
-      final responSeNumberOfIssueForPardazeshMaliPartCo = await numberOfIssuesRepository.getNumberOfIssueForPardazeshEttelaatMaliPartCoPendar(event.date);
+      final responSeNumberOfIssueForPardazeshMaliPartCo = await numberOfIssuesRepository.getNumberOfIssueForPardazeshEttelaatMaliPartCoPendar(event.startDate, event.endDate);
       Iterable l = json.decode(responSeNumberOfIssueForPardazeshMaliPartCo.body);
       List<ResponseModel> numberOfIssueForPardazeshMaliPartCo = List<ResponseModel>.from(l.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoPendar(event.date);
+      final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoPendar(event.startDate, event.endDate);
       Iterable l2 = json.decode(responseNumberOfIssueForBankTejaratCo.body);
       List<ResponseModel> numberOfIssueForBankTejaratCo = List<ResponseModel>.from(l2.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForBankParsiyanCo = await numberOfIssuesRepository.getNumberOfIssueForBankParsianCo(event.date);
+      final responseNumberOfIssueForBankParsiyanCo = await numberOfIssuesRepository.getNumberOfIssueForBankParsianCo(event.startDate, event.endDate);
       Iterable l3 = json.decode(responseNumberOfIssueForBankParsiyanCo.body);
       List<ResponseModel> numberOfIssueForBankParsiyanCo = List<ResponseModel>.from(l3.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForShabakeKaranSamaCo = await numberOfIssuesRepository.getNumberOfIssueForShabakeKaranSamaCo(event.date);
+      final responseNumberOfIssueForShabakeKaranSamaCo = await numberOfIssuesRepository.getNumberOfIssueForShabakeKaranSamaCo(event.startDate, event.endDate);
       Iterable l4 = json.decode(responseNumberOfIssueForShabakeKaranSamaCo.body);
       List<ResponseModel> numberOfIssueForShabakeKaranSamaCo = List<ResponseModel>.from(l4.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = await numberOfIssuesRepository.getFanavariVaRahHalhayeHushmandSepehrCo(event.date);
+      final responseNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = await numberOfIssuesRepository.getFanavariVaRahHalhayeHushmandSepehrCo(event.startDate, event.endDate);
       Iterable l5 = json.decode(responseNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.body);
       List<ResponseModel> numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = List<ResponseModel>.from(l5.map((model)=> ResponseModel.fromJson(model)));
 
-      final responseNumberOfIssueForBankMellat = await numberOfIssuesRepository.getNumberOfIssueForBankMellat(event.date);
+      final responseNumberOfIssueForBankMellat = await numberOfIssuesRepository.getNumberOfIssueForBankMellat(event.startDate, event.endDate);
       Iterable l6 = json.decode(responseNumberOfIssueForBankMellat.body);
       List<ResponseModel> numberOfIssueForBankMellat = List<ResponseModel>.from(l6.map((model)=> ResponseModel.fromJson(model)));
 
@@ -54,10 +54,7 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
         numberOfIssueForBankMellat.isNotEmpty ? numberOfIssueForBankMellat[0].count : 0 ,
       );
 
-      await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.date, pendarAllNumberOfIssue);
-      // var allIssue = await numberOfIssuesRepository.readAllIssuePerDateNumber(event.date);
-      // var calculate = await numberOfIssuesRepository.calculatePendarNumberOfIssueAndSum(event.date, allIssue);
-
+      await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.startDate, event.endDate, pendarAllNumberOfIssue);
 
       emit(
         state.copyWith(

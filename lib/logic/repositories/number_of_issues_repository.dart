@@ -8,101 +8,101 @@ class NumberOfIssuesRepository {
 
   ApiBaseHelper api = ApiBaseHelper();
 
-  FutureOr<dynamic> getNumberOfIssuesForAsrDaneshAfzarCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssuesForAsrDaneshAfzarCo(String startDate, String endDate) async {
       var body = jsonEncode({"reportkey":"0S2DXd7ISt3nGSL8DqSi+zKpMA0=","customercode":"10101586520",
-        "startdate":date,"enddate":date,"type":"PerCA"});
+        "startdate":startDate,"enddate":endDate,"type":"PerCA"});
       var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
       print(response.body);
       return response;
     }
 
-  FutureOr<dynamic> getNumberOfIssuesForToseTejaratElectronicTenianCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssuesForToseTejaratElectronicTenianCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"0j0UVtan1zl+TOzFJioZemMx93A=","customercode":"10320408934",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForRahkarHushmandAmnCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForRahkarHushmandAmnCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"z86QSWd3EsgwuyZHO1bTnLWlTgU=","customercode":"14008132883",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"viqwUtP89+ywIk7D9qkOHi4HPV0=","customercode":"14008019700",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForKiyakushanAriyaCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForKiyakushanAriyaCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"viqwUtP89+ywIk7D9qkOHi4HPV0=","customercode":"14008019700",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForToseeNovinHamrahKishCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForToseeNovinHamrahKishCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"z/VbuOIyV9FaKmppGB9F/z6PAzA=","customercode":"14008335076",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForTabanAtiPardazCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForTabanAtiPardazCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"QRV8GKfQSCEQ3GIT+rGEV/xAOe4=","customercode":"14007345928",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForZherfAndishanHushmandDibaRayanCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForZherfAndishanHushmandDibaRayanCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"C587lmNrh1B0zkcAQNfXXvL1Xlg=","customercode":"14010464575",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoFanar(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoFanar(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"4b8ngUfvEnA/4AiSB76+kqz2Ztk=","customercode":"10320874334",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForBankTejaratCoFanar(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForBankTejaratCoFanar(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"fpLNU2BPeWZE0lNdK/FfeqAXcn4=","customercode":"10100834460",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForPishgamanEtemadDijitalIraniyanCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForPishgamanEtemadDijitalIraniyanCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"TE6SEHJpXLkbAZROFmp8twK/W00=","customercode":"14010501932",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForFanAvaranEtemadRaahbarCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForFanAvaranEtemadRaahbarCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"l3oRfI3cGMlQhHF5kaLWXReqH3o=","customercode":"10320475120",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForGrouhTejaratElectronicSadraKiyantCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForGrouhTejaratElectronicSadraKiyantCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"pkN/N16Iatf/QxXPMzxjmBsGQBI=","customercode":"14116082877",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForFinTekParsCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForFinTekParsCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"YhbM9AQp1oNKcVSNCOe+UUcDnNY=","customercode":"14007651115",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
   }
@@ -142,44 +142,44 @@ class NumberOfIssuesRepository {
 
   //********************************************************************************
 
-  FutureOr<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoPendar(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoPendar(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"4b8ngUfvEnA/4AiSB76+kqz2Ztk=","customercode":"10320874334",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForBankTejaratCoPendar(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForBankTejaratCoPendar(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"fpLNU2BPeWZE0lNdK/FfeqAXcn4=","customercode":"10100834460",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForBankParsianCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForBankParsianCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"GPeiwBmRp6rshYiNDrL2mdBhsoY=","customercode":"10102203401",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForShabakeKaranSamaCo(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForShabakeKaranSamaCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"SsQlkXfyG372NSpiagJZUSD6U84=","customercode":"14005082159",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getFanavariVaRahHalhayeHushmandSepehrCo(String date) async {
+  FutureOr<dynamic> getFanavariVaRahHalhayeHushmandSepehrCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"G1T8lcl3llsvBdMip0otcGi4xHM=","customercode":"14005371250",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
     return response;
   }
 
-  FutureOr<dynamic> getNumberOfIssueForBankMellat(String date) async {
+  FutureOr<dynamic> getNumberOfIssueForBankMellat(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"u39ttGp4ayh9aKDP5En0W7Ykgh4=","customercode":"10100834967",
-      "startdate":date,"enddate":date,"type":"PerCA"});
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
     return response;
   }
@@ -201,13 +201,13 @@ class NumberOfIssuesRepository {
     return sum;
   }
 
-  writePendarAllNumberOfIssues(String date, int pendarAllNumberOfIssue) async {
+  writePendarAllNumberOfIssues(String startDate, String endDate, int pendarAllNumberOfIssue) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('WritePendarAllNumberOfIssues$date', pendarAllNumberOfIssue);
+    await prefs.setInt('WritePendarAllNumberOfIssues$startDate$endDate', pendarAllNumberOfIssue);
   }
 
-  writeFanarAllNumberOfIssues(String date, int fanarAllNumberOfIssue) async {
+  writeFanarAllNumberOfIssues(String startDate, String endDate, int fanarAllNumberOfIssue) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('WriteFanarAllNumberOfIssues$date', fanarAllNumberOfIssue);
+    await prefs.setInt('WriteFanarAllNumberOfIssues$startDate$endDate', fanarAllNumberOfIssue);
   }
 }

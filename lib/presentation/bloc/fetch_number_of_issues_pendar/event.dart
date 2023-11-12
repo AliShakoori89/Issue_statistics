@@ -3,10 +3,11 @@ abstract class NumberOfIssuesPendarEvent{
 }
 
 class GetNumberOfIssuesPendarEvent extends NumberOfIssuesPendarEvent {
-  final String date;
+  final String startDate;
+  final String endDate;
 
-  GetNumberOfIssuesPendarEvent({required this.date});
+  GetNumberOfIssuesPendarEvent({required this.startDate, required this.endDate});
 
-  List<Object> get props => [date];
+  List<Object> get props => [startDate, endDate];
 }
 

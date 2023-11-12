@@ -59,8 +59,6 @@ class SetDateRepository {
   }
 
   addNumberOfIssue(IssueModel issueModel) async {
-    print("addNumberOfIssue              addNumberOfIssue");
-    print(issueModel.allIssueNumberNumber);
     return await helper.addNumberOfIssue(issueModel);
   }
 
