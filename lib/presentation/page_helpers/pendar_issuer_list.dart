@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:issue_statistics/presentation/page/daily_statistics_page.dart';
 import '../../data/model/issue_model.dart';
 import '../bloc/fetch_number_of_issues_pendar/state.dart';
 import '../bloc/set_date_bloc/bloc.dart';
@@ -16,11 +17,14 @@ class PendarIssuerList extends StatelessWidget {
   final int allFanarIssueNumberPerDate;
   final int allPendarIssueNumberPerDate;
   final String date;
+  final String pageName;
+  final String allIssueBetweenDays;
 
   const PendarIssuerList({super.key, required this.state, required this.height,
   required this.width, required this.controller,
   required this.allIssuePerDate, required this.allPendarIssueNumberPerDate,
-  required this.allFanarIssueNumberPerDate, required this.date});
+  required this.allFanarIssueNumberPerDate, required this.date,
+  required this.pageName, required this.allIssueBetweenDays});
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +155,12 @@ class PendarIssuerList extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("${int.parse(allIssuePerDate) -
+                    pageName == "DailyStatisticsPage"
+                        ? Text("${int.parse(allIssuePerDate) -
+                        allPendarIssueNumberPerDate -
+                        allFanarIssueNumberPerDate}",
+                        style: const TextStyle(color: Colors.black))
+                        : Text("${int.parse(allIssueBetweenDays) -
                         allPendarIssueNumberPerDate -
                         allFanarIssueNumberPerDate}",
                         style: const TextStyle(color: Colors.black)),
@@ -168,11 +177,15 @@ class PendarIssuerList extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("${state.pendarAllNumberOfIssue+int.parse(allIssuePerDate) -
+                    pageName == "DailyStatisticsPage"
+                        ? Text("${state.pendarAllNumberOfIssue+int.parse(allIssuePerDate) -
                             allPendarIssueNumberPerDate
                             -
-                            allFanarIssueNumberPerDate
-                      }"),
+                            allFanarIssueNumberPerDate}")
+                        : Text("${state.pendarAllNumberOfIssue+int.parse(allIssueBetweenDays) -
+                            allPendarIssueNumberPerDate
+                            -
+                            allFanarIssueNumberPerDate}"),
                     SizedBox(
                       height: height / 80,
                     ),
@@ -197,89 +210,104 @@ class PendarIssuerList extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(allIssuePerDate,
+                pageName == "DailyStatisticsPage"
+                    ? Text(allIssuePerDate,
+                    style: const TextStyle(color: Colors.black))
+                    : Text(allIssueBetweenDays,
                     style: const TextStyle(color: Colors.black)),
-                Row(
+                pageName == "DailyStatisticsPage"
+                    ? Row(
                   children: [
-                    GestureDetector(
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (ctx) =>
-                                AlertDialog(
-                                  backgroundColor: Colors.white,
-                                  shape: const RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.all(
-                                          Radius.circular(20.0))),
-                                  title: Directionality(
-                                    textDirection: TextDirection.rtl,
-                                    child: Text(
-                                        "تعداد کل گواهی های صادره را وارد نمایید :",
-                                        style: TextStyle(
-                                            fontSize: width / 30,
-                                            fontWeight: FontWeight
-                                                .w900,
-                                            color: Colors.black)),
-                                  ),
-                                  content: SizedBox(
-                                    height: 50,
-                                    width: 50,
-                                    child: TextFormField(
-                                      controller: controller,
-                                      decoration: const InputDecoration(
-                                        border: OutlineInputBorder(),
-                                        hintText: 'تعداد کل گواهی',
+                          GestureDetector(
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (ctx) => AlertDialog(
+                                    backgroundColor: Colors.white,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20.0))),
+                                    title: Directionality(
+                                      textDirection: TextDirection.rtl,
+                                      child: Text(
+                                          "تعداد کل گواهی های صادره را وارد نمایید :",
+                                          style: TextStyle(
+                                              fontSize: width / 30,
+                                              fontWeight: FontWeight.w900,
+                                              color: Colors.black)),
+                                    ),
+                                    content: SizedBox(
+                                      height: 50,
+                                      width: 50,
+                                      child: TextFormField(
+                                        controller: controller,
+                                        decoration: const InputDecoration(
+                                          border: OutlineInputBorder(),
+                                          hintText: 'تعداد کل گواهی',
+                                        ),
                                       ),
                                     ),
+                                    actions: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 15, bottom: 15),
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: SizedBox(
+                                              height: 50,
+                                              width: 60,
+                                              child: ElevatedButton(
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                          backgroundColor:
+                                                              Colors.green),
+                                                  onPressed: () {
+                                                    late IssueModel issueModel =
+                                                        IssueModel();
+
+                                                    issueModel.issueDate = date;
+                                                    issueModel
+                                                            .allIssueNumberNumber =
+                                                        int.parse(
+                                                            controller.text);
+                                                    issueModel
+                                                            .allFanarIssueNumberPerDate =
+                                                        allFanarIssueNumberPerDate;
+
+                                                    BlocProvider.of<
+                                                                SetDateBloc>(
+                                                            context)
+                                                        .add(
+                                                            AddNumberOfIssueEvent(
+                                                                issueModel:
+                                                                    issueModel,
+                                                                date: date));
+
+                                                    Navigator.of(ctx).pop();
+                                                  },
+                                                  child: Text(
+                                                    "ثبت",
+                                                    style: TextStyle(
+                                                        fontSize: width / 25),
+                                                  ))),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  actions: <Widget>[
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 15,
-                                          bottom: 15
-                                      ),
-                                      child: Align(
-                                        alignment: Alignment
-                                            .centerLeft,
-                                        child: SizedBox(
-                                            height: 50,
-                                            width: 60,
-                                            child: ElevatedButton(
-                                                style: ElevatedButton.styleFrom(
-                                                    backgroundColor: Colors.green
-                                                ),
-                                                onPressed: () {
-                                                  late IssueModel issueModel = IssueModel();
-
-                                                  issueModel.issueDate = date;
-                                                  issueModel.allIssueNumberNumber = int.parse(controller.text);
-                                                  issueModel.allFanarIssueNumberPerDate = allFanarIssueNumberPerDate;
-
-                                                  BlocProvider.of<SetDateBloc>(context).add(
-                                                      AddNumberOfIssueEvent(
-                                                          issueModel: issueModel,
-                                                          date: date));
-
-                                                  Navigator.of(ctx).pop();
-                                                },
-                                                child: Text("ثبت",
-                                                  style: TextStyle(
-                                                      fontSize: width / 25
-                                                  ),))),
-                                      ),
-                                    )
-
-                                  ],
-                                ),
-                          );
-                        },
-                        child: const Icon(Icons.help, size: 15,)),
-                    const Text("تعداد کل گواهی های صادر شده",
-                        textDirection: TextDirection.rtl,
-                        style: TextStyle(color: Colors.black)),
-                  ],
+                                );
+                              },
+                              child: const Icon(
+                                Icons.help,
+                                size: 15,
+                              )),
+                          const Text("تعداد کل گواهی های صادر شده",
+                              textDirection: TextDirection.rtl,
+                              style: TextStyle(color: Colors.black)),
+                        ],
                 )
+                    : const Text("تعداد کل گواهی های صادر شده",
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(color: Colors.black))
               ],
             ),
           ),

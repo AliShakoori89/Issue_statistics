@@ -67,4 +67,9 @@ class SetDateRepository {
     return allNumberOfIssue;
   }
 
+  FutureOr<String> readNumberOfIssueBetweenDays(String startDate, String endDate) async {
+    final String allNumberOfIssue = await helper.readNumberOfIssuePerBetweenDays(startDate, endDate) ?? "";
+    return allNumberOfIssue;
+  }
+
 }

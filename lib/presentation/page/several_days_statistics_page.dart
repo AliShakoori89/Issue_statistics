@@ -6,12 +6,14 @@ import '../bloc/fetch_number_of_issues_fanar/state.dart';
 import '../bloc/fetch_number_of_issues_pendar/bloc.dart';
 import '../bloc/fetch_number_of_issues_pendar/state.dart';
 import '../bloc/set_date_bloc/bloc.dart';
+import '../bloc/set_date_bloc/event.dart';
 import '../bloc/set_date_bloc/state.dart';
 import '../page_helpers/error_notif.dart';
 import '../page_helpers/fanar_issuer_list.dart';
 import '../page_helpers/homepage_header.dart';
 import '../page_helpers/pendar_issuer_list.dart';
 import '../page_helpers/shimmer.dart';
+import 'package:intl/intl.dart' as intl;
 
 class SeveralDaysStatisticsPage extends StatefulWidget {
   const SeveralDaysStatisticsPage({Key? key}) : super(key: key);
@@ -27,6 +29,9 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
   @override
   void initState() {
     controller = TextEditingController();
+      final now = DateTime.now();
+      String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
+    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssueBetweenDaysEvent(startDate: selectedDate, endDate: selectedDate));
     super.initState();
   }
 
@@ -81,12 +86,14 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
               builder: (context, state) {
 
                 String allIssuePerDate = state.allIssuePerDate;
+                String allIssueBetweenDays = state.allIssueBetweenDays;
                 var date = state.date;
 
                 return BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
                     builder: (context, state) {
 
                       int allPendarIssueNumberPerDate = state.pendarAllNumberOfIssue;
+
 
                       if (state.status.isLoading) {
                         return CustomShimmer(
@@ -103,7 +110,9 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
                             allIssuePerDate: allIssuePerDate,
                             allPendarIssueNumberPerDate: allPendarIssueNumberPerDate,
                             allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
-                            date: date);
+                            date: date,
+                            allIssueBetweenDays: allIssueBetweenDays,
+                            pageName: "SeveralDaysStatisticsPage",);
                       }
                       if (state.status.isError) {
                         return const ErrorNotification();

@@ -19,13 +19,15 @@ class SetDateState extends Equatable {
     List<IssueModel>? issueDetails,
     String? selectDate,
     String? allIssuePerDate,
-    String? calculatePendarNumberOfIssue
+    String? calculatePendarNumberOfIssue,
+    String? allIssueBetweenDays
   }): date = date ?? '' ,
         month = month ?? '',
         issueDetails = issueDetails ?? const[],
         selectDate = selectDate ?? '',
         allIssuePerDate = allIssuePerDate ?? '0',
-        calculatePendarNumberOfIssue = calculatePendarNumberOfIssue ?? '0';
+        calculatePendarNumberOfIssue = calculatePendarNumberOfIssue ?? '0',
+        allIssueBetweenDays = allIssueBetweenDays ?? '0';
 
 
   final SetDateStatus status;
@@ -35,11 +37,13 @@ class SetDateState extends Equatable {
   final String selectDate;
   final String allIssuePerDate;
   final String calculatePendarNumberOfIssue;
+  final String allIssueBetweenDays;
 
   @override
   // TODO: implement props
   List<Object> get props => [status, date, month, issueDetails,
-    selectDate, allIssuePerDate, calculatePendarNumberOfIssue];
+    selectDate, allIssuePerDate, calculatePendarNumberOfIssue,
+    allIssueBetweenDays];
 
   SetDateState copyWith({
     SetDateStatus? status,
@@ -48,7 +52,8 @@ class SetDateState extends Equatable {
     List<IssueModel>? issueDetails,
     String? selectDate,
     String? allIssuePerDate,
-    String? calculatePendarNumberOfIssue
+    String? calculatePendarNumberOfIssue,
+    String? allIssueBetweenDays,
   }) {
     return SetDateState(
         status: status ?? this.status,
@@ -57,7 +62,8 @@ class SetDateState extends Equatable {
         issueDetails: issueDetails ?? this.issueDetails,
         selectDate: selectDate ?? this.selectDate,
         allIssuePerDate: allIssuePerDate ?? this.allIssuePerDate,
-        calculatePendarNumberOfIssue: calculatePendarNumberOfIssue ?? this.calculatePendarNumberOfIssue
+        calculatePendarNumberOfIssue: calculatePendarNumberOfIssue ?? this.calculatePendarNumberOfIssue,
+        allIssueBetweenDays: allIssueBetweenDays ?? this.allIssueBetweenDays
     );
   }
 }

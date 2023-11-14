@@ -66,6 +66,17 @@ class ReadNumberOfIssuePerDateEvent extends SetDateEvent {
   List<Object> get props => [startDate, endDate];
 }
 
+class ReadNumberOfIssueBetweenDaysEvent extends SetDateEvent {
+  final String startDate;
+  final String endDate;
+
+  ReadNumberOfIssueBetweenDaysEvent(
+      {required this.startDate, required this.endDate});
+
+  @override
+  List<Object> get props => [startDate, endDate];
+}
+
 class CalculatePendarNumberOfIssue extends SetDateEvent {
   final String date;
 

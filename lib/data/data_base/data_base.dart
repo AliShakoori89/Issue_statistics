@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:issue_statistics/data/model/issue_model.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -58,7 +59,23 @@ class DatabaseHelper {
       return '0';
     }else{
       Object? value = result[result.length-1][columnAllIssueNumberPerDate];
-      print("valueeeeeeeee                "+value.toString());
+      if (value == null){
+        return '0';
+      }else{
+        return "$value";
+      }
+    }
+  }
+
+  FutureOr<String> readNumberOfIssuePerBetweenDays(String? startDate, String? endDate) async {
+
+    var dbExpense = await database;
+    var result = await dbExpense.rawQuery("SELECT SUM($columnAllIssueNumberPerDate) FROM $issueTable WHERE $columnIssueDate BETWEEN '$startDate' AND '$endDate'");
+
+    if(result.isEmpty) {
+      return '0';
+    }else{
+      Object? value = result[0]["SUM($columnAllIssueNumberPerDate)"];
       if (value == null){
         return '0';
       }else{

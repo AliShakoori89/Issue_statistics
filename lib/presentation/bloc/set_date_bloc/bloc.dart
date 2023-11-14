@@ -16,6 +16,7 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     on<ReduceDateEvent>(_mapReduceDateEventToState);
     on<AddNumberOfIssueEvent>(_mapAddNumberOfIssueEventToState);
     on<ReadNumberOfIssuePerDateEvent>(_mapReadNumberOfIssuePerDateEventToState);
+    on<ReadNumberOfIssueBetweenDaysEvent>(_mapReadNumberOfIssueBetweenDaysEventToState);
   }
 
   void _mapInitialDateEventToState(
@@ -127,6 +128,22 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
         state.copyWith(
             status: SetDateStatus.success,
             allIssuePerDate: allIssuePerDate
+        ),
+      );
+    } catch (error) {
+      emit(state.copyWith(status: SetDateStatus.error));
+    }
+  }
+
+  void _mapReadNumberOfIssueBetweenDaysEventToState(
+      ReadNumberOfIssueBetweenDaysEvent event, Emitter<SetDateState> emit) async {
+    try {
+      emit(state.copyWith(status: SetDateStatus.loading));
+      final String allIssueBetweenDays = await setDateRepository.readNumberOfIssueBetweenDays(event.startDate, event.endDate);
+      emit(
+        state.copyWith(
+            status: SetDateStatus.success,
+            allIssueBetweenDays: allIssueBetweenDays
         ),
       );
     } catch (error) {

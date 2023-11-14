@@ -84,7 +84,7 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                DailyDatePickerCalendar(),
+                const DailyDatePickerCalendar(),
                 HomePageHeader(width: width, height: height),
                 const Divider(color: Colors.black87),
                 SizedBox(
@@ -136,7 +136,9 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                         allIssuePerDate: allIssuePerDate,
                         allPendarIssueNumberPerDate: allPendarIssueNumberPerDate,
                         allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
-                        date: date);
+                        date: date,
+                        allIssueBetweenDays: '0',
+                        pageName: "DailyStatisticsPage",);
                   }
                   if (state.status.isError) {
                     return const ErrorNotification();

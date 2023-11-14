@@ -36,7 +36,7 @@ class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
   @override
   void initState() {
     selectedDate = DateFormat('yyyy-MM').format(DateTime.parse(Jalali.now().toJalaliDateTime()));
-    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssuePerDateEvent(startDate: selectedDate, endDate: selectedDate));
+    BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssueBetweenDaysEvent(startDate: selectedDate, endDate: selectedDate));
     super.initState();
   }
 
@@ -68,10 +68,10 @@ class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
         picked = await showPersianDateRangePicker(
           context: context,
           initialDateRange: JalaliRange(
-            start: Jalali(1400, 1, 2),
-            end: Jalali(1400, 1, 10),
+            start: Jalali(1402, 8, 15),
+            end: Jalali(1402, 8, 18),
           ),
-          firstDate: Jalali(1385, 8),
+          firstDate: Jalali(1402, 1),
           lastDate: Jalali(1450, 9),
         );
 
@@ -155,7 +155,7 @@ class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
         BlocProvider.of<NumberOfFanarIssuesBloc>(context)
             .add(GetNumberOfIssuesFanarEvent(startDate: gregorianStartDate, endDate: gregorianEndDate));
         BlocProvider.of<SetDateBloc>(context)
-            .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianStartDate, endDate: gregorianEndDate));
+            .add(ReadNumberOfIssueBetweenDaysEvent(startDate: gregorianStartDate, endDate: gregorianEndDate));
       },
       child: Container(
         height: height / 20,
