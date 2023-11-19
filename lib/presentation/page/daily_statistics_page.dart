@@ -85,8 +85,6 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const DailyDatePickerCalendar(),
-                HomePageHeader(width: width, height: height),
-                const Divider(color: Colors.black87),
                 SizedBox(
                   height: height / 50,
                 ),

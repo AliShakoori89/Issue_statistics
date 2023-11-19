@@ -215,7 +215,7 @@ class FanarIssuerList extends StatelessWidget {
                 SizedBox(
                   height: height / 80,
                 ),
-                const Text("شرکت فن آوران اعتماد راهبر",
+                const Text("شرکت پیشگامان اعتماد دیجیتال ایرانیان - ایران ساین",
                     style: TextStyle(color: Colors.black))
               ],
             ),

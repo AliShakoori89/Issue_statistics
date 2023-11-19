@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:issue_statistics/presentation/page/daily_statistics_page.dart';
-import '../../data/model/issue_model.dart';
+import 'package:issue_statistics/presentation/page_helpers/add_all_number_of_issues.dart';
 import '../bloc/fetch_number_of_issues_pendar/state.dart';
-import '../bloc/set_date_bloc/bloc.dart';
-import '../bloc/set_date_bloc/event.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class PendarIssuerList extends StatelessWidget {
@@ -198,121 +194,48 @@ class PendarIssuerList extends StatelessWidget {
           ),
         ),
         SizedBox(height: height / 50,),
-        Container(
-          color: Colors.white,
-          child: Container(
-            margin: const EdgeInsets.only(
-                top: 10,
-                left: 10,
-                right: 10,
-                bottom: 10
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                pageName == "DailyStatisticsPage"
-                    ? Text(allIssuePerDate,
-                    style: const TextStyle(color: Colors.black))
-                    : Text(allIssueBetweenDays,
-                    style: const TextStyle(color: Colors.black)),
-                pageName == "DailyStatisticsPage"
-                    ? Row(
-                  children: [
-                          GestureDetector(
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (ctx) => AlertDialog(
-                                    backgroundColor: Colors.white,
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(20.0))),
-                                    title: Directionality(
-                                      textDirection: TextDirection.rtl,
-                                      child: Text(
-                                          "تعداد کل گواهی های صادره را وارد نمایید :",
-                                          style: TextStyle(
-                                              fontSize: width / 30,
-                                              fontWeight: FontWeight.w900,
-                                              color: Colors.black)),
-                                    ),
-                                    content: SizedBox(
-                                      height: 50,
-                                      width: 50,
-                                      child: TextFormField(
-                                        controller: controller,
-                                        decoration: const InputDecoration(
-                                          border: OutlineInputBorder(),
-                                          hintText: 'تعداد کل گواهی',
-                                        ),
-                                      ),
-                                    ),
-                                    actions: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 15, bottom: 15),
-                                        child: Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: SizedBox(
-                                              height: 50,
-                                              width: 60,
-                                              child: ElevatedButton(
-                                                  style:
-                                                      ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              Colors.green),
-                                                  onPressed: () {
-                                                    late IssueModel issueModel =
-                                                        IssueModel();
-
-                                                    issueModel.issueDate = date;
-                                                    issueModel
-                                                            .allIssueNumberNumber =
-                                                        int.parse(
-                                                            controller.text);
-                                                    issueModel
-                                                            .allFanarIssueNumberPerDate =
-                                                        allFanarIssueNumberPerDate;
-
-                                                    BlocProvider.of<
-                                                                SetDateBloc>(
-                                                            context)
-                                                        .add(
-                                                            AddNumberOfIssueEvent(
-                                                                issueModel:
-                                                                    issueModel,
-                                                                date: date));
-
-                                                    Navigator.of(ctx).pop();
-                                                  },
-                                                  child: Text(
-                                                    "ثبت",
-                                                    style: TextStyle(
-                                                        fontSize: width / 25),
-                                                  ))),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
-                              child: const Icon(
-                                Icons.help,
-                                size: 15,
-                              )),
-                          const Text("تعداد کل گواهی های صادر شده",
-                              textDirection: TextDirection.rtl,
-                              style: TextStyle(color: Colors.black)),
-                        ],
-                )
-                    : const Text("تعداد کل گواهی های صادر شده",
-                    textDirection: TextDirection.rtl,
-                    style: TextStyle(color: Colors.black))
-              ],
-            ),
-          ),
-        )
+        allIssuesContainer()
       ],
     );
+  }
+
+  Container allIssuesContainer() {
+    return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15)
+        ),
+        child: Container(
+          margin: const EdgeInsets.only(
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: 10
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              pageName == "DailyStatisticsPage"
+                  ? Text(allIssuePerDate,
+                  style: const TextStyle(color: Colors.black))
+                  : Text(allIssueBetweenDays,
+                  style: const TextStyle(color: Colors.black)),
+              pageName == "DailyStatisticsPage"
+                  ? Row(
+                children: [
+                        AddAllNumberOfIssues(width: width, height: height, controller: controller,
+                        date: date, allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
+                        allPendarIssueNumberPerDate: allPendarIssueNumberPerDate),
+                        const Text("تعداد کل گواهی های صادر شده",
+                            textDirection: TextDirection.rtl,
+                            style: TextStyle(color: Colors.black)),
+                      ],)
+                  : const Text("تعداد کل گواهی های صادر شده",
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.black))
+            ],
+          ),
+        ),
+      );
   }
 }

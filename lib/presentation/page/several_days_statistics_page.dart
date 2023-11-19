@@ -58,8 +58,6 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const SeveralDatePickerCalendar(),
-            HomePageHeader(width: width, height: height),
-            const Divider(color: Colors.black87),
             SizedBox(
               height: height / 50,
             ),

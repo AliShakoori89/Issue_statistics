@@ -59,6 +59,7 @@ dev_dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   shimmer: ^3.0.0
+  fl_chart: ^0.64.0
 
 
 
@@ -80,6 +81,7 @@ flutter:
   assets:
     - assets/main_page_first_container_logo/left_arrow.png
     - assets/main_page_first_container_logo/right_arrow.png
+    - assets/icon_image/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
