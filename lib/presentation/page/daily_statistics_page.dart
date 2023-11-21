@@ -9,8 +9,8 @@ import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/event.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
+import 'package:issue_statistics/presentation/page/fanar_daily_statistic_chart_page.dart';
 import 'package:issue_statistics/presentation/page_helpers/error_notif.dart';
-import 'package:issue_statistics/presentation/page_helpers/homepage_header.dart';
 import 'package:issue_statistics/presentation/page_helpers/fanar_issuer_list.dart';
 import 'package:issue_statistics/presentation/page_helpers/pendar_issuer_list.dart';
 import '../page_helpers/daily_date_picker_calendar.dart';
@@ -152,6 +152,7 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
   BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState> fanarWrapperItemList(double width, double height) {
     return BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState>(
                   builder: (context, state) {
+
                 if (state.status.isLoading) {
                   return CustomShimmer(
                     width: width,
@@ -160,7 +161,20 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                   );
                 }
                 if (state.status.isSuccess) {
-                  return FanarIssuerList(state: state, height: height);
+
+                  print(state.fanarRaList);
+
+                  return GestureDetector(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>
+                          FanarDailyStatisticChartPage(
+                            fanarRaList: state.fanarRaList,
+                          )),
+                        );
+                      },
+                      child: FanarIssuerList(state: state, height: height));
                 }
                 if (state.status.isError) {
                   return const ErrorNotification();

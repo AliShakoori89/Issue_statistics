@@ -20,7 +20,8 @@ class NumberOfIssuesPendarState extends Equatable {
     List<ResponseModel>? numberOfIssueForShabakeKaranSamaCo,
     List<ResponseModel>? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
     List<ResponseModel>? numberOfIssueForBankMellat,
-    int? pendarAllNumberOfIssue
+    int? pendarAllNumberOfIssue,
+    List? pendarRaList
   }):
         numberOfIssueForPardazeshMaliPartCo = numberOfIssueForPardazeshMaliPartCo ?? const [],
         numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? const [],
@@ -28,7 +29,8 @@ class NumberOfIssuesPendarState extends Equatable {
         numberOfIssueForShabakeKaranSamaCo = numberOfIssueForShabakeKaranSamaCo ?? const [],
         numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ?? const [],
         numberOfIssueForBankMellat = numberOfIssueForBankMellat ?? const [],
-        pendarAllNumberOfIssue = pendarAllNumberOfIssue ?? 0;
+        pendarAllNumberOfIssue = pendarAllNumberOfIssue ?? 0,
+        pendarRaList = pendarRaList ?? const [];
 
   final NumberOfIssuesPendarStatus status;
   final List<ResponseModel> numberOfIssueForPardazeshMaliPartCo;
@@ -38,6 +40,7 @@ class NumberOfIssuesPendarState extends Equatable {
   final List<ResponseModel> numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo;
   final List<ResponseModel> numberOfIssueForBankMellat;
   final int pendarAllNumberOfIssue;
+  final List pendarRaList;
 
 
   @override
@@ -45,7 +48,7 @@ class NumberOfIssuesPendarState extends Equatable {
   List<Object> get props => [status, numberOfIssueForPardazeshMaliPartCo,
     numberOfIssueForBankTejaratCo, numberOfIssueForBankParsiyanCo,
     numberOfIssueForShabakeKaranSamaCo, numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
-    numberOfIssueForBankMellat, pendarAllNumberOfIssue
+    numberOfIssueForBankMellat, pendarAllNumberOfIssue, pendarRaList
   ];
 
   NumberOfIssuesPendarState copyWith({
@@ -56,7 +59,8 @@ class NumberOfIssuesPendarState extends Equatable {
     List<ResponseModel>? numberOfIssueForShabakeKaranSamaCo,
     List<ResponseModel>? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
     List<ResponseModel>? numberOfIssueForBankMellat,
-    int? pendarAllNumberOfIssue
+    int? pendarAllNumberOfIssue,
+    List? pendarRaList
 
   }) {
     return NumberOfIssuesPendarState(
@@ -67,7 +71,8 @@ class NumberOfIssuesPendarState extends Equatable {
       numberOfIssueForShabakeKaranSamaCo: numberOfIssueForShabakeKaranSamaCo ?? this.numberOfIssueForShabakeKaranSamaCo,
       numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo: numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ?? this.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
       numberOfIssueForBankMellat: numberOfIssueForBankMellat ?? this.numberOfIssueForBankMellat,
-      pendarAllNumberOfIssue: pendarAllNumberOfIssue ?? this.pendarAllNumberOfIssue
+      pendarAllNumberOfIssue: pendarAllNumberOfIssue ?? this.pendarAllNumberOfIssue,
+      pendarRaList: pendarRaList ?? this.pendarRaList
     );
   }
 }

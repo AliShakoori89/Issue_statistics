@@ -1,20 +1,30 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
-import 'indicator.dart';
+import '../app_colors.dart';
 
-class PieChartSample2 extends StatefulWidget {
-  const PieChartSample2({super.key});
+class PendarPieDailyChart extends StatefulWidget {
+  final List pendarRaList;
+  final int pendarIssues;
+  const PendarPieDailyChart({super.key, required this.pendarRaList,
+  required this.pendarIssues});
 
   @override
-  State<StatefulWidget> createState() => PieChart2State();
+  State<StatefulWidget> createState() => PendarPieDailyChartState(pendarRaList, pendarIssues);
 }
 
-class PieChart2State extends State {
+class PendarPieDailyChartState extends State {
   int touchedIndex = -1;
+  final List pendarRaList;
+  final int pendarIssues;
+
+
+  PendarPieDailyChartState(this.pendarRaList, this.pendarIssues);
+
 
   @override
   Widget build(BuildContext context) {
+
+    print("pendar lisssst            "+pendarRaList.toString());
     return AspectRatio(
       aspectRatio: 1.5,
       child: PieChart(
@@ -36,7 +46,7 @@ class PieChart2State extends State {
           borderData: FlBorderData(
             show: false,
           ),
-          sectionsSpace: 1,
+          sectionsSpace: 5,
           centerSpaceRadius: 40,
           sections: showingSections(),
         ),
@@ -45,7 +55,17 @@ class PieChart2State extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(13, (i) {
+
+    int sum =
+        pendarRaList[0] +
+            pendarRaList[1] +
+            pendarRaList[2] +
+            pendarRaList[3] +
+            pendarRaList[4] +
+            pendarRaList[5] +
+            pendarIssues;
+
+    return List.generate(7, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
       final radius = isTouched ? 60.0 : 50.0;
@@ -54,8 +74,8 @@ class PieChart2State extends State {
         case 0:
           return PieChartSectionData(
             color: AppColors.contentColorBlue,
-            value: 40,
-            title: '40%',
+            value: double.parse((int.parse(pendarRaList[0].toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarRaList[0].toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -67,8 +87,8 @@ class PieChart2State extends State {
         case 1:
           return PieChartSectionData(
             color: AppColors.contentColorBlack,
-            value: 30,
-            title: '30%',
+            value: double.parse((int.parse(pendarRaList[1].toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarRaList[1].toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -80,8 +100,8 @@ class PieChart2State extends State {
         case 2:
           return PieChartSectionData(
             color: AppColors.contentColorGreen,
-            value: 15,
-            title: '15%',
+            value: double.parse((int.parse(pendarRaList[2].toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarRaList[2].toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -93,8 +113,8 @@ class PieChart2State extends State {
         case 3:
           return PieChartSectionData(
             color: AppColors.contentColorOrange,
-            value: 15,
-            title: '15%',
+            value: double.parse((int.parse(pendarRaList[3].toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarRaList[3].toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -106,8 +126,8 @@ class PieChart2State extends State {
         case 4:
           return PieChartSectionData(
             color: AppColors.contentColorPink,
-            value: 15,
-            title: '15%',
+            value: double.parse((int.parse(pendarRaList[4].toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarRaList[4].toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -119,8 +139,8 @@ class PieChart2State extends State {
         case 5:
           return PieChartSectionData(
             color: AppColors.contentColorPurple,
-            value: 15,
-            title: '15%',
+            value: double.parse((int.parse(pendarRaList[5].toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarRaList[5].toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,
@@ -132,99 +152,8 @@ class PieChart2State extends State {
         case 6:
           return PieChartSectionData(
             color: AppColors.contentColorRed,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 7:
-          return PieChartSectionData(
-            color: AppColors.contentColorGreen,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 8:
-          return PieChartSectionData(
-            color: AppColors.contentColorNavyBlue,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 9:
-          return PieChartSectionData(
-            color: AppColors.contentColorLowPurple,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 10:
-          return PieChartSectionData(
-            color: AppColors.contentColorBrown,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 11:
-          return PieChartSectionData(
-            color: AppColors.contentColorCyan,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 12:
-          return PieChartSectionData(
-            color: AppColors.contentColorGreen2,
-            value: 15,
-            title: '15%',
-            radius: radius,
-            titleStyle: TextStyle(
-              fontSize: fontSize,
-              fontWeight: FontWeight.bold,
-              color: AppColors.mainTextColor1,
-              shadows: shadows,
-            ),
-          );
-        case 13:
-          return PieChartSectionData(
-            color: AppColors.contentColorLowOrange,
-            value: 15,
-            title: '15%',
+            value: double.parse((int.parse(pendarIssues.toString()) * 100 / sum).toStringAsFixed(2)),
+            title: '${double.parse((int.parse(pendarIssues.toString()) * 100 / sum).toStringAsFixed(2))}%',
             radius: radius,
             titleStyle: TextStyle(
               fontSize: fontSize,

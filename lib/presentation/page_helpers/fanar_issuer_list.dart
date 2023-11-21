@@ -29,9 +29,7 @@ class FanarIssuerList extends StatelessWidget {
               children: [
                 Text(
                   state.numberOfIssueForAsrDaneshAfzarCo.isNotEmpty
-                      ? state
-                      .numberOfIssueForAsrDaneshAfzarCo[0].count
-                      .toString()
+                      ? state.numberOfIssueForAsrDaneshAfzarCo[0].count.toString()
                       : 0.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
@@ -207,15 +205,15 @@ class FanarIssuerList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  state.numberOfIssueForFanAvaranEtemadRaahbatCo.isNotEmpty
-                      ? state.numberOfIssueForFanAvaranEtemadRaahbatCo[0].count.toString()
+                  state.numberOfIssueForFanAvaranEtemadRaahbarCo.isNotEmpty
+                      ? state.numberOfIssueForFanAvaranEtemadRaahbarCo[0].count.toString()
                       : 0.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
                   height: height / 80,
                 ),
-                const Text("شرکت پیشگامان اعتماد دیجیتال ایرانیان - ایران ساین",
+                const Text("شرکت فن آوران اعتماد راهبر",
                     style: TextStyle(color: Colors.black))
               ],
             ),
@@ -239,8 +237,8 @@ class FanarIssuerList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  state.numberOfIssueFinTekParsCo.isNotEmpty
-                      ? state.numberOfIssueFinTekParsCo[0].count.toString()
+                  state.numberOfIssueForFinTekParsCo.isNotEmpty
+                      ? state.numberOfIssueForFinTekParsCo[0].count.toString()
                       : 0.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),

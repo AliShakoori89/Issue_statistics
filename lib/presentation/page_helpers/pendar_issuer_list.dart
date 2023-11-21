@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:issue_statistics/presentation/page_helpers/add_all_number_of_issues.dart';
 import '../bloc/fetch_number_of_issues_pendar/state.dart';
+import '../page/pendar_daily_statistic_chart_page.dart';
 
 
 class PendarIssuerList extends StatelessWidget {
@@ -26,170 +27,184 @@ class PendarIssuerList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)
-          ),
+        GestureDetector(
+          onTap: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>
+                  PendarDailyStatisticChartPage(
+                    pendarRaList: state.pendarRaList,
+                    pendarIssues: int.parse(allIssuePerDate) -
+                        allPendarIssueNumberPerDate -
+                        allFanarIssueNumberPerDate,
+                  )),
+            );
+          },
           child: Container(
-            margin: const EdgeInsets.only(
-                top: 10,
-                left: 10,
-                right: 10,
-                bottom: 10
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(15)
             ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      state.numberOfIssueForPardazeshMaliPartCo
-                          .isNotEmpty
-                          ? state.numberOfIssueForPardazeshMaliPartCo[0]
-                          .count.toString()
-                          : 0.toString(),
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("شرکت پردازش اطلاعات مالی پارت (پندار)",
-                        style: TextStyle(color: Colors.black)),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      state.numberOfIssueForBankTejaratCo.isNotEmpty
-                          ? state.numberOfIssueForBankTejaratCo[0].count
-                          .toString()
-                          : 0.toString(),
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("بانک تجارت (پندار)",
-                        style: TextStyle(color: Colors.black)),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      state.numberOfIssueForBankParsiyanCo.isNotEmpty
-                          ? state.numberOfIssueForBankParsiyanCo[0]
-                          .count
-                          .toString()
-                          : 0.toString(),
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("بانک پارسیان(دیبا رایان)",
-                        style: TextStyle(color: Colors.black)),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      state.numberOfIssueForShabakeKaranSamaCo
-                          .isNotEmpty
-                          ? state.numberOfIssueForShabakeKaranSamaCo[0]
-                          .count.toString()
-                          : 0.toString(),
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("شرکت شبکه کاران سما",
-                        style: TextStyle(color: Colors.black))
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      state
-                          .numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo
-                          .isNotEmpty
-                          ? state
-                          .numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0]
-                          .count.toString()
-                          : 0.toString(),
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("شرکت فناوری و راه حلهای هوشمند سپهر",
-                        style: TextStyle(color: Colors.black))
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      state.numberOfIssueForBankMellat.isNotEmpty
-                          ? state.numberOfIssueForBankMellat[0].count
-                          .toString()
-                          : 0.toString(),
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("بانک ملت",
-                        style: TextStyle(color: Colors.black))
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    pageName == "DailyStatisticsPage"
-                        ? Text("${int.parse(allIssuePerDate) -
-                        allPendarIssueNumberPerDate -
-                        allFanarIssueNumberPerDate}",
-                        style: const TextStyle(color: Colors.black))
-                        : Text("${int.parse(allIssueBetweenDays) -
-                        allPendarIssueNumberPerDate -
-                        allFanarIssueNumberPerDate}",
-                        style: const TextStyle(color: Colors.black)),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("شرکت پندار کوشک ایمن",
-                        style: TextStyle(color: Colors.black))
-                  ],
-                ),
-                SizedBox(
-                  height: height / 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    pageName == "DailyStatisticsPage"
-                        ? Text("${state.pendarAllNumberOfIssue+int.parse(allIssuePerDate) -
-                            allPendarIssueNumberPerDate
-                            -
-                            allFanarIssueNumberPerDate}")
-                        : Text("${state.pendarAllNumberOfIssue+int.parse(allIssueBetweenDays) -
-                            allPendarIssueNumberPerDate
-                            -
-                            allFanarIssueNumberPerDate}"),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    const Text("تعداد کل گواهی های شرکت پندار",
-                        style: TextStyle(color: Colors.black))
-                  ],
-                ),
-              ],
+            child: Container(
+              margin: const EdgeInsets.only(
+                  top: 10,
+                  left: 10,
+                  right: 10,
+                  bottom: 10
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.numberOfIssueForPardazeshMaliPartCo
+                            .isNotEmpty
+                            ? state.numberOfIssueForPardazeshMaliPartCo[0]
+                            .count.toString()
+                            : 0.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("شرکت پردازش اطلاعات مالی پارت (پندار)",
+                          style: TextStyle(color: Colors.black)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.numberOfIssueForBankTejaratCo.isNotEmpty
+                            ? state.numberOfIssueForBankTejaratCo[0].count
+                            .toString()
+                            : 0.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("بانک تجارت (پندار)",
+                          style: TextStyle(color: Colors.black)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.numberOfIssueForBankParsiyanCo.isNotEmpty
+                            ? state.numberOfIssueForBankParsiyanCo[0]
+                            .count
+                            .toString()
+                            : 0.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("بانک پارسیان(دیبا رایان)",
+                          style: TextStyle(color: Colors.black)),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.numberOfIssueForShabakeKaranSamaCo
+                            .isNotEmpty
+                            ? state.numberOfIssueForShabakeKaranSamaCo[0]
+                            .count.toString()
+                            : 0.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("شرکت شبکه کاران سما",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state
+                            .numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo
+                            .isNotEmpty
+                            ? state
+                            .numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0]
+                            .count.toString()
+                            : 0.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("شرکت فناوری و راه حلهای هوشمند سپهر",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        state.numberOfIssueForBankMellat.isNotEmpty
+                            ? state.numberOfIssueForBankMellat[0].count
+                            .toString()
+                            : 0.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("بانک ملت",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      pageName == "DailyStatisticsPage"
+                          ? Text("${int.parse(allIssuePerDate) -
+                          allPendarIssueNumberPerDate -
+                          allFanarIssueNumberPerDate}",
+                          style: const TextStyle(color: Colors.black))
+                          : Text("${int.parse(allIssueBetweenDays) -
+                          allPendarIssueNumberPerDate -
+                          allFanarIssueNumberPerDate}",
+                          style: const TextStyle(color: Colors.black)),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("شرکت پندار کوشک ایمن",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                  SizedBox(
+                    height: height / 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      pageName == "DailyStatisticsPage"
+                          ? Text("${state.pendarAllNumberOfIssue+int.parse(allIssuePerDate) -
+                              allPendarIssueNumberPerDate
+                              -
+                              allFanarIssueNumberPerDate}")
+                          : Text("${state.pendarAllNumberOfIssue+int.parse(allIssueBetweenDays) -
+                              allPendarIssueNumberPerDate
+                              -
+                              allFanarIssueNumberPerDate}"),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("تعداد کل گواهی های شرکت پندار",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

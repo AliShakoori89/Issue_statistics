@@ -56,6 +56,14 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
 
       await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.startDate, event.endDate, pendarAllNumberOfIssue);
 
+      final pendarRaList = numberOfIssuesRepository.pendarRaList(
+        numberOfIssueForPardazeshMaliPartCo.isNotEmpty ? numberOfIssueForPardazeshMaliPartCo[0].count : 0 ,
+        numberOfIssueForBankTejaratCo.isNotEmpty ? numberOfIssueForBankTejaratCo[0].count : 0 ,
+        numberOfIssueForBankParsiyanCo.isNotEmpty ? numberOfIssueForBankParsiyanCo[0].count : 0 ,
+        numberOfIssueForShabakeKaranSamaCo.isNotEmpty ? numberOfIssueForShabakeKaranSamaCo[0].count : 0 ,
+        numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.isNotEmpty ? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0].count : 0 ,
+        numberOfIssueForBankMellat.isNotEmpty ? numberOfIssueForBankMellat[0].count : 0 );
+
       emit(
         state.copyWith(
           status: NumberOfIssuesPendarStatus.success,
@@ -65,9 +73,10 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
             numberOfIssueForShabakeKaranSamaCo: numberOfIssueForShabakeKaranSamaCo,
             numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo: numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
             numberOfIssueForBankMellat: numberOfIssueForBankMellat,
-            pendarAllNumberOfIssue: pendarAllNumberOfIssue),
+            pendarAllNumberOfIssue: pendarAllNumberOfIssue,
+            pendarRaList: pendarRaList
+            ),
       );
-
 
     } catch (error) {
       emit(state.copyWith(status: NumberOfIssuesPendarStatus.error));

@@ -1,14 +1,16 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
-import 'indicator.dart';
+import '../app_colors.dart';
+import '../indicator.dart';
 
 class _BarChart extends StatelessWidget {
-  const _BarChart();
+  final List fanarRaList;
+  const _BarChart(this.fanarRaList);
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       margin: const EdgeInsets.all(30),
       child: BarChart(
@@ -19,7 +21,7 @@ class _BarChart extends StatelessWidget {
           barGroups: barGroups,
           gridData: const FlGridData(show: false),
           alignment: BarChartAlignment.spaceAround,
-          maxY: 30,
+          maxY: 8000,
         ),
       ),
     );
@@ -312,7 +314,7 @@ class _BarChart extends StatelessWidget {
       x: 0,
       barRods: [
         BarChartRodData(
-          toY: 8,
+          toY: double.parse(fanarRaList[0].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -322,7 +324,7 @@ class _BarChart extends StatelessWidget {
       x: 1,
       barRods: [
         BarChartRodData(
-          toY: 10,
+          toY: double.parse(fanarRaList[1].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -332,7 +334,7 @@ class _BarChart extends StatelessWidget {
       x: 2,
       barRods: [
         BarChartRodData(
-          toY: 14,
+          toY: double.parse(fanarRaList[2].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -342,7 +344,7 @@ class _BarChart extends StatelessWidget {
       x: 3,
       barRods: [
         BarChartRodData(
-          toY: 15,
+          toY: double.parse(fanarRaList[3].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -352,7 +354,7 @@ class _BarChart extends StatelessWidget {
       x: 4,
       barRods: [
         BarChartRodData(
-          toY: 13,
+          toY: double.parse(fanarRaList[4].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -362,7 +364,7 @@ class _BarChart extends StatelessWidget {
       x: 5,
       barRods: [
         BarChartRodData(
-          toY: 10,
+          toY: double.parse(fanarRaList[5].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -372,7 +374,7 @@ class _BarChart extends StatelessWidget {
       x: 6,
       barRods: [
         BarChartRodData(
-          toY: 16,
+          toY: double.parse(fanarRaList[6].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -382,7 +384,7 @@ class _BarChart extends StatelessWidget {
       x: 7,
       barRods: [
         BarChartRodData(
-          toY: 16,
+          toY: double.parse(fanarRaList[7].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -392,7 +394,7 @@ class _BarChart extends StatelessWidget {
       x: 8,
       barRods: [
         BarChartRodData(
-          toY: 16,
+          toY: double.parse(fanarRaList[8].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -402,7 +404,7 @@ class _BarChart extends StatelessWidget {
       x: 9,
       barRods: [
         BarChartRodData(
-          toY: 16,
+          toY: double.parse(fanarRaList[9].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -412,7 +414,7 @@ class _BarChart extends StatelessWidget {
       x: 10,
       barRods: [
         BarChartRodData(
-          toY: 16,
+          toY: double.parse(fanarRaList[10].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -422,7 +424,7 @@ class _BarChart extends StatelessWidget {
       x: 11,
       barRods: [
         BarChartRodData(
-          toY: 16,
+          toY: double.parse(fanarRaList[11].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -432,7 +434,7 @@ class _BarChart extends StatelessWidget {
       x: 12,
       barRods: [
         BarChartRodData(
-          toY: 18,
+          toY: double.parse(fanarRaList[12].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -442,7 +444,7 @@ class _BarChart extends StatelessWidget {
       x: 13,
       barRods: [
         BarChartRodData(
-          toY: 18,
+          toY: double.parse(fanarRaList[13].toString()),
           gradient: _barsGradient,
         )
       ],
@@ -451,19 +453,24 @@ class _BarChart extends StatelessWidget {
   ];
 }
 
-class BarChartSample3 extends StatefulWidget {
-  const BarChartSample3({super.key});
+class FanarDailyBarChart extends StatefulWidget {
+  final List fanarRaList;
+  const FanarDailyBarChart({super.key, required this.fanarRaList});
 
   @override
-  State<StatefulWidget> createState() => BarChartSample3State();
+  State<StatefulWidget> createState() => FanarDailyBarChartState(fanarRaList);
 }
 
-class BarChartSample3State extends State<BarChartSample3> {
+class FanarDailyBarChartState extends State<FanarDailyBarChart> {
+  final List fanarRaList;
+
+  FanarDailyBarChartState(this.fanarRaList);
+
   @override
   Widget build(BuildContext context) {
-    return const AspectRatio(
+    return AspectRatio(
       aspectRatio: 1.9,
-      child: _BarChart(),
+      child: _BarChart(widget.fanarRaList),
     );
   }
 }

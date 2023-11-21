@@ -5,7 +5,6 @@ import 'package:issue_statistics/logic/repositories/number_of_issues_repository.
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
-import 'package:issue_statistics/presentation/page/monthly_statistic_chart_page.dart';
 import 'package:issue_statistics/presentation/page/my_home_page.dart';
 
 void main() {
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MonthlyStatisticChartPage(),
+        home: MyHomePage(),
       ),
     );
   }

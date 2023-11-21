@@ -25,10 +25,11 @@ class NumberOfFanarIssuesState extends Equatable {
     List<ResponseModel>? numberOfIssueForPardazeshEttelaatMaliPartCo,
     List<ResponseModel>? numberOfIssueForBankTejaratCo,
     List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-    List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbatCo,
+    List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbarCo,
     List<ResponseModel>? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
     List<ResponseModel>? numberOfIssueFinTekParsCo,
     int? fanarAllNumberOfIssue,
+    List? fanarRaList
   }):
         numberOfIssueForAsrDaneshAfzarCo = numberOfIssueForAsrDaneshAfzarCo ?? const [],
         numberOfIssueForToseeTejaratTeniyanCo = numberOfIssueForToseeTejaratTeniyanCo ?? const [],
@@ -41,10 +42,11 @@ class NumberOfFanarIssuesState extends Equatable {
         numberOfIssueForPardazeshEttelaatMaliPartCo = numberOfIssueForPardazeshEttelaatMaliPartCo ?? const [],
         numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? const [],
         numberOfIssueForPishgamanEtemadDijitalIraniyanCo = numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? const [],
-        numberOfIssueForFanAvaranEtemadRaahbatCo = numberOfIssueForFanAvaranEtemadRaahbatCo ?? const [],
+        numberOfIssueForFanAvaranEtemadRaahbarCo = numberOfIssueForFanAvaranEtemadRaahbarCo ?? const [],
         numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? const [],
-        numberOfIssueFinTekParsCo = numberOfIssueFinTekParsCo ?? const [],
-        fanarAllNumberOfIssue = fanarAllNumberOfIssue ?? 0;
+        numberOfIssueForFinTekParsCo = numberOfIssueFinTekParsCo ?? const [],
+        fanarAllNumberOfIssue = fanarAllNumberOfIssue ?? 0,
+        fanarRaList = fanarRaList ?? const [];
 
   final NumberOfIssuesFanarStatus status;
   final List<ResponseModel> numberOfIssueForAsrDaneshAfzarCo;
@@ -58,10 +60,11 @@ class NumberOfFanarIssuesState extends Equatable {
   final List<ResponseModel> numberOfIssueForPardazeshEttelaatMaliPartCo;
   final List<ResponseModel> numberOfIssueForBankTejaratCo;
   final List<ResponseModel> numberOfIssueForPishgamanEtemadDijitalIraniyanCo;
-  final List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbatCo;
+  final List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbarCo;
   final List<ResponseModel> numberOfIssueForGrouhTejaratElectronicSadraKiyanCo;
-  final List<ResponseModel> numberOfIssueFinTekParsCo;
+  final List<ResponseModel> numberOfIssueForFinTekParsCo;
   final int fanarAllNumberOfIssue;
+  final List fanarRaList;
 
   @override
   // TODO: implement props
@@ -71,8 +74,8 @@ class NumberOfFanarIssuesState extends Equatable {
     numberOfIssueForToseeNovinHamrahKishCo, numberOfIssueForTabanAtiPardazCo,
     numberOfIssueForZherfAndishanHushmandDibaRayanCo, numberOfIssueForPardazeshEttelaatMaliPartCo,
     numberOfIssueForBankTejaratCo, numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-    numberOfIssueForFanAvaranEtemadRaahbatCo, numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-    numberOfIssueFinTekParsCo, fanarAllNumberOfIssue
+    numberOfIssueForFanAvaranEtemadRaahbarCo, numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+    numberOfIssueForFinTekParsCo, fanarAllNumberOfIssue, fanarRaList
   ];
 
   NumberOfFanarIssuesState copyWith({
@@ -88,10 +91,11 @@ class NumberOfFanarIssuesState extends Equatable {
     List<ResponseModel>? numberOfIssueForPardazeshEttelaatMaliPartCo,
     List<ResponseModel>? numberOfIssueForBankTejaratCo,
     List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-    List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbatCo,
+    List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbarCo,
     List<ResponseModel>? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
     List<ResponseModel>? numberOfIssueFinTekParsCo,
-    int? fanarAllNumberOfIssue
+    int? fanarAllNumberOfIssue,
+    List? fanarRaList
   }) {
     return NumberOfFanarIssuesState(
       status: status ?? this.status,
@@ -106,10 +110,11 @@ class NumberOfFanarIssuesState extends Equatable {
       numberOfIssueForPardazeshEttelaatMaliPartCo: numberOfIssueForPardazeshEttelaatMaliPartCo ?? this.numberOfIssueForPardazeshEttelaatMaliPartCo,
       numberOfIssueForBankTejaratCo: numberOfIssueForBankTejaratCo ?? this.numberOfIssueForBankTejaratCo,
       numberOfIssueForPishgamanEtemadDijitalIraniyanCo: numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? this.numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-      numberOfIssueForFanAvaranEtemadRaahbatCo: numberOfIssueForFanAvaranEtemadRaahbatCo ?? this.numberOfIssueForFanAvaranEtemadRaahbatCo,
+      numberOfIssueForFanAvaranEtemadRaahbarCo: numberOfIssueForFanAvaranEtemadRaahbarCo ?? this.numberOfIssueForFanAvaranEtemadRaahbarCo,
       numberOfIssueForGrouhTejaratElectronicSadraKiyanCo: numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? this.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-      numberOfIssueFinTekParsCo: numberOfIssueFinTekParsCo ?? this.numberOfIssueFinTekParsCo,
+      numberOfIssueFinTekParsCo: numberOfIssueFinTekParsCo ?? this.numberOfIssueForFinTekParsCo,
       fanarAllNumberOfIssue: fanarAllNumberOfIssue ?? this.fanarAllNumberOfIssue,
+      fanarRaList: fanarRaList ?? this.fanarRaList
     );
   }
 }

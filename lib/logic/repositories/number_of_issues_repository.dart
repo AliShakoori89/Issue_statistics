@@ -108,7 +108,7 @@ class NumberOfIssuesRepository {
   }
 
   int getFanarAllNumberOfIssue(
-      int? numberOfIssueForFanAvaranEtemadRaahbatCoCount,
+      int? numberOfIssueForFanAvaranEtemadRaahbarCoCount,
       int? numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount,
       int? numberOfIssueForBankTejaratCoCountFanar,
       int? numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar,
@@ -118,11 +118,11 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForKiyakushanAriyaCoCount,
       int? numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount,
       int? numberOfIssueForRahkarHushmandAmnCoCount,
-      int? numberOfIssuesForToseeTejaratTeniyanCoCount,
-      int? numberOfIssuesForAsrDaneshAfzarCoCount,
-      int? numberOfIssueForgetNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-      int? numberOfIssueForFinTekParsCo) {
-    int sum = numberOfIssueForFanAvaranEtemadRaahbatCoCount! +
+      int? numberOfIssueForToseeTejaratTeniyanCoCount,
+      int? numberOfIssueForAsrDaneshAfzarCoCount,
+      int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
+      int? numberOfIssueForFinTekParsCount) {
+    int sum = numberOfIssueForFanAvaranEtemadRaahbarCoCount! +
         numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount! +
         numberOfIssueForBankTejaratCoCountFanar! +
         numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar! +
@@ -132,12 +132,68 @@ class NumberOfIssuesRepository {
         numberOfIssueForKiyakushanAriyaCoCount! +
         numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount! +
         numberOfIssueForRahkarHushmandAmnCoCount! +
-        numberOfIssuesForToseeTejaratTeniyanCoCount! +
-        numberOfIssuesForAsrDaneshAfzarCoCount! +
-        numberOfIssueForgetNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo! +
-        numberOfIssueForFinTekParsCo!;
+        numberOfIssueForToseeTejaratTeniyanCoCount! +
+        numberOfIssueForAsrDaneshAfzarCoCount! +
+        numberOfIssueForGrouhTejaratElectronicSadraKiyanCount! +
+        numberOfIssueForFinTekParsCount!;
 
     return sum;
+  }
+
+  List fanarRaList (
+      int? numberOfIssueForAsrDaneshAfzarCoCount,
+      int? numberOfIssueForToseeTejaratTeniyanCoCount,
+      int? numberOfIssueForRahkarHushmandAmnCoCount,
+      int? numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount,
+      int? numberOfIssueForKiyakushanAriyaCoCount,
+      int? numberOfIssueForToseeNovinHamrahKishCoCount,
+      int? numberOfIssueForTabanAtiPardazCoCount,
+      int? numberOfIssueForZherfAndishanHushmandDibaRayanCoCount,
+      int? numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar,
+      int? numberOfIssueForBankTejaratCoCountFanar,
+      int? numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount,
+      int? numberOfIssueForFanAvaranEtemadRaahbarCoCount,
+      int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
+      int? numberOfIssueForFinTekParsCount){
+
+    List fanarRaList = [];
+
+    fanarRaList.add(numberOfIssueForAsrDaneshAfzarCoCount);
+    fanarRaList.add(numberOfIssueForToseeTejaratTeniyanCoCount);
+    fanarRaList.add(numberOfIssueForRahkarHushmandAmnCoCount);
+    fanarRaList.add(numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount);
+    fanarRaList.add(numberOfIssueForKiyakushanAriyaCoCount);
+    fanarRaList.add(numberOfIssueForToseeNovinHamrahKishCoCount);
+    fanarRaList.add(numberOfIssueForTabanAtiPardazCoCount);
+    fanarRaList.add(numberOfIssueForZherfAndishanHushmandDibaRayanCoCount);
+    fanarRaList.add(numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar);
+    fanarRaList.add(numberOfIssueForBankTejaratCoCountFanar);
+    fanarRaList.add(numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount);
+    fanarRaList.add(numberOfIssueForFanAvaranEtemadRaahbarCoCount);
+    fanarRaList.add(numberOfIssueForGrouhTejaratElectronicSadraKiyanCount);
+    fanarRaList.add(numberOfIssueForFinTekParsCount);
+
+    return fanarRaList;
+  }
+
+  List pendarRaList (
+      int? numberOfIssueForPardazeshEttelaatMaliPartCoCountPendar,
+      int? numberOfIssueForBankTejaratCoCountPendar,
+      int? numberOfIssueForBankParsianDibaRayanCoCount,
+      int? numberOfIssueForShabakeKaranSamaCoCount,
+      int? numberOfIssueForFanavariVaRahHalhayeHushmandSepehrCoCount,
+      int? numberOfIssueForBankMellatCoCount){
+
+    List pendarRaList = [];
+
+    pendarRaList.add(numberOfIssueForPardazeshEttelaatMaliPartCoCountPendar);
+    pendarRaList.add(numberOfIssueForBankTejaratCoCountPendar);
+    pendarRaList.add(numberOfIssueForBankParsianDibaRayanCoCount);
+    pendarRaList.add(numberOfIssueForShabakeKaranSamaCoCount);
+    pendarRaList.add(numberOfIssueForFanavariVaRahHalhayeHushmandSepehrCoCount);
+    pendarRaList.add(numberOfIssueForBankMellatCoCount);
+
+    return pendarRaList;
   }
 
   //********************************************************************************
