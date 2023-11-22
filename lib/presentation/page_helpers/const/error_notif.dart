@@ -6,12 +6,12 @@ class ErrorNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 100,
       child: Center(
           child: Directionality(
             textDirection: TextDirection.rtl,
-            child: const Text('لطفا از اتصال به اینترنت اطمینان حاصل نمایید!',
+            child: Text('لطفا از اتصال به اینترنت اطمینان حاصل نمایید!',
                 style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.w700,
