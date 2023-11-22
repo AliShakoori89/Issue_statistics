@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:issue_statistics/presentation/page_helpers/app_colors.dart';
+import 'package:issue_statistics/presentation/page_helpers/const/app_colors.dart';
 import '../page_helpers/chart/pendar_daily_issue_bar_chart.dart';
 import '../page_helpers/chart/pendar_daily_issue_pie_chart.dart';
 
@@ -46,18 +46,7 @@ class PendarDailyStatisticChartPage extends StatelessWidget {
             SizedBox(height: height / 50,),
             PendarDailyBarChart(pendarRaList: pendarRaList, pendarIssues: pendarIssues),
             SizedBox(height: height / 4,),
-            Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 5,
-                      blurRadius: 7,
-                      offset: const Offset(0, 3), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: PendarPieDailyChart(pendarRaList: pendarRaList, pendarIssues: pendarIssues,))
+            PendarPieDailyChart(pendarRaList: pendarRaList, pendarIssues: pendarIssues,)
           ],
         ),
       ),

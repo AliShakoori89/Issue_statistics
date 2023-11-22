@@ -8,11 +8,13 @@ import '../bloc/fetch_number_of_issues_pendar/state.dart';
 import '../bloc/set_date_bloc/bloc.dart';
 import '../bloc/set_date_bloc/event.dart';
 import '../bloc/set_date_bloc/state.dart';
-import '../page_helpers/error_notif.dart';
+import '../page_helpers/const/no_data_page.dart';
 import '../page_helpers/fanar_issuer_list.dart';
 import '../page_helpers/pendar_issuer_list.dart';
-import '../page_helpers/shimmer.dart';
+import '../page_helpers/const/shimmer.dart';
 import 'package:intl/intl.dart' as intl;
+
+import 'fanar_daily_statistic_chart_page.dart';
 
 class SeveralDaysStatisticsPage extends StatefulWidget {
   const SeveralDaysStatisticsPage({Key? key}) : super(key: key);
@@ -112,9 +114,9 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
                             pageName: "SeveralDaysStatisticsPage",);
                       }
                       if (state.status.isError) {
-                        return const ErrorNotification();
+                        return Container();
                       } else {
-                        return const ErrorNotification();
+                        return const NoDataPage();
                       }
 
                     });
@@ -133,12 +135,22 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
             );
           }
           if (state.status.isSuccess) {
-            return FanarIssuerList(state: state, height: height);
+            return GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>
+                        FanarDailyStatisticChartPage(
+                          fanarRaList: state.fanarRaList,
+                        )),
+                  );
+                },
+                child: FanarIssuerList(state: state, height: height));
           }
           if (state.status.isError) {
-            return const ErrorNotification();
+            return Container();
           } else {
-            return const ErrorNotification();
+            return Container();
           }
         });
   }

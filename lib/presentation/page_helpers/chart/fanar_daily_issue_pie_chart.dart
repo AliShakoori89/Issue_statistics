@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import '../app_colors.dart';
+import '../const/app_colors.dart';
 
 class FanarPieDailyChart extends StatefulWidget {
   final List fanarRaList;

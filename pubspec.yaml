@@ -81,7 +81,7 @@ flutter:
   assets:
     - assets/main_page_first_container_logo/left_arrow.png
     - assets/main_page_first_container_logo/right_arrow.png
-    - assets/icon_image/
+    - assets/gif/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

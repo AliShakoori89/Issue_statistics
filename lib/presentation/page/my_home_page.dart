@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:issue_statistics/presentation/page/several_days_statistics_page.dart';
-import '../page_helpers/app_colors.dart';
+import '../page_helpers/const/app_colors.dart';
 import 'daily_statistics_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -34,12 +34,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       length: 2,
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
-        // floatingActionButton: FloatingActionButton(
-        //   backgroundColor: AppColors.mainColor,
-        //   child: Icon(Icons.bar_chart),
-        //     onPressed: (){
-        //
-        //     }),
         appBar: AppBar(
           backgroundColor: AppColors.backgroundColor,
           elevation: 0,

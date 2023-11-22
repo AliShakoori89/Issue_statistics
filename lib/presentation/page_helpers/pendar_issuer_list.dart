@@ -34,9 +34,13 @@ class PendarIssuerList extends StatelessWidget {
               MaterialPageRoute(builder: (context) =>
                   PendarDailyStatisticChartPage(
                     pendarRaList: state.pendarRaList,
-                    pendarIssues: int.parse(allIssuePerDate) -
+                    pendarIssues:  pageName == "DailyStatisticsPage"
+                        ? int.parse(allIssuePerDate) -
                         allPendarIssueNumberPerDate -
-                        allFanarIssueNumberPerDate,
+                        allFanarIssueNumberPerDate
+                        : int.parse(allIssueBetweenDays) -
+                        allPendarIssueNumberPerDate -
+                        allFanarIssueNumberPerDate
                   )),
             );
           },

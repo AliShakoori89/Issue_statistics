@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import '../app_colors.dart';
+import '../const/app_colors.dart';
 
 class PendarPieDailyChart extends StatefulWidget {
   final List pendarRaList;
@@ -24,7 +24,6 @@ class PendarPieDailyChartState extends State {
   @override
   Widget build(BuildContext context) {
 
-    print("pendar lisssst            "+pendarRaList.toString());
     return AspectRatio(
       aspectRatio: 1.5,
       child: PieChart(

@@ -10,14 +10,14 @@ import 'package:issue_statistics/presentation/bloc/set_date_bloc/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/event.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
 import 'package:issue_statistics/presentation/page/fanar_daily_statistic_chart_page.dart';
-import 'package:issue_statistics/presentation/page_helpers/error_notif.dart';
+import 'package:issue_statistics/presentation/page_helpers/const/no_data_page.dart';
 import 'package:issue_statistics/presentation/page_helpers/fanar_issuer_list.dart';
 import 'package:issue_statistics/presentation/page_helpers/pendar_issuer_list.dart';
 import '../page_helpers/daily_date_picker_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart' as intl;
 
-import '../page_helpers/shimmer.dart';
+import '../page_helpers/const/shimmer.dart';
 
 class DailyStatisticsPage extends StatefulWidget {
   const DailyStatisticsPage({Key? key}) : super(key: key);
@@ -139,9 +139,9 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                         pageName: "DailyStatisticsPage",);
                   }
                   if (state.status.isError) {
-                    return const ErrorNotification();
+                    return Container();
                   } else {
-                    return const ErrorNotification();
+                    return const NoDataPage();
                   }
 
                 });
@@ -177,9 +177,9 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                       child: FanarIssuerList(state: state, height: height));
                 }
                 if (state.status.isError) {
-                  return const ErrorNotification();
+                  return Container();
                 } else {
-                  return const ErrorNotification();
+                  return Container();
                 }
               });
   }

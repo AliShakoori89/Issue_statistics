@@ -1,8 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../app_colors.dart';
-import '../indicator.dart';
+import '../const/app_colors.dart';
+import '../const/indicator.dart';
 
 class _BarChart extends StatelessWidget {
   final List fanarRaList;
@@ -21,7 +21,7 @@ class _BarChart extends StatelessWidget {
           barGroups: barGroups,
           gridData: const FlGridData(show: false),
           alignment: BarChartAlignment.spaceAround,
-          maxY: 8000,
+          maxY: 15000,
         ),
       ),
     );

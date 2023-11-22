@@ -11,6 +11,7 @@ import '../bloc/fetch_number_of_issues_fanar/bloc.dart';
 import '../bloc/fetch_number_of_issues_fanar/event.dart';
 import '../bloc/fetch_number_of_issues_pendar/bloc.dart';
 import '../bloc/fetch_number_of_issues_pendar/event.dart';
+import 'const/app_colors.dart';
 
 
 class SeveralDatePickerCalendar extends StatefulWidget {
@@ -23,7 +24,7 @@ class SeveralDatePickerCalendar extends StatefulWidget {
 class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
 
   String label = '';
-  JalaliRange? picked ;
+  JalaliRange picked =  JalaliRange(start: Jalali.now(), end: Jalali.now());
   String selectedDate = "";
 
   String month = "${Jalali.now().year}-${Jalali.now().month}";
@@ -65,40 +66,54 @@ class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
   GestureDetector optionalDatePicker(BuildContext context, double height, double width) {
     return GestureDetector(
       onTap: () async {
-        picked = await showPersianDateRangePicker(
+        picked = (await showPersianDateRangePicker(
           context: context,
+
           initialDateRange: JalaliRange(
             start: Jalali(1402, 8, 15),
             end: Jalali(1402, 8, 18),
           ),
           firstDate: Jalali(1402, 1),
           lastDate: Jalali(1450, 9),
-        );
+          builder: (BuildContext context, Widget? child) {
+            return Theme(
+              data: Theme.of(context).copyWith(
+                colorScheme: const ColorScheme.light(
+                  primary: AppColors.contentColorLowPurple, // header background color
+                  onPrimary: Colors.white, // header text color
+                  onSurface: AppColors.contentColorBlack,
+                  surface: AppColors.dateTimePickerColor// body text color
+                ),
+              ),
+              child: child!,
+            );
+          }
+        ))!;
 
         setState(() {
           label =
-          "${picked?.start.toJalaliDateTime() ?? ""} ${picked?.end.toJalaliDateTime() ?? ""}";
+          "${picked.start.toJalaliDateTime() ?? ""} ${picked.end.toJalaliDateTime() ?? ""}";
           // print("label                               :"+picked?.start.day);
         });
 
-        if (picked?.start.month.toString().length != 1) {
-          if (picked?.start.day.toString().length != 1) {
-            month = "${picked?.start.year}-${picked?.start.month}";
-            date = "${picked?.start.year}-${picked?.start.month}-${picked?.start.day}";
+        if (picked.start.month.toString().length != 1) {
+          if (picked.start.day.toString().length != 1) {
+            month = "${picked.start.year}-${picked.start.month}";
+            date = "${picked.start.year}-${picked.start.month}-${picked.start.day}";
           } else {
-            month = "${picked?.start.year}-${picked?.start.month}";
+            month = "${picked.start.year}-${picked.start.month}";
             date =
-            "${picked?.start.year}-${picked?.start.month}-0${picked?.start.day}";
+            "${picked.start.year}-${picked.start.month}-0${picked.start.day}";
           }
         } else {
-          if (picked?.start.day.toString().length != 1) {
-            month = "${picked?.start.year}-0${picked?.start.month}";
+          if (picked.start.day.toString().length != 1) {
+            month = "${picked.start.year}-0${picked.start.month}";
             date =
-            "${picked?.start.year}-0${picked?.start.month}-${picked?.start.day}";
+            "${picked.start.year}-0${picked.start.month}-${picked.start.day}";
           } else {
-            month = "${picked?.start.year}-0${picked?.start.month}";
+            month = "${picked.start.year}-0${picked.start.month}";
             date =
-            "${picked?.start.year}-0${picked?.start.month}-0${picked?.start.day}";
+            "${picked.start.year}-0${picked.start.month}-0${picked.start.day}";
           }
         }
 
@@ -109,24 +124,24 @@ class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
 
         String gregorianStartMonth = "${j2g1Start.year}/${j2g1Start.month}";
 
-        if (picked?.end.month.toString().length != 1) {
-          if (picked?.end.day.toString().length != 1) {
-            month = "${picked?.end.year}-${picked?.end.month}";
-            date = "${picked?.end.year}-${picked?.end.month}-${picked?.end.day}";
+        if (picked.end.month.toString().length != 1) {
+          if (picked.end.day.toString().length != 1) {
+            month = "${picked.end.year}-${picked.end.month}";
+            date = "${picked.end.year}-${picked.end.month}-${picked.end.day}";
           } else {
-            month = "${picked?.end.year}-${picked?.end.month}";
+            month = "${picked.end.year}-${picked.end.month}";
             date =
-            "${picked?.end.year}-${picked?.end.month}-0${picked?.end.day}";
+            "${picked.end.year}-${picked.end.month}-0${picked.end.day}";
           }
         } else {
-          if (picked?.end.day.toString().length != 1) {
-            month = "${picked?.end.year}-0${picked?.end.month}";
+          if (picked.end.day.toString().length != 1) {
+            month = "${picked.end.year}-0${picked.end.month}";
             date =
-            "${picked?.end.year}-0${picked?.end.month}-${picked?.end.day}";
+            "${picked.end.year}-0${picked.end.month}-${picked.end.day}";
           } else {
-            month = "${picked?.end.year}-0${picked?.end.month}";
+            month = "${picked.end.year}-0${picked.end.month}";
             date =
-            "${picked?.end.year}-0${picked?.end.month}-0${picked?.end.day}";
+            "${picked.end.year}-0${picked.end.month}-0${picked.end.day}";
           }
         }
 

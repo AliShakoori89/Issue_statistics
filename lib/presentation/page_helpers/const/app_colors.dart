@@ -26,4 +26,7 @@ class AppColors{
   static const Color mainTextColor1 = Colors.white;
   static const Color mainTextColor2 = Colors.white70;
   static const Color mainTextColor3 = Colors.white38;
+
+  static const Color dateTimePickerColor = Color(0xffbb86fc);
+
 }
