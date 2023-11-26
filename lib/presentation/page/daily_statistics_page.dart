@@ -155,6 +155,8 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
     return BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState>(
                   builder: (context, state) {
 
+                    print(state.fanarRaList);
+
                 if (state.status.isLoading) {
                   return CustomShimmer(
                     width: width,
@@ -163,9 +165,6 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                   );
                 }
                 if (state.status.isSuccess) {
-
-                  print(state.fanarRaList);
-
                   return GestureDetector(
                       onTap: (){
                         Navigator.push(
@@ -179,8 +178,10 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                       child: FanarIssuerList(state: state, height: height));
                 }
                 if (state.status.isError) {
+                  print("state.status.isError");
                   return Container();
                 } else {
+                  print("state");
                   return Container();
                 }
               });

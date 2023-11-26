@@ -194,7 +194,9 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForBankParsianDibaRayanCoCount,
       int? numberOfIssueForShabakeKaranSamaCoCount,
       int? numberOfIssueForFanavariVaRahHalhayeHushmandSepehrCoCount,
-      int? numberOfIssueForBankMellatCoCount){
+      int? numberOfIssueForBankMellatCoCount,
+      int? numberOfIssueForTataCo,
+      int? numberOfIssueForSimorghTejaratCo){
 
     List pendarRaList = [];
 
@@ -204,6 +206,8 @@ class NumberOfIssuesRepository {
     pendarRaList.add(numberOfIssueForShabakeKaranSamaCoCount);
     pendarRaList.add(numberOfIssueForFanavariVaRahHalhayeHushmandSepehrCoCount);
     pendarRaList.add(numberOfIssueForBankMellatCoCount);
+    pendarRaList.add(numberOfIssueForTataCo);
+    pendarRaList.add(numberOfIssueForSimorghTejaratCo);
 
     return pendarRaList;
   }
@@ -252,19 +256,37 @@ class NumberOfIssuesRepository {
     return response;
   }
 
+  FutureOr<dynamic> getNumberOfIssueForTataCo(String startDate, String endDate) async {
+    var body = jsonEncode({"reportkey":"CQnD7n7pso7BHamsszIkeclglX4=","customercode":"14003888568",
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
+    var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
+    return response;
+  }
+
+  FutureOr<dynamic> getNumberOfIssueForSimorghTejaratCo(String startDate, String endDate) async {
+    var body = jsonEncode({"reportkey":"t0ndZfTHBnruM4a2XkXdQWw350I=","customercode":"10320747147",
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
+    var response = await api.post("https://api.pki.co.ir/api/IssuingReport", body);
+    return response;
+  }
+
   int getPendarAllNumberOfIssue(
       int? numberOfIssueForPardazeshMaliPartCoCountPendar,
       int? numberOfIssueForBankTejaratCoCountPendar,
       int? numberOfIssueForBankParsiyanCoCount,
       int? numberOfIssueForShabakeKaranSamaCoCount,
       int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCoCount,
-      int? numberOfIssueForBankMellatCount){
+      int? numberOfIssueForBankMellatCount,
+      int? numberOfIssueForTataCo,
+      int? numberOfIssueForSimorghTejaratCo){
     int sum = numberOfIssueForPardazeshMaliPartCoCountPendar! +
         numberOfIssueForBankTejaratCoCountPendar! +
         numberOfIssueForBankParsiyanCoCount! +
         numberOfIssueForShabakeKaranSamaCoCount! +
         numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCoCount! +
-        numberOfIssueForBankMellatCount!;
+        numberOfIssueForBankMellatCount! +
+        numberOfIssueForTataCo! +
+        numberOfIssueForSimorghTejaratCo!;
 
     return sum;
   }

@@ -19,6 +19,8 @@ class NumberOfIssuesPendarState extends Equatable {
     int? numberOfIssueForBankParsiyanCo,
     int? numberOfIssueForShabakeKaranSamaCo,
     int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
+    int? numberOfIssueForTataCo,
+    int? numberOfIssueForSimorghTejaratCo,
     int? numberOfIssueForBankMellat,
     int? pendarAllNumberOfIssue,
     List? pendarRaList
@@ -29,6 +31,8 @@ class NumberOfIssuesPendarState extends Equatable {
         numberOfIssueForShabakeKaranSamaCo = numberOfIssueForShabakeKaranSamaCo ?? 0,
         numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ?? 0,
         numberOfIssueForBankMellat = numberOfIssueForBankMellat ?? 0,
+        numberOfIssueForTataCo = numberOfIssueForTataCo ?? 0,
+        numberOfIssueForSimorghTejaratCo = numberOfIssueForSimorghTejaratCo ?? 0,
         pendarAllNumberOfIssue = pendarAllNumberOfIssue ?? 0,
         pendarRaList = pendarRaList ?? const [];
 
@@ -39,6 +43,8 @@ class NumberOfIssuesPendarState extends Equatable {
   final int numberOfIssueForShabakeKaranSamaCo;
   final int numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo;
   final int numberOfIssueForBankMellat;
+  final int numberOfIssueForTataCo;
+  final int numberOfIssueForSimorghTejaratCo;
   final int pendarAllNumberOfIssue;
   final List pendarRaList;
 
@@ -48,7 +54,8 @@ class NumberOfIssuesPendarState extends Equatable {
   List<Object> get props => [status, numberOfIssueForPardazeshMaliPartCo,
     numberOfIssueForBankTejaratCo, numberOfIssueForBankParsiyanCo,
     numberOfIssueForShabakeKaranSamaCo, numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
-    numberOfIssueForBankMellat, pendarAllNumberOfIssue, pendarRaList
+    numberOfIssueForBankMellat, numberOfIssueForTataCo, numberOfIssueForSimorghTejaratCo,
+    pendarAllNumberOfIssue, pendarRaList
   ];
 
   NumberOfIssuesPendarState copyWith({
@@ -59,6 +66,8 @@ class NumberOfIssuesPendarState extends Equatable {
     int? numberOfIssueForShabakeKaranSamaCo,
     int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
     int? numberOfIssueForBankMellat,
+    int? numberOfIssueForTataCo,
+    int? numberOfIssueForSimorghTejaratCo,
     int? pendarAllNumberOfIssue,
     List? pendarRaList
 
@@ -71,6 +80,8 @@ class NumberOfIssuesPendarState extends Equatable {
       numberOfIssueForShabakeKaranSamaCo: numberOfIssueForShabakeKaranSamaCo ?? this.numberOfIssueForShabakeKaranSamaCo,
       numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo: numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ?? this.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
       numberOfIssueForBankMellat: numberOfIssueForBankMellat ?? this.numberOfIssueForBankMellat,
+      numberOfIssueForTataCo: numberOfIssueForTataCo ?? this.numberOfIssueForTataCo,
+      numberOfIssueForSimorghTejaratCo: numberOfIssueForSimorghTejaratCo ?? this.numberOfIssueForSimorghTejaratCo,
       pendarAllNumberOfIssue: pendarAllNumberOfIssue ?? this.pendarAllNumberOfIssue,
       pendarRaList: pendarRaList ?? this.pendarRaList
     );

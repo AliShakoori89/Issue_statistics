@@ -28,6 +28,7 @@ class NumberOfFanarIssuesState extends Equatable {
     int? numberOfIssueForFanAvaranEtemadRaahbarCo,
     int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
     int? numberOfIssueFinTekParsCo,
+    int? numberOfIssueForTejaratElectronicRahbordEidealAminCo,
     int? fanarAllNumberOfIssue,
     List? fanarRaList
   }):
@@ -45,6 +46,7 @@ class NumberOfFanarIssuesState extends Equatable {
         numberOfIssueForFanAvaranEtemadRaahbarCo = numberOfIssueForFanAvaranEtemadRaahbarCo ?? 0,
         numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? 0,
         numberOfIssueForFinTekParsCo = numberOfIssueFinTekParsCo ?? 0,
+        numberOfIssueForTejaratElectronicRahbordEidealAminCo = numberOfIssueForTejaratElectronicRahbordEidealAminCo ?? 0,
         fanarAllNumberOfIssue = fanarAllNumberOfIssue ?? 0,
         fanarRaList = fanarRaList ?? const [];
 
@@ -63,6 +65,7 @@ class NumberOfFanarIssuesState extends Equatable {
   final int numberOfIssueForFanAvaranEtemadRaahbarCo;
   final int numberOfIssueForGrouhTejaratElectronicSadraKiyanCo;
   final int numberOfIssueForFinTekParsCo;
+  final int numberOfIssueForTejaratElectronicRahbordEidealAminCo;
   final int fanarAllNumberOfIssue;
   final List fanarRaList;
 
@@ -75,7 +78,8 @@ class NumberOfFanarIssuesState extends Equatable {
     numberOfIssueForZherfAndishanHushmandDibaRayanCo, numberOfIssueForPardazeshEttelaatMaliPartCo,
     numberOfIssueForBankTejaratCo, numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
     numberOfIssueForFanAvaranEtemadRaahbarCo, numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-    numberOfIssueForFinTekParsCo, fanarAllNumberOfIssue, fanarRaList
+    numberOfIssueForFinTekParsCo, numberOfIssueForTejaratElectronicRahbordEidealAminCo,
+    fanarAllNumberOfIssue, fanarRaList
   ];
 
   NumberOfFanarIssuesState copyWith({
@@ -114,6 +118,7 @@ class NumberOfFanarIssuesState extends Equatable {
       numberOfIssueForFanAvaranEtemadRaahbarCo: numberOfIssueForFanAvaranEtemadRaahbarCo ?? this.numberOfIssueForFanAvaranEtemadRaahbarCo,
       numberOfIssueForGrouhTejaratElectronicSadraKiyanCo: numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? this.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
       numberOfIssueFinTekParsCo: numberOfIssueFinTekParsCo ?? this.numberOfIssueForFinTekParsCo,
+      numberOfIssueForTejaratElectronicRahbordEidealAminCo: numberOfIssueForTejaratElectronicRahbordEidealAminCo ?? this.numberOfIssueForTejaratElectronicRahbordEidealAminCo,
       fanarAllNumberOfIssue: fanarAllNumberOfIssue ?? this.fanarAllNumberOfIssue,
       fanarRaList: fanarRaList ?? this.fanarRaList
     );

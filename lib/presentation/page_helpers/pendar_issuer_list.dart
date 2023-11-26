@@ -139,6 +139,32 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      Text( state.numberOfIssueForTataCo.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("بانک تجارت  - شزکت تاتا",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text( state.numberOfIssueForSimorghTejaratCo.toString(),
+                        style: const TextStyle(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: height / 80,
+                      ),
+                      const Text("بانک تجارت - سیمرغ تجارت",
+                          style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       pageName == "DailyStatisticsPage"
                           ? Text("${int.parse(allIssuePerDate) -
                           allPendarIssueNumberPerDate -

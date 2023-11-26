@@ -92,10 +92,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForToseeNovinHamrahKishCo.isNotEmpty
-                      ? state.numberOfIssueForToseeNovinHamrahKishCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForToseeNovinHamrahKishCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -108,10 +105,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForTabanAtiPardazCo.isNotEmpty
-                      ? state.numberOfIssueForTabanAtiPardazCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForTabanAtiPardazCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -124,10 +118,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForZherfAndishanHushmandDibaRayanCo.isNotEmpty
-                      ? state.numberOfIssueForZherfAndishanHushmandDibaRayanCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForZherfAndishanHushmandDibaRayanCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -140,10 +131,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForPardazeshEttelaatMaliPartCo.isNotEmpty
-                      ? state.numberOfIssueForPardazeshEttelaatMaliPartCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForPardazeshEttelaatMaliPartCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -156,10 +144,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForBankTejaratCo.isNotEmpty
-                      ? state.numberOfIssueForBankTejaratCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForBankTejaratCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -172,10 +157,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForPishgamanEtemadDijitalIraniyanCo.isNotEmpty
-                      ? state.numberOfIssueForPishgamanEtemadDijitalIraniyanCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForPishgamanEtemadDijitalIraniyanCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -189,10 +171,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForFanAvaranEtemadRaahbarCo.isNotEmpty
-                      ? state.numberOfIssueForFanAvaranEtemadRaahbarCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForFanAvaranEtemadRaahbarCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -205,10 +184,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo.isNotEmpty
-                      ? state.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -221,16 +197,26 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForFinTekParsCo.isNotEmpty
-                      ? state.numberOfIssueForFinTekParsCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForFinTekParsCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
                   height: height / 80,
                 ),
                 const Text("شرکت فین و تک پارس",
+                    style: TextStyle(color: Colors.black))
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(state.numberOfIssueForTejaratElectronicRahbordEidealAminCo.toString(),
+                  style: const TextStyle(color: Colors.black),
+                ),
+                SizedBox(
+                  height: height / 80,
+                ),
+                const Text("شرکت تجارت الکترونیک راهبرد ایده آل امین",
                     style: TextStyle(color: Colors.black))
               ],
             ),
