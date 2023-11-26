@@ -7,7 +7,7 @@ class ErrorNotification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const SizedBox(
-      height: 100,
+      height: 50,
       child: Center(
           child: Directionality(
             textDirection: TextDirection.rtl,
@@ -15,7 +15,7 @@ class ErrorNotification extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.grey,
                     fontWeight: FontWeight.w700,
-                    fontSize: 19)),
+                    fontSize: 15)),
           )),
     );;
   }

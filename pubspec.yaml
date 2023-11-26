@@ -60,6 +60,8 @@ dev_dependencies:
   hive_flutter: ^1.1.0
   shimmer: ^3.0.0
   fl_chart: ^0.64.0
+  syncfusion_flutter_charts: ^23.2.4
+  numberpicker: ^2.1.2
 
 
 

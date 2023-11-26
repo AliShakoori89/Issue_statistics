@@ -14,31 +14,31 @@ class NumberOfIssuesPendarState extends Equatable {
 
   const NumberOfIssuesPendarState({
     this.status = NumberOfIssuesPendarStatus.initial,
-    List<ResponseModel>? numberOfIssueForPardazeshMaliPartCo,
-    List<ResponseModel>? numberOfIssueForBankTejaratCo,
-    List<ResponseModel>? numberOfIssueForBankParsiyanCo,
-    List<ResponseModel>? numberOfIssueForShabakeKaranSamaCo,
-    List<ResponseModel>? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
-    List<ResponseModel>? numberOfIssueForBankMellat,
+    int? numberOfIssueForPardazeshMaliPartCo,
+    int? numberOfIssueForBankTejaratCo,
+    int? numberOfIssueForBankParsiyanCo,
+    int? numberOfIssueForShabakeKaranSamaCo,
+    int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
+    int? numberOfIssueForBankMellat,
     int? pendarAllNumberOfIssue,
     List? pendarRaList
   }):
-        numberOfIssueForPardazeshMaliPartCo = numberOfIssueForPardazeshMaliPartCo ?? const [],
-        numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? const [],
-        numberOfIssueForBankParsiyanCo = numberOfIssueForBankParsiyanCo ?? const [],
-        numberOfIssueForShabakeKaranSamaCo = numberOfIssueForShabakeKaranSamaCo ?? const [],
-        numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ?? const [],
-        numberOfIssueForBankMellat = numberOfIssueForBankMellat ?? const [],
+        numberOfIssueForPardazeshMaliPartCo = numberOfIssueForPardazeshMaliPartCo ?? 0,
+        numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? 0,
+        numberOfIssueForBankParsiyanCo = numberOfIssueForBankParsiyanCo ?? 0,
+        numberOfIssueForShabakeKaranSamaCo = numberOfIssueForShabakeKaranSamaCo ?? 0,
+        numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ?? 0,
+        numberOfIssueForBankMellat = numberOfIssueForBankMellat ?? 0,
         pendarAllNumberOfIssue = pendarAllNumberOfIssue ?? 0,
         pendarRaList = pendarRaList ?? const [];
 
   final NumberOfIssuesPendarStatus status;
-  final List<ResponseModel> numberOfIssueForPardazeshMaliPartCo;
-  final List<ResponseModel> numberOfIssueForBankTejaratCo;
-  final List<ResponseModel> numberOfIssueForBankParsiyanCo;
-  final List<ResponseModel> numberOfIssueForShabakeKaranSamaCo;
-  final List<ResponseModel> numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo;
-  final List<ResponseModel> numberOfIssueForBankMellat;
+  final int numberOfIssueForPardazeshMaliPartCo;
+  final int numberOfIssueForBankTejaratCo;
+  final int numberOfIssueForBankParsiyanCo;
+  final int numberOfIssueForShabakeKaranSamaCo;
+  final int numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo;
+  final int numberOfIssueForBankMellat;
   final int pendarAllNumberOfIssue;
   final List pendarRaList;
 
@@ -53,12 +53,12 @@ class NumberOfIssuesPendarState extends Equatable {
 
   NumberOfIssuesPendarState copyWith({
     NumberOfIssuesPendarStatus? status,
-    List<ResponseModel>? numberOfIssueForPardazeshMaliPartCo,
-    List<ResponseModel>? numberOfIssueForBankTejaratCo,
-    List<ResponseModel>? numberOfIssueForBankParsiyanCo,
-    List<ResponseModel>? numberOfIssueForShabakeKaranSamaCo,
-    List<ResponseModel>? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
-    List<ResponseModel>? numberOfIssueForBankMellat,
+    int? numberOfIssueForPardazeshMaliPartCo,
+    int? numberOfIssueForBankTejaratCo,
+    int? numberOfIssueForBankParsiyanCo,
+    int? numberOfIssueForShabakeKaranSamaCo,
+    int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo,
+    int? numberOfIssueForBankMellat,
     int? pendarAllNumberOfIssue,
     List? pendarRaList
 

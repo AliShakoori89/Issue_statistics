@@ -119,6 +119,8 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
 
                   int allPendarIssueNumberPerDate = state.pendarAllNumberOfIssue;
 
+                  print(state.pendarRaList);
+
                   if (state.status.isLoading) {
                     return CustomShimmer(
                       width: width,

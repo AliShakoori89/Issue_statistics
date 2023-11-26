@@ -27,10 +27,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForAsrDaneshAfzarCo.isNotEmpty
-                      ? state.numberOfIssueForAsrDaneshAfzarCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForAsrDaneshAfzarCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -43,10 +40,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForToseeTejaratTeniyanCo.isNotEmpty
-                      ? state.numberOfIssueForToseeTejaratTeniyanCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForToseeTejaratTeniyanCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -59,10 +53,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForRahkarHushmandAmnCo.isNotEmpty
-                      ? state.numberOfIssueForRahkarHushmandAmnCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForRahkarHushmandAmnCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -75,10 +66,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForToseeEttelaatVaErtebatatITSazaCo.isNotEmpty
-                      ? state.numberOfIssueForToseeEttelaatVaErtebatatITSazaCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForToseeEttelaatVaErtebatatITSazaCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(
@@ -91,10 +79,7 @@ class FanarIssuerList extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  state.numberOfIssueForKiyakushanAriyaCo.isNotEmpty
-                      ? state.numberOfIssueForKiyakushanAriyaCo[0].count.toString()
-                      : 0.toString(),
+                Text(state.numberOfIssueForKiyakushanAriyaCo.toString(),
                   style: const TextStyle(color: Colors.black),
                 ),
                 SizedBox(

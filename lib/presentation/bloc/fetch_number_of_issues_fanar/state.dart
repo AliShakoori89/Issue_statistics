@@ -14,55 +14,55 @@ class NumberOfFanarIssuesState extends Equatable {
 
   const NumberOfFanarIssuesState({
     this.status = NumberOfIssuesFanarStatus.initial,
-    List<ResponseModel>? numberOfIssueForAsrDaneshAfzarCo,
-    List<ResponseModel>? numberOfIssueForToseeTejaratTeniyanCo,
-    List<ResponseModel>? numberOfIssueForRahkarHushmandAmnCo,
-    List<ResponseModel>? numberOfIssueForToseeEttelaatVaErtebatatITSazaCo,
-    List<ResponseModel>? numberOfIssueForKiyakushanAriyaCo,
-    List<ResponseModel>? numberOfIssueForToseeNovinHamrahKishCo,
-    List<ResponseModel>? numberOfIssueForTabanAtiPardazCo,
-    List<ResponseModel>? numberOfIssueForZherfAndishanHushmandDibaRayanCo,
-    List<ResponseModel>? numberOfIssueForPardazeshEttelaatMaliPartCo,
-    List<ResponseModel>? numberOfIssueForBankTejaratCo,
-    List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-    List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbarCo,
-    List<ResponseModel>? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-    List<ResponseModel>? numberOfIssueFinTekParsCo,
+    int? numberOfIssueForAsrDaneshAfzarCo,
+    int? numberOfIssueForToseeTejaratTeniyanCo,
+    int? numberOfIssueForRahkarHushmandAmnCo,
+    int? numberOfIssueForToseeEttelaatVaErtebatatITSazaCo,
+    int? numberOfIssueForKiyakushanAriyaCo,
+    int? numberOfIssueForToseeNovinHamrahKishCo,
+    int? numberOfIssueForTabanAtiPardazCo,
+    int? numberOfIssueForZherfAndishanHushmandDibaRayanCo,
+    int? numberOfIssueForPardazeshEttelaatMaliPartCo,
+    int? numberOfIssueForBankTejaratCo,
+    int? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
+    int? numberOfIssueForFanAvaranEtemadRaahbarCo,
+    int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+    int? numberOfIssueFinTekParsCo,
     int? fanarAllNumberOfIssue,
     List? fanarRaList
   }):
-        numberOfIssueForAsrDaneshAfzarCo = numberOfIssueForAsrDaneshAfzarCo ?? const [],
-        numberOfIssueForToseeTejaratTeniyanCo = numberOfIssueForToseeTejaratTeniyanCo ?? const [],
-        numberOfIssueForRahkarHushmandAmnCo = numberOfIssueForRahkarHushmandAmnCo ?? const [],
-        numberOfIssueForToseeEttelaatVaErtebatatITSazaCo = numberOfIssueForToseeEttelaatVaErtebatatITSazaCo ?? const [],
-        numberOfIssueForKiyakushanAriyaCo = numberOfIssueForKiyakushanAriyaCo ?? const [],
-        numberOfIssueForToseeNovinHamrahKishCo = numberOfIssueForToseeNovinHamrahKishCo ?? const [],
-        numberOfIssueForTabanAtiPardazCo = numberOfIssueForTabanAtiPardazCo ?? const [],
-        numberOfIssueForZherfAndishanHushmandDibaRayanCo = numberOfIssueForZherfAndishanHushmandDibaRayanCo ?? const [],
-        numberOfIssueForPardazeshEttelaatMaliPartCo = numberOfIssueForPardazeshEttelaatMaliPartCo ?? const [],
-        numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? const [],
-        numberOfIssueForPishgamanEtemadDijitalIraniyanCo = numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? const [],
-        numberOfIssueForFanAvaranEtemadRaahbarCo = numberOfIssueForFanAvaranEtemadRaahbarCo ?? const [],
-        numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? const [],
-        numberOfIssueForFinTekParsCo = numberOfIssueFinTekParsCo ?? const [],
+        numberOfIssueForAsrDaneshAfzarCo = numberOfIssueForAsrDaneshAfzarCo ?? 0,
+        numberOfIssueForToseeTejaratTeniyanCo = numberOfIssueForToseeTejaratTeniyanCo ?? 0,
+        numberOfIssueForRahkarHushmandAmnCo = numberOfIssueForRahkarHushmandAmnCo ?? 0,
+        numberOfIssueForToseeEttelaatVaErtebatatITSazaCo = numberOfIssueForToseeEttelaatVaErtebatatITSazaCo ?? 0,
+        numberOfIssueForKiyakushanAriyaCo = numberOfIssueForKiyakushanAriyaCo ?? 0,
+        numberOfIssueForToseeNovinHamrahKishCo = numberOfIssueForToseeNovinHamrahKishCo ?? 0,
+        numberOfIssueForTabanAtiPardazCo = numberOfIssueForTabanAtiPardazCo ?? 0,
+        numberOfIssueForZherfAndishanHushmandDibaRayanCo = numberOfIssueForZherfAndishanHushmandDibaRayanCo ?? 0,
+        numberOfIssueForPardazeshEttelaatMaliPartCo = numberOfIssueForPardazeshEttelaatMaliPartCo ?? 0,
+        numberOfIssueForBankTejaratCo = numberOfIssueForBankTejaratCo ?? 0,
+        numberOfIssueForPishgamanEtemadDijitalIraniyanCo = numberOfIssueForPishgamanEtemadDijitalIraniyanCo ?? 0,
+        numberOfIssueForFanAvaranEtemadRaahbarCo = numberOfIssueForFanAvaranEtemadRaahbarCo ?? 0,
+        numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? 0,
+        numberOfIssueForFinTekParsCo = numberOfIssueFinTekParsCo ?? 0,
         fanarAllNumberOfIssue = fanarAllNumberOfIssue ?? 0,
         fanarRaList = fanarRaList ?? const [];
 
   final NumberOfIssuesFanarStatus status;
-  final List<ResponseModel> numberOfIssueForAsrDaneshAfzarCo;
-  final List<ResponseModel> numberOfIssueForToseeTejaratTeniyanCo;
-  final List<ResponseModel> numberOfIssueForRahkarHushmandAmnCo;
-  final List<ResponseModel> numberOfIssueForToseeEttelaatVaErtebatatITSazaCo;
-  final List<ResponseModel> numberOfIssueForKiyakushanAriyaCo;
-  final List<ResponseModel> numberOfIssueForToseeNovinHamrahKishCo;
-  final List<ResponseModel> numberOfIssueForTabanAtiPardazCo;
-  final List<ResponseModel> numberOfIssueForZherfAndishanHushmandDibaRayanCo;
-  final List<ResponseModel> numberOfIssueForPardazeshEttelaatMaliPartCo;
-  final List<ResponseModel> numberOfIssueForBankTejaratCo;
-  final List<ResponseModel> numberOfIssueForPishgamanEtemadDijitalIraniyanCo;
-  final List<ResponseModel> numberOfIssueForFanAvaranEtemadRaahbarCo;
-  final List<ResponseModel> numberOfIssueForGrouhTejaratElectronicSadraKiyanCo;
-  final List<ResponseModel> numberOfIssueForFinTekParsCo;
+  final int numberOfIssueForAsrDaneshAfzarCo;
+  final int numberOfIssueForToseeTejaratTeniyanCo;
+  final int numberOfIssueForRahkarHushmandAmnCo;
+  final int numberOfIssueForToseeEttelaatVaErtebatatITSazaCo;
+  final int numberOfIssueForKiyakushanAriyaCo;
+  final int numberOfIssueForToseeNovinHamrahKishCo;
+  final int numberOfIssueForTabanAtiPardazCo;
+  final int numberOfIssueForZherfAndishanHushmandDibaRayanCo;
+  final int numberOfIssueForPardazeshEttelaatMaliPartCo;
+  final int numberOfIssueForBankTejaratCo;
+  final int numberOfIssueForPishgamanEtemadDijitalIraniyanCo;
+  final int numberOfIssueForFanAvaranEtemadRaahbarCo;
+  final int numberOfIssueForGrouhTejaratElectronicSadraKiyanCo;
+  final int numberOfIssueForFinTekParsCo;
   final int fanarAllNumberOfIssue;
   final List fanarRaList;
 
@@ -80,20 +80,21 @@ class NumberOfFanarIssuesState extends Equatable {
 
   NumberOfFanarIssuesState copyWith({
     NumberOfIssuesFanarStatus? status,
-    List<ResponseModel>? numberOfIssueForAsrDaneshAfzarCo,
-    List<ResponseModel>? numberOfIssueForToseeTejaratTeniyanCo,
-    List<ResponseModel>? numberOfIssueForRahkarHushmandAmnCo,
-    List<ResponseModel>? numberOfIssueForToseeEttelaatVaErtebatatITSazaCo,
-    List<ResponseModel>? numberOfIssueForKiyakushanAriyaCo,
-    List<ResponseModel>? numberOfIssueForToseeNovinHamrahKishCo,
-    List<ResponseModel>? numberOfIssueForTabanAtiPardazCo,
-    List<ResponseModel>? numberOfIssueForZherfAndishanHushmandDibaRayanCo,
-    List<ResponseModel>? numberOfIssueForPardazeshEttelaatMaliPartCo,
-    List<ResponseModel>? numberOfIssueForBankTejaratCo,
-    List<ResponseModel>? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
-    List<ResponseModel>? numberOfIssueForFanAvaranEtemadRaahbarCo,
-    List<ResponseModel>? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-    List<ResponseModel>? numberOfIssueFinTekParsCo,
+    int? numberOfIssueForAsrDaneshAfzarCo,
+    int? numberOfIssueForToseeTejaratTeniyanCo,
+    int? numberOfIssueForRahkarHushmandAmnCo,
+    int? numberOfIssueForToseeEttelaatVaErtebatatITSazaCo,
+    int? numberOfIssueForKiyakushanAriyaCo,
+    int? numberOfIssueForToseeNovinHamrahKishCo,
+    int? numberOfIssueForTabanAtiPardazCo,
+    int? numberOfIssueForZherfAndishanHushmandDibaRayanCo,
+    int? numberOfIssueForPardazeshEttelaatMaliPartCo,
+    int? numberOfIssueForBankTejaratCo,
+    int? numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
+    int? numberOfIssueForFanAvaranEtemadRaahbarCo,
+    int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+    int? numberOfIssueFinTekParsCo,
+    int? numberOfIssueForTejaratElectronicRahbordEidealAminCo,
     int? fanarAllNumberOfIssue,
     List? fanarRaList
   }) {

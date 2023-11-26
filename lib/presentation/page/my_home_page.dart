@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:issue_statistics/presentation/page/several_days_statistics_page.dart';
 import '../page_helpers/const/app_colors.dart';
 import 'daily_statistics_page.dart';
+import 'monthly_statistic_chart_page.dart';
 
 class MyHomePage extends StatefulWidget {
 
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 2, vsync: this);
+    tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -31,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 3,
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         appBar: AppBar(
@@ -73,6 +74,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     Tab(
                       text: "آمار چند روزه",
                     ),
+                    Tab(
+                      text: "نمودار ماهانه",
+                    ),
                   ],
                 ),
               ),
@@ -87,6 +91,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
             ),
             Center(
               child: SeveralDaysStatisticsPage(),
+            ),
+            Center(
+              child: MonthlyChart(),
             ),
           ],
         ),

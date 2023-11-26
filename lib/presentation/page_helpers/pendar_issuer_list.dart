@@ -61,12 +61,7 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state.numberOfIssueForPardazeshMaliPartCo
-                            .isNotEmpty
-                            ? state.numberOfIssueForPardazeshMaliPartCo[0]
-                            .count.toString()
-                            : 0.toString(),
+                      Text( state.numberOfIssueForPardazeshMaliPartCo.toString(),
                         style: const TextStyle(color: Colors.black),
                       ),
                       SizedBox(
@@ -79,11 +74,7 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state.numberOfIssueForBankTejaratCo.isNotEmpty
-                            ? state.numberOfIssueForBankTejaratCo[0].count
-                            .toString()
-                            : 0.toString(),
+                      Text(state.numberOfIssueForBankTejaratCo.toString(),
                         style: const TextStyle(color: Colors.black),
                       ),
                       SizedBox(
@@ -96,12 +87,7 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state.numberOfIssueForBankParsiyanCo.isNotEmpty
-                            ? state.numberOfIssueForBankParsiyanCo[0]
-                            .count
-                            .toString()
-                            : 0.toString(),
+                      Text( state.numberOfIssueForBankParsiyanCo.toString(),
                         style: const TextStyle(color: Colors.black),
                       ),
                       SizedBox(
@@ -114,12 +100,7 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state.numberOfIssueForShabakeKaranSamaCo
-                            .isNotEmpty
-                            ? state.numberOfIssueForShabakeKaranSamaCo[0]
-                            .count.toString()
-                            : 0.toString(),
+                      Text( state.numberOfIssueForShabakeKaranSamaCo.toString(),
                         style: const TextStyle(color: Colors.black),
                       ),
                       SizedBox(
@@ -132,14 +113,7 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state
-                            .numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo
-                            .isNotEmpty
-                            ? state
-                            .numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[0]
-                            .count.toString()
-                            : 0.toString(),
+                      Text( state.numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.toString(),
                         style: const TextStyle(color: Colors.black),
                       ),
                       SizedBox(
@@ -152,11 +126,7 @@ class PendarIssuerList extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        state.numberOfIssueForBankMellat.isNotEmpty
-                            ? state.numberOfIssueForBankMellat[0].count
-                            .toString()
-                            : 0.toString(),
+                      Text( state.numberOfIssueForBankMellat.toString(),
                         style: const TextStyle(color: Colors.black),
                       ),
                       SizedBox(

@@ -107,6 +107,13 @@ class NumberOfIssuesRepository {
     return response;
   }
 
+  FutureOr<dynamic> getNumberOfIssueForTejaratElectronicRahbordEidealAminCo(String startDate, String endDate) async {
+    var body = jsonEncode({"reportkey":"y9Bp5ZBhOzCKa2nq5jQ5sbfFoUQ==","customercode":"14009655202",
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
+    var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
+    return response;
+  }
+
   int getFanarAllNumberOfIssue(
       int? numberOfIssueForFanAvaranEtemadRaahbarCoCount,
       int? numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount,
@@ -121,7 +128,8 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForToseeTejaratTeniyanCoCount,
       int? numberOfIssueForAsrDaneshAfzarCoCount,
       int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
-      int? numberOfIssueForFinTekParsCount) {
+      int? numberOfIssueForFinTekParsCount,
+      int? numberOfIssueForTejaratElectronicRahbordEidealAminCo) {
     int sum = numberOfIssueForFanAvaranEtemadRaahbarCoCount! +
         numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount! +
         numberOfIssueForBankTejaratCoCountFanar! +
@@ -135,7 +143,8 @@ class NumberOfIssuesRepository {
         numberOfIssueForToseeTejaratTeniyanCoCount! +
         numberOfIssueForAsrDaneshAfzarCoCount! +
         numberOfIssueForGrouhTejaratElectronicSadraKiyanCount! +
-        numberOfIssueForFinTekParsCount!;
+        numberOfIssueForFinTekParsCount! +
+        numberOfIssueForTejaratElectronicRahbordEidealAminCo!;
 
     return sum;
   }
@@ -154,7 +163,8 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount,
       int? numberOfIssueForFanAvaranEtemadRaahbarCoCount,
       int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
-      int? numberOfIssueForFinTekParsCount){
+      int? numberOfIssueForFinTekParsCount,
+      int? numberOfIssueForTejaratElectronicRahbordEidealAminCo){
 
     List fanarRaList = [];
 
@@ -172,6 +182,8 @@ class NumberOfIssuesRepository {
     fanarRaList.add(numberOfIssueForFanAvaranEtemadRaahbarCoCount);
     fanarRaList.add(numberOfIssueForGrouhTejaratElectronicSadraKiyanCount);
     fanarRaList.add(numberOfIssueForFinTekParsCount);
+    fanarRaList.add(numberOfIssueForTejaratElectronicRahbordEidealAminCo);
+
 
     return fanarRaList;
   }
