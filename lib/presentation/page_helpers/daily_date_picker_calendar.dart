@@ -85,7 +85,6 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           if (picked != selectedDate) {
             setState(() {
               label = picked.toJalaliDateTime();
-              print("label          :    "+label);
             });
           }
 

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/model/issue_model.dart';
 import '../bloc/set_date_bloc/bloc.dart';
 import '../bloc/set_date_bloc/event.dart';
+import 'package:persian_datetime_picker/persian_datetime_picker.dart';
+
 
 class AddAllNumberOfIssues extends StatelessWidget {
 
@@ -18,6 +20,7 @@ class AddAllNumberOfIssues extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
         onTap: () {
           showDialog(
@@ -62,25 +65,24 @@ class AddAllNumberOfIssues extends StatelessWidget {
                                 backgroundColor:
                                 Colors.green),
                             onPressed: () {
-                              late IssueModel issueModel =
-                              IssueModel();
+                              late IssueModel issueModel = IssueModel();
 
+                              print("dateeeee                    "+date);
+                              String newDate = date.replaceAll('/','-');
+                              print("dateeeee                    "+newDate);
+                              DateTime g = DateTime.parse(newDate);
+                              print("dateeeee                    "+g.toString());
+                              Jalali j1 = g.toJalali();
+                              print("dateeeee                    "+j1.toString());
+                              print("dateeeee                    "+j1.year.toString());
                               issueModel.issueDate = date;
-                              issueModel
-                                  .allIssueNumberNumber =
-                                  int.parse(
-                                      controller.text);
-                              issueModel
-                                  .allFanarIssueNumberPerDate =
-                                  allFanarIssueNumberPerDate;
+                              issueModel.issueYear = j1.year.toString();
+                              issueModel.allIssueNumberNumber = int.parse(controller.text);
+                              issueModel.allFanarIssueNumberPerDate = allFanarIssueNumberPerDate;
 
-                              BlocProvider.of<
-                                  SetDateBloc>(
-                                  context)
-                                  .add(
-                                  AddNumberOfIssueEvent(
-                                      issueModel:
-                                      issueModel,
+                              BlocProvider.of<SetDateBloc>(context)
+                                  .add(AddNumberOfIssueEvent(
+                                      issueModel: issueModel,
                                       date: date));
 
                               Navigator.of(ctx).pop();

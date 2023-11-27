@@ -21,7 +21,7 @@ class FanarDailyStatisticChartPage extends StatelessWidget {
         title: const Align(
             alignment: Alignment.centerRight,
             child: Text("نمودار صدور گواهی روزانه")),
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           fontSize: 15
         ),
         backgroundColor: AppColors.mainColor,

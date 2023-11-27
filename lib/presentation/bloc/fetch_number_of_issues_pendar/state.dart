@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import '../../../data/model/response_model.dart';
 
 enum NumberOfIssuesPendarStatus { initial, success, error, loading }
 

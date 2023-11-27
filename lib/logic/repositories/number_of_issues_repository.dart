@@ -12,7 +12,6 @@ class NumberOfIssuesRepository {
       var body = jsonEncode({"reportkey":"0S2DXd7ISt3nGSL8DqSi+zKpMA0=","customercode":"10101586520",
         "startdate":startDate,"enddate":endDate,"type":"PerCA"});
       var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
-      print(response.body);
       return response;
     }
 
@@ -130,21 +129,6 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
       int? numberOfIssueForFinTekParsCount,
       int? numberOfIssueForTejaratElectronicRahbordEidealAminCo) {
-    print("111                   "+numberOfIssueForFanAvaranEtemadRaahbarCoCount.toString());
-    print("222                   "+numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount.toString());
-    print("333                   "+numberOfIssueForBankTejaratCoCountFanar.toString());
-    print("444                   "+numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar.toString());
-    print("555                   "+numberOfIssueForZherfAndishanHushmandDibaRayanCoCount.toString());
-    print("666                   "+numberOfIssueForTabanAtiPardazCoCount.toString());
-    print("777                   "+numberOfIssueForToseeNovinHamrahKishCoCount.toString());
-    print("888                   "+numberOfIssueForKiyakushanAriyaCoCount.toString());
-    print("999                   "+numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount.toString());
-    print("10                   "+numberOfIssueForRahkarHushmandAmnCoCount.toString());
-    print("11                   "+numberOfIssueForToseeTejaratTeniyanCoCount.toString());
-    print("12                   "+numberOfIssueForAsrDaneshAfzarCoCount.toString());
-    print("13                   "+numberOfIssueForGrouhTejaratElectronicSadraKiyanCount.toString());
-    print("14                   "+numberOfIssueForFinTekParsCount.toString());
-    print("15                   "+numberOfIssueForTejaratElectronicRahbordEidealAminCo.toString());
     int sum = numberOfIssueForFanAvaranEtemadRaahbarCoCount! +
         numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount! +
         numberOfIssueForBankTejaratCoCountFanar! +
@@ -302,8 +286,6 @@ class NumberOfIssuesRepository {
         numberOfIssueForBankMellatCount! +
         numberOfIssueForTataCo! +
         numberOfIssueForSimorghTejaratCo!;
-
-    print("sum      "+sum.toString());
 
     return sum;
   }

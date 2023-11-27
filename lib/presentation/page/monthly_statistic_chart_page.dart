@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:issue_statistics/presentation/bloc/monthly_chart/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/monthly_chart/state.dart';
 import 'package:issue_statistics/presentation/page_helpers/const/app_colors.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/monthly_chart/event.dart';
 
 class MonthlyChart extends StatefulWidget {
   const MonthlyChart({super.key});
@@ -11,13 +15,14 @@ class MonthlyChart extends StatefulWidget {
 }
 
 class _MonthlyChartState extends State<MonthlyChart> {
+  
+  int currentHorizontalIntValue = 1402;
+
   @override
   Widget build(BuildContext context) {
 
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
-
-    int _currentHorizontalIntValue = 1402;
 
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
@@ -33,49 +38,58 @@ class _MonthlyChartState extends State<MonthlyChart> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               NumberPicker(
-                value: _currentHorizontalIntValue,
+                value: currentHorizontalIntValue,
                 minValue: 1401,
                 maxValue: 1450,
                 step: 1,
                 itemHeight: 100,
                 axis: Axis.horizontal,
                 onChanged: (value) =>
-                    setState(() => _currentHorizontalIntValue = value),
+                    setState((){
+                      currentHorizontalIntValue = value;
+                      BlocProvider.of<MonthlyChartBloc>(context)
+                          .add(MonthlyIssuePerYearEvent(
+                          year: currentHorizontalIntValue.toString()));
+                    }),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(color: Colors.black26),
                 ),
               ),
-              SfCartesianChart(
-                // Initialize category axis
-                  primaryXAxis: CategoryAxis(
-                      labelRotation: 90
-                  ),
+              BlocBuilder<MonthlyChartBloc, MonthlyChartState>(
+              builder: (context, state) {
 
-                  series: <LineSeries<SalesData, String>>[
-                    LineSeries<SalesData, String>(
+                return SfCartesianChart(
+                  // Initialize category axis
+                    primaryXAxis: CategoryAxis(
+                        labelRotation: 90
+                    ),
 
-                      // Bind data source
-                        dataSource:  <SalesData>[
-                          SalesData('فروردین', 35),
-                          SalesData('اردیبهشت', 28),
-                          SalesData('خرداد', 34),
-                          SalesData('تیر', 32),
-                          SalesData('مرداد', 40),
-                          SalesData('شهریور', 40),
-                          SalesData('مهر', 40),
-                          SalesData('آبان', 40),
-                          SalesData('آذر', 40),
-                          SalesData('دی', 40),
-                          SalesData('بهمن', 40),
-                          SalesData('اسفند', 40),
-                        ],
-                        xValueMapper: (SalesData sales, _) => sales.year,
-                        yValueMapper: (SalesData sales, _) => sales.sales
-                    )
-                  ]
-              )
+                    series: <LineSeries<SalesData, String>>[
+                      LineSeries<SalesData, String>(
 
+                        // Bind data source
+                          dataSource:  <SalesData>[
+                            SalesData('فروردین', 35),
+                            SalesData('اردیبهشت', 28),
+                            SalesData('خرداد', 34),
+                            SalesData('تیر', 32),
+                            SalesData('مرداد', 40),
+                            SalesData('شهریور', 40),
+                            SalesData('مهر', 40),
+                            SalesData('آبان', 40),
+                            SalesData('آذر', 40),
+                            SalesData('دی', 40),
+                            SalesData('بهمن', 40),
+                            SalesData('اسفند', 40),
+                          ],
+                          xValueMapper: (SalesData sales, _) => sales.year,
+                          yValueMapper: (SalesData sales, _) => sales.sales
+                      )
+                    ]
+                );
+
+              }),
             ],
           )
         )

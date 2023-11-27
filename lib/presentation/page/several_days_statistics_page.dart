@@ -13,7 +13,6 @@ import '../page_helpers/fanar_issuer_list.dart';
 import '../page_helpers/pendar_issuer_list.dart';
 import '../page_helpers/const/shimmer.dart';
 import 'package:intl/intl.dart' as intl;
-
 import 'fanar_daily_statistic_chart_page.dart';
 
 class SeveralDaysStatisticsPage extends StatefulWidget {

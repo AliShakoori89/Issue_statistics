@@ -15,6 +15,8 @@ class DatabaseHelper {
   static const issueTable = 'issueTable';
   static const columnId = 'id';
   static const columnIssueDate = 'issueDate';
+  static const columnIssueMonth = 'issueMonth';
+  static const columnIssueYear = 'issueYear';
   static const columnAllFanarIssueNumberPerDate = 'allFanarIssueNumberPerDate';
   static const columnAllIssueNumberPerDate = 'allIssueNumberNumber';
 
@@ -38,6 +40,8 @@ class DatabaseHelper {
     await db.execute('CREATE TABLE $issueTable ('
         '$columnId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,'
         '$columnIssueDate TEXT,'
+        '$columnIssueMonth TEXT,'
+        '$columnIssueYear TEXT,'
         '$columnAllFanarIssueNumberPerDate INTEGER,'
         '$columnAllIssueNumberPerDate INTEGER'
         ')'
@@ -45,16 +49,16 @@ class DatabaseHelper {
   }
 
   FutureOr<bool> addNumberOfIssue(IssueModel issueModel) async {
-    var dbExpense = await database;
-    await dbExpense.insert(issueTable, issueModel.toJson(),
+    var dbIssue = await database;
+    await dbIssue.insert(issueTable, issueModel.toJson(),
         conflictAlgorithm: ConflictAlgorithm.replace);
     return true;
   }
 
   FutureOr<String> readNumberOfIssuePerDate(String? date) async {
 
-    var dbExpense = await database;
-    var result = await dbExpense.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
+    var dbIssue = await database;
+    var result = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
     if(result.isEmpty) {
       return '0';
     }else{
@@ -69,8 +73,8 @@ class DatabaseHelper {
 
   FutureOr<String> readNumberOfIssuePerBetweenDays(String? startDate, String? endDate) async {
 
-    var dbExpense = await database;
-    var result = await dbExpense.rawQuery("SELECT SUM($columnAllIssueNumberPerDate) FROM $issueTable WHERE $columnIssueDate BETWEEN '$startDate' AND '$endDate'");
+    var dbIssue = await database;
+    var result = await dbIssue.rawQuery("SELECT SUM($columnAllIssueNumberPerDate) FROM $issueTable WHERE $columnIssueDate BETWEEN '$startDate' AND '$endDate'");
 
     if(result.isEmpty) {
       return '0';
@@ -85,10 +89,10 @@ class DatabaseHelper {
   }
 
   FutureOr<String> calculatePendarNumberOfIssue(String? date) async {
-    var dbExpense = await database;
-    var allIssues = await dbExpense.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
+    var dbIssue = await database;
+    var allIssues = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
     Object? value1 = allIssues[allIssues.length-1][columnAllIssueNumberPerDate];
-    var fanarCoNumberOfIssue = await dbExpense.rawQuery("SELECT $columnAllFanarIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
+    var fanarCoNumberOfIssue = await dbIssue.rawQuery("SELECT $columnAllFanarIssueNumberPerDate FROM $issueTable WHERE $columnIssueDate ='$date'");
     Object? value2 = fanarCoNumberOfIssue[0][columnAllFanarIssueNumberPerDate];
     if (value1 == null){
       return '0';
@@ -96,5 +100,24 @@ class DatabaseHelper {
       var pendarCoNumberOfIssue = int.parse(value1.toString()) - int.parse(value2.toString());
       return "$pendarCoNumberOfIssue";
     }
+  }
+
+  Future<List<Map<String, Object?>>> getMonthlyRAIssuePerYear(String year) async{
+    var dbIssue = await database;
+    print("Date Year                     "+columnIssueDate );
+    var farvardin = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 1");
+    var ordibehesht = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 2");
+    var khordad = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 3");
+    var tir = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 4");
+    var mordad = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 5");
+    var shahrivar = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 6");
+    var mehr = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 7");
+    var aban = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 8");
+    var azar = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 9");
+    var dey = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 10");
+    var bahman = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 11");
+    var esfand = await dbIssue.rawQuery("SELECT $columnAllIssueNumberPerDate FROM $issueTable WHERE $columnIssueYear ='$year' AND $columnIssueMonth = 12");
+
+    return farvardin;
   }
 }
