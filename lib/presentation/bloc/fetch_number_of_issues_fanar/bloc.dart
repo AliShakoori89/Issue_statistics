@@ -10,21 +10,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
 
   NumberOfIssuesRepository numberOfIssuesRepository;
   SetDateRepository setDateRepository;
-  int intNumberOfIssueForAsrDaneshAfzarCo = 0;
-  int intNumberOfIssueForToseeTejaratTeniyanCo = 0;
-  int intNumberOfIssueForRahkarHushmandAmnCo = 0;
-  int intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo = 0;
-  int intNumberOfIssueForKiyakushanAriyaCo = 0;
-  int intNumberOfIssueForToseeNovinHamrahKishCo = 0;
-  int intNumberOfIssueForTabanAtiPardazCo = 0;
-  int intNumberOfIssueForZherfAndishanHushmandDibaRayanCo = 0;
-  int intNumberOfIssueForPardazeshEttelaatMaliPartCo =0;
-  int intNumberOfIssueForBankTejaratCo = 0;
-  int intNumberOfIssueForPishgamanEtemadDijitalIraniyanCo = 0;
-  int intNumberOfIssueForFanAvaranEtemadRaahbarCo = 0;
-  int intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo = 0;
-  int intNumberOfIssueForFinTekParsCo = 0;
-  int intNumberOfIssueForTejaratElectronicRahbordEidealAminCo = 0;
+
 
   NumberOfFanarIssuesBloc(this.numberOfIssuesRepository, this.setDateRepository) : super(
       const NumberOfFanarIssuesState()){
@@ -33,6 +19,23 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
 
   void _mapNumberOfIssuesEventToState(
       GetNumberOfIssuesFanarEvent event, Emitter<NumberOfFanarIssuesState> emit) async {
+
+    int intNumberOfIssueForAsrDaneshAfzarCo = 0;
+    int intNumberOfIssueForToseeTejaratTeniyanCo = 0;
+    int intNumberOfIssueForRahkarHushmandAmnCo = 0;
+    int intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo = 0;
+    int intNumberOfIssueForKiyakushanAriyaCo = 0;
+    int intNumberOfIssueForToseeNovinHamrahKishCo = 0;
+    int intNumberOfIssueForTabanAtiPardazCo = 0;
+    int intNumberOfIssueForZherfAndishanHushmandDibaRayanCo = 0;
+    int intNumberOfIssueForPardazeshEttelaatMaliPartCo =0;
+    int intNumberOfIssueForBankTejaratCo = 0;
+    int intNumberOfIssueForPishgamanEtemadDijitalIraniyanCo = 0;
+    int intNumberOfIssueForFanAvaranEtemadRaahbarCo = 0;
+    int intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo = 0;
+    int intNumberOfIssueForFinTekParsCo = 0;
+    int intNumberOfIssueForTejaratElectronicRahbordEidealAminCo = 0;
+
     try {
       emit(state.copyWith(status: NumberOfIssuesFanarStatus.loading));
 
@@ -154,7 +157,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
         intNumberOfIssueForKiyakushanAriyaCo ,
         intNumberOfIssueForToseeTejaratTeniyanCo ,
         intNumberOfIssueForRahkarHushmandAmnCo,
-        intNumberOfIssueForToseeTejaratTeniyanCo ,
+        intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo ,
         intNumberOfIssueForAsrDaneshAfzarCo,
         intNumberOfIssueForTejaratElectronicRahbordEidealAminCo
       );

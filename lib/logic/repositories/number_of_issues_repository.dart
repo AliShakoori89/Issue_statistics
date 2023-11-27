@@ -108,7 +108,7 @@ class NumberOfIssuesRepository {
   }
 
   FutureOr<dynamic> getNumberOfIssueForTejaratElectronicRahbordEidealAminCo(String startDate, String endDate) async {
-    var body = jsonEncode({"reportkey":"y9Bp5ZBhOzCKa2nq5jQ5sbfFoUQ==","customercode":"14009655202",
+    var body = jsonEncode({"reportkey":"y9Bp5ZBhOzCKa2nq5jQ5sbfFoUQ=","customercode":"14009655202",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
@@ -130,6 +130,21 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
       int? numberOfIssueForFinTekParsCount,
       int? numberOfIssueForTejaratElectronicRahbordEidealAminCo) {
+    print("111                   "+numberOfIssueForFanAvaranEtemadRaahbarCoCount.toString());
+    print("222                   "+numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount.toString());
+    print("333                   "+numberOfIssueForBankTejaratCoCountFanar.toString());
+    print("444                   "+numberOfIssueForPardazeshEttelaatMaliPartCoCountFanar.toString());
+    print("555                   "+numberOfIssueForZherfAndishanHushmandDibaRayanCoCount.toString());
+    print("666                   "+numberOfIssueForTabanAtiPardazCoCount.toString());
+    print("777                   "+numberOfIssueForToseeNovinHamrahKishCoCount.toString());
+    print("888                   "+numberOfIssueForKiyakushanAriyaCoCount.toString());
+    print("999                   "+numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount.toString());
+    print("10                   "+numberOfIssueForRahkarHushmandAmnCoCount.toString());
+    print("11                   "+numberOfIssueForToseeTejaratTeniyanCoCount.toString());
+    print("12                   "+numberOfIssueForAsrDaneshAfzarCoCount.toString());
+    print("13                   "+numberOfIssueForGrouhTejaratElectronicSadraKiyanCount.toString());
+    print("14                   "+numberOfIssueForFinTekParsCount.toString());
+    print("15                   "+numberOfIssueForTejaratElectronicRahbordEidealAminCo.toString());
     int sum = numberOfIssueForFanAvaranEtemadRaahbarCoCount! +
         numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount! +
         numberOfIssueForBankTejaratCoCountFanar! +
@@ -278,7 +293,7 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCoCount,
       int? numberOfIssueForBankMellatCount,
       int? numberOfIssueForTataCo,
-      int? numberOfIssueForSimorghTejaratCo){
+      int? numberOfIssueForSimorghTejaratCo,){
     int sum = numberOfIssueForPardazeshMaliPartCoCountPendar! +
         numberOfIssueForBankTejaratCoCountPendar! +
         numberOfIssueForBankParsiyanCoCount! +
@@ -287,6 +302,8 @@ class NumberOfIssuesRepository {
         numberOfIssueForBankMellatCount! +
         numberOfIssueForTataCo! +
         numberOfIssueForSimorghTejaratCo!;
+
+    print("sum      "+sum.toString());
 
     return sum;
   }

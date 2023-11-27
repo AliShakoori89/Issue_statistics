@@ -10,14 +10,7 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
 
   NumberOfIssuesRepository numberOfIssuesRepository;
   SetDateRepository setDateRepository;
-  int intNumberOfIssueForBankTejaratCo = 0;
-  int intNumberOfIssueForPardazeshMaliPartCo = 0;
-  int intNumberOfIssueForBankParsiyanCo = 0;
-  int intNumberOfIssueForShabakeKaranSamaCo = 0;
-  int intNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = 0;
-  int intNumberOfIssueForBankMellat = 0;
-  int intNumberOfIssueForTataCo = 0;
-  int intNumberOfIssueForSimorghTejaratCo = 0;
+
 
   NumberOfIssuesPendarBloc(this.numberOfIssuesRepository, this.setDateRepository) : super(
       const NumberOfIssuesPendarState()){
@@ -26,6 +19,14 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
 
   void _mapNumberOfIssuesEventToState(
       GetNumberOfIssuesPendarEvent event, Emitter<NumberOfIssuesPendarState> emit) async {
+    int intNumberOfIssueForBankTejaratCo = 0;
+    int intNumberOfIssueForPardazeshMaliPartCo = 0;
+    int intNumberOfIssueForBankParsiyanCo = 0;
+    int intNumberOfIssueForShabakeKaranSamaCo = 0;
+    int intNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = 0;
+    int intNumberOfIssueForBankMellat = 0;
+    int intNumberOfIssueForTataCo = 0;
+    int intNumberOfIssueForSimorghTejaratCo = 0;
     try {
       emit(state.copyWith(status: NumberOfIssuesPendarStatus.loading));
 
@@ -39,7 +40,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForBankTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForBankTejaratCoPendar(event.startDate, event.endDate);
       Iterable l2 = json.decode(responseNumberOfIssueForBankTejaratCo.body);
       List<ResponseModel> numberOfIssueForBankTejaratCo = List<ResponseModel>.from(l2.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l2.length ; i++){
         intNumberOfIssueForBankTejaratCo = intNumberOfIssueForBankTejaratCo + numberOfIssueForBankTejaratCo[i].count!;
       }
@@ -47,7 +47,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForBankParsiyanCo = await numberOfIssuesRepository.getNumberOfIssueForBankParsianCo(event.startDate, event.endDate);
       Iterable l3 = json.decode(responseNumberOfIssueForBankParsiyanCo.body);
       List<ResponseModel> numberOfIssueForBankParsiyanCo = List<ResponseModel>.from(l3.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l3.length ; i++){
         intNumberOfIssueForBankParsiyanCo = intNumberOfIssueForBankParsiyanCo + numberOfIssueForBankParsiyanCo[i].count!;
       }
@@ -55,7 +54,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForShabakeKaranSamaCo = await numberOfIssuesRepository.getNumberOfIssueForShabakeKaranSamaCo(event.startDate, event.endDate);
       Iterable l4 = json.decode(responseNumberOfIssueForShabakeKaranSamaCo.body);
       List<ResponseModel> numberOfIssueForShabakeKaranSamaCo = List<ResponseModel>.from(l4.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l4.length ; i++){
         intNumberOfIssueForShabakeKaranSamaCo = intNumberOfIssueForShabakeKaranSamaCo + numberOfIssueForShabakeKaranSamaCo[i].count!;
       }
@@ -63,7 +61,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = await numberOfIssuesRepository.getFanavariVaRahHalhayeHushmandSepehrCo(event.startDate, event.endDate);
       Iterable l5 = json.decode(responseNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo.body);
       List<ResponseModel> numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = List<ResponseModel>.from(l5.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l5.length ; i++){
         intNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo = intNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo + numberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo[i].count!;
       }
@@ -71,7 +68,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForBankMellat = await numberOfIssuesRepository.getNumberOfIssueForBankMellat(event.startDate, event.endDate);
       Iterable l6 = json.decode(responseNumberOfIssueForBankMellat.body);
       List<ResponseModel> numberOfIssueForBankMellat = List<ResponseModel>.from(l6.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l6.length ; i++){
         intNumberOfIssueForBankMellat = intNumberOfIssueForBankMellat + numberOfIssueForBankMellat[i].count!;
       }
@@ -79,7 +75,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForTataCo = await numberOfIssuesRepository.getNumberOfIssueForTataCo(event.startDate, event.endDate);
       Iterable l7 = json.decode(responseNumberOfIssueForTataCo.body);
       List<ResponseModel> numberOfIssueForTataCo = List<ResponseModel>.from(l7.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l7.length ; i++){
         intNumberOfIssueForTataCo = intNumberOfIssueForTataCo + numberOfIssueForTataCo[i].count!;
       }
@@ -87,7 +82,6 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
       final responseNumberOfIssueForSimorghTejaratCo = await numberOfIssuesRepository.getNumberOfIssueForSimorghTejaratCo(event.startDate, event.endDate);
       Iterable l8 = json.decode(responseNumberOfIssueForSimorghTejaratCo.body);
       List<ResponseModel> numberOfIssueForSimorghTejaratCo = List<ResponseModel>.from(l8.map((model)=> ResponseModel.fromJson(model)));
-
       for(int i = 0; i < l8.length ; i++){
         intNumberOfIssueForSimorghTejaratCo = intNumberOfIssueForSimorghTejaratCo + numberOfIssueForSimorghTejaratCo[i].count!;
       }
@@ -100,7 +94,7 @@ class NumberOfIssuesPendarBloc extends Bloc<NumberOfIssuesPendarEvent, NumberOfI
         intNumberOfIssueForFanavariVaRahehalhayeHushmandSepeherCo ,
         intNumberOfIssueForBankMellat ,
         intNumberOfIssueForTataCo ,
-        intNumberOfIssueForSimorghTejaratCo
+        intNumberOfIssueForSimorghTejaratCo,
       );
 
       await numberOfIssuesRepository.writePendarAllNumberOfIssues(event.startDate, event.endDate, pendarAllNumberOfIssue);
