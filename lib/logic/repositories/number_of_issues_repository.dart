@@ -93,7 +93,7 @@ class NumberOfIssuesRepository {
   }
 
   FutureOr<dynamic> getNumberOfIssueForGrouhTejaratElectronicSadraKiyantCo(String startDate, String endDate) async {
-    var body = jsonEncode({"reportkey":"pkN/N16Iatf/QxXPMzxjmBsGQBI=","customercode":"14116082877",
+    var body = jsonEncode({"reportkey":"why3uzWhBRzXjbmBoliCXbe2B6o=","customercode":"14008265639",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
@@ -108,6 +108,13 @@ class NumberOfIssuesRepository {
 
   FutureOr<dynamic> getNumberOfIssueForTejaratElectronicRahbordEidealAminCo(String startDate, String endDate) async {
     var body = jsonEncode({"reportkey":"y9Bp5ZBhOzCKa2nq5jQ5sbfFoUQ=","customercode":"14009655202",
+      "startdate":startDate,"enddate":endDate,"type":"PerCA"});
+    var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
+    return response;
+  }
+
+  FutureOr<dynamic> getNumberOfIssueForFanavaranHoviyatElectroniciAmnCo(String startDate, String endDate) async {
+    var body = jsonEncode({"reportkey":"OoRMg5WDOcW7z7ZoMfi10pwRuRc=","customercode":"14006592448",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
     var response = await api.post("https://api.raahbartrust.ir/api/IssuingReport", body);
     return response;
@@ -128,7 +135,8 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForAsrDaneshAfzarCoCount,
       int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
       int? numberOfIssueForFinTekParsCount,
-      int? numberOfIssueForTejaratElectronicRahbordEidealAminCo) {
+      int? numberOfIssueForTejaratElectronicRahbordEidealAminCo,
+      int? numberOfIssueForFanavaranElectronicHoviyatAmnCo) {
     int sum = numberOfIssueForFanAvaranEtemadRaahbarCoCount! +
         numberOfIssueForPishgamanEtemadDijitalIraniyanCoCount! +
         numberOfIssueForBankTejaratCoCountFanar! +
@@ -143,7 +151,8 @@ class NumberOfIssuesRepository {
         numberOfIssueForAsrDaneshAfzarCoCount! +
         numberOfIssueForGrouhTejaratElectronicSadraKiyanCount! +
         numberOfIssueForFinTekParsCount! +
-        numberOfIssueForTejaratElectronicRahbordEidealAminCo!;
+        numberOfIssueForTejaratElectronicRahbordEidealAminCo! +
+        numberOfIssueForFanavaranElectronicHoviyatAmnCo!;
 
     return sum;
   }
@@ -163,7 +172,8 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForFanAvaranEtemadRaahbarCoCount,
       int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCount,
       int? numberOfIssueForFinTekParsCount,
-      int? numberOfIssueForTejaratElectronicRahbordEidealAminCo){
+      int? numberOfIssueForTejaratElectronicRahbordEidealAminCo,
+      int? numberOfIssueForFanavaranElectronicHoviyatAmnCo){
 
     List fanarRaList = [];
 
@@ -182,6 +192,7 @@ class NumberOfIssuesRepository {
     fanarRaList.add(numberOfIssueForGrouhTejaratElectronicSadraKiyanCount);
     fanarRaList.add(numberOfIssueForFinTekParsCount);
     fanarRaList.add(numberOfIssueForTejaratElectronicRahbordEidealAminCo);
+    fanarRaList.add(numberOfIssueForFanavaranElectronicHoviyatAmnCo);
 
 
     return fanarRaList;

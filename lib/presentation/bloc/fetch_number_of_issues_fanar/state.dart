@@ -29,6 +29,7 @@ class NumberOfFanarIssuesState extends Equatable {
     int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
     int? numberOfIssueFinTekParsCo,
     int? numberOfIssueForTejaratElectronicRahbordEidealAminCo,
+    int? numberOfIssueForFanavaranElectronicHoviyatAmnCo,
     int? fanarAllNumberOfIssue,
     List? fanarRaList
   }):
@@ -47,6 +48,7 @@ class NumberOfFanarIssuesState extends Equatable {
         numberOfIssueForGrouhTejaratElectronicSadraKiyanCo = numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? 0,
         numberOfIssueForFinTekParsCo = numberOfIssueFinTekParsCo ?? 0,
         numberOfIssueForTejaratElectronicRahbordEidealAminCo = numberOfIssueForTejaratElectronicRahbordEidealAminCo ?? 0,
+        numberOfIssueForFanavaranElectronicHoviyatAmnCo = numberOfIssueForFanavaranElectronicHoviyatAmnCo ?? 0,
         fanarAllNumberOfIssue = fanarAllNumberOfIssue ?? 0,
         fanarRaList = fanarRaList ?? const [];
 
@@ -66,6 +68,7 @@ class NumberOfFanarIssuesState extends Equatable {
   final int numberOfIssueForGrouhTejaratElectronicSadraKiyanCo;
   final int numberOfIssueForFinTekParsCo;
   final int numberOfIssueForTejaratElectronicRahbordEidealAminCo;
+  final int numberOfIssueForFanavaranElectronicHoviyatAmnCo;
   final int fanarAllNumberOfIssue;
   final List fanarRaList;
 
@@ -79,7 +82,7 @@ class NumberOfFanarIssuesState extends Equatable {
     numberOfIssueForBankTejaratCo, numberOfIssueForPishgamanEtemadDijitalIraniyanCo,
     numberOfIssueForFanAvaranEtemadRaahbarCo, numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
     numberOfIssueForFinTekParsCo, numberOfIssueForTejaratElectronicRahbordEidealAminCo,
-    fanarAllNumberOfIssue, fanarRaList
+    numberOfIssueForFanavaranElectronicHoviyatAmnCo, fanarAllNumberOfIssue, fanarRaList
   ];
 
   NumberOfFanarIssuesState copyWith({
@@ -99,6 +102,7 @@ class NumberOfFanarIssuesState extends Equatable {
     int? numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
     int? numberOfIssueFinTekParsCo,
     int? numberOfIssueForTejaratElectronicRahbordEidealAminCo,
+    int? numberOfIssueForFanavaranElectronicHoviyatAmnCo,
     int? fanarAllNumberOfIssue,
     List? fanarRaList
   }) {
@@ -119,6 +123,7 @@ class NumberOfFanarIssuesState extends Equatable {
       numberOfIssueForGrouhTejaratElectronicSadraKiyanCo: numberOfIssueForGrouhTejaratElectronicSadraKiyanCo ?? this.numberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
       numberOfIssueFinTekParsCo: numberOfIssueFinTekParsCo ?? this.numberOfIssueForFinTekParsCo,
       numberOfIssueForTejaratElectronicRahbordEidealAminCo: numberOfIssueForTejaratElectronicRahbordEidealAminCo ?? this.numberOfIssueForTejaratElectronicRahbordEidealAminCo,
+      numberOfIssueForFanavaranElectronicHoviyatAmnCo: numberOfIssueForFanavaranElectronicHoviyatAmnCo ?? this.numberOfIssueForFanavaranElectronicHoviyatAmnCo,
       fanarAllNumberOfIssue: fanarAllNumberOfIssue ?? this.fanarAllNumberOfIssue,
       fanarRaList: fanarRaList ?? this.fanarRaList
     );

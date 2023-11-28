@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors{
 
-  static const Color mainColor = Color.fromRGBO(85, 181, 255, 1.0);
+  static const Color mainColor = Color.fromRGBO(85, 215, 255, 1.0);
   static const Color backgroundColor = Color.fromRGBO(204, 229, 250, 1.0);
   static const Color contentColorCyan = Color(0xFF50E4FF);
   static const Color contentColorBlue = Color(0xFF2196F3);

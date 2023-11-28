@@ -49,10 +49,6 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
 
     return Container(
       alignment: Alignment.topCenter,
-      margin: EdgeInsets.only(
-        left: width / 30,
-        right: width / 30,
-      ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,

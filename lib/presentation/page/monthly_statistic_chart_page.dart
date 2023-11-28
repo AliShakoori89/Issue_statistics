@@ -27,12 +27,6 @@ class _MonthlyChartState extends State<MonthlyChart> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
         body: Container(
-          margin: EdgeInsets.only(
-            top: height / 10,
-            left: 20,
-            right: 20,
-            bottom: height / 10,
-          ),
           width: width,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,6 +53,10 @@ class _MonthlyChartState extends State<MonthlyChart> {
               BlocBuilder<MonthlyChartBloc, MonthlyChartState>(
               builder: (context, state) {
 
+                print("sssssssssss                       "+state.azarIssues.toString());
+                print("sssssssssss                       "+state.abanIssues.toString());
+                print("sssssssssss                       "+state.tirIssues.toString());
+
                 return SfCartesianChart(
                   // Initialize category axis
                     primaryXAxis: CategoryAxis(
@@ -70,18 +68,18 @@ class _MonthlyChartState extends State<MonthlyChart> {
 
                         // Bind data source
                           dataSource:  <SalesData>[
-                            SalesData('فروردین', 35),
-                            SalesData('اردیبهشت', 28),
-                            SalesData('خرداد', 34),
-                            SalesData('تیر', 32),
-                            SalesData('مرداد', 40),
-                            SalesData('شهریور', 40),
-                            SalesData('مهر', 40),
-                            SalesData('آبان', 40),
-                            SalesData('آذر', 40),
-                            SalesData('دی', 40),
-                            SalesData('بهمن', 40),
-                            SalesData('اسفند', 40),
+                            SalesData('فروردین', state.farvardinIssues),
+                            SalesData('اردیبهشت', state.ordibeheshtIssues),
+                            SalesData('خرداد',state.khordadIssues),
+                            SalesData('تیر', state.tirIssues),
+                            SalesData('مرداد', state.mordadIssues),
+                            SalesData('شهریور', state.shahrivarIssues),
+                            SalesData('مهر', state.mehrIssues),
+                            SalesData('آبان', state.abanIssues),
+                            SalesData('آذر', state.azarIssues),
+                            SalesData('دی', state.deyIssues),
+                            SalesData('بهمن', state.bahmanIssues),
+                            SalesData('اسفند', state.esfandIssues),
                           ],
                           xValueMapper: (SalesData sales, _) => sales.year,
                           yValueMapper: (SalesData sales, _) => sales.sales

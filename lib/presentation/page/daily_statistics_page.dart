@@ -75,11 +75,10 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
 
     return SafeArea(
       child: Container(
-        alignment: Alignment.topCenter,
-        margin: EdgeInsets.only(
-            left: width / 30,
-            right: width / 30,
+        padding: EdgeInsets.only(
+          top: 20
         ),
+        alignment: Alignment.topCenter,
         child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,

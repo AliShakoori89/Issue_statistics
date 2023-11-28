@@ -220,6 +220,19 @@ class FanarIssuerList extends StatelessWidget {
                     style: TextStyle(color: Colors.black))
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(state.numberOfIssueForTejaratElectronicRahbordEidealAminCo.toString(),
+                  style: const TextStyle(color: Colors.black),
+                ),
+                SizedBox(
+                  height: height / 80,
+                ),
+                const Text("شرکت فن آوران هویت الکترونیکی امن - هویتا",
+                    style: TextStyle(color: Colors.black))
+              ],
+            ),
             SizedBox(
               height: height / 30,
             ),

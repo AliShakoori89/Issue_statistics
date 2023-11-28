@@ -12,18 +12,18 @@ extension MonthlyChartStatusX on MonthlyChartStatus {
 class MonthlyChartState extends Equatable {
   const MonthlyChartState({
     this.status = MonthlyChartStatus.initial,
-    int? farvardinIssues,
-    int? ordibeheshtIssues,
-    int? khordadIssues,
-    int? tirIssues,
-    int? mordadIssues,
-    int? shahrivarIssues,
-    int? mehrIssues,
-    int? abanIssues,
-    int? azarIssues,
-    int? deyIssues,
-    int? bahmanIssues,
-    int? esfandIssues
+    double? farvardinIssues,
+    double? ordibeheshtIssues,
+    double? khordadIssues,
+    double? tirIssues,
+    double? mordadIssues,
+    double? shahrivarIssues,
+    double? mehrIssues,
+    double? abanIssues,
+    double? azarIssues,
+    double? deyIssues,
+    double? bahmanIssues,
+    double? esfandIssues
   }):
       farvardinIssues = farvardinIssues ?? 0,
       ordibeheshtIssues = ordibeheshtIssues ?? 0,
@@ -39,18 +39,18 @@ class MonthlyChartState extends Equatable {
       esfandIssues = esfandIssues ?? 0;
 
   final MonthlyChartStatus status;
-  final int farvardinIssues;
-  final int ordibeheshtIssues;
-  final int khordadIssues;
-  final int tirIssues;
-  final int mordadIssues;
-  final int shahrivarIssues;
-  final int mehrIssues;
-  final int abanIssues;
-  final int azarIssues;
-  final int deyIssues;
-  final int bahmanIssues;
-  final int esfandIssues;
+  final double farvardinIssues;
+  final double ordibeheshtIssues;
+  final double khordadIssues;
+  final double tirIssues;
+  final double mordadIssues;
+  final double shahrivarIssues;
+  final double mehrIssues;
+  final double abanIssues;
+  final double azarIssues;
+  final double deyIssues;
+  final double bahmanIssues;
+  final double esfandIssues;
 
   @override
   // TODO: implement props
@@ -64,18 +64,18 @@ class MonthlyChartState extends Equatable {
 
   MonthlyChartState copyWith({
     MonthlyChartStatus? status,
-    int? farvardinIssues,
-    int? ordibeheshtIssues,
-    int? khordadIssues,
-    int? tirIssues,
-    int? mordadIssues,
-    int? shahrivarIssues,
-    int? mehrIssues,
-    int? abanIssues,
-    int? azarIssues,
-    int? deyIssues,
-    int? bahmanIssues,
-    int? esfandIssues
+    double? farvardinIssues,
+    double? ordibeheshtIssues,
+    double? khordadIssues,
+    double? tirIssues,
+    double? mordadIssues,
+    double? shahrivarIssues,
+    double? mehrIssues,
+    double? abanIssues,
+    double? azarIssues,
+    double? deyIssues,
+    double? bahmanIssues,
+    double? esfandIssues
 
   }) {
     return MonthlyChartState(

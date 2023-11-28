@@ -35,6 +35,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
     int intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo = 0;
     int intNumberOfIssueForFinTekParsCo = 0;
     int intNumberOfIssueForTejaratElectronicRahbordEidealAminCo = 0;
+    int intNumberOfIssueForFanavaranElectronicHoviyatAmnCo = 0;
 
     try {
       emit(state.copyWith(status: NumberOfIssuesFanarStatus.loading));
@@ -144,6 +145,13 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
         intNumberOfIssueForTejaratElectronicRahbordEidealAminCo = intNumberOfIssueForTejaratElectronicRahbordEidealAminCo + numberOfIssueForTejaratElectronicRahbordEidealAminCo[i].count!;
       }
 
+      final responseNumberOfIssueForFanavaranElectronicHoviyatAmnCo = await numberOfIssuesRepository.getNumberOfIssueForFanavaranHoviyatElectroniciAmnCo(event.startDate, event.endDate);
+      Iterable l16 = json.decode(responseNumberOfIssueForFanavaranElectronicHoviyatAmnCo.body);
+      List<ResponseModel> numberOfIssueForFanavaranElectronicHoviyatAmnCo = List<ResponseModel>.from(l16.map((model)=> ResponseModel.fromJson(model)));
+      for(int i = 0; i < l16.length ; i++){
+        intNumberOfIssueForFanavaranElectronicHoviyatAmnCo = intNumberOfIssueForFanavaranElectronicHoviyatAmnCo + numberOfIssueForFanavaranElectronicHoviyatAmnCo[i].count!;
+      }
+
       final faanarAllNumberOfIssue = numberOfIssuesRepository.getFanarAllNumberOfIssue(
         intNumberOfIssueForFinTekParsCo,
         intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
@@ -158,8 +166,9 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
         intNumberOfIssueForToseeTejaratTeniyanCo ,
         intNumberOfIssueForRahkarHushmandAmnCo,
         intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo ,
-        intNumberOfIssueForAsrDaneshAfzarCo,
-        intNumberOfIssueForTejaratElectronicRahbordEidealAminCo
+        intNumberOfIssueForAsrDaneshAfzarCo ,
+        intNumberOfIssueForTejaratElectronicRahbordEidealAminCo ,
+        intNumberOfIssueForFanavaranElectronicHoviyatAmnCo
       );
 
       await numberOfIssuesRepository.writeFanarAllNumberOfIssues(event.startDate, event.endDate, faanarAllNumberOfIssue);
@@ -179,7 +188,8 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
           intNumberOfIssueForRahkarHushmandAmnCo ,
           intNumberOfIssueForToseeTejaratTeniyanCo ,
           intNumberOfIssueForAsrDaneshAfzarCo,
-          intNumberOfIssueForTejaratElectronicRahbordEidealAminCo);
+          intNumberOfIssueForTejaratElectronicRahbordEidealAminCo,
+          intNumberOfIssueForFanavaranElectronicHoviyatAmnCo);
 
       emit(
         state.copyWith(
@@ -199,6 +209,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
           numberOfIssueForGrouhTejaratElectronicSadraKiyanCo: intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
           numberOfIssueFinTekParsCo: intNumberOfIssueForFinTekParsCo,
           numberOfIssueForTejaratElectronicRahbordEidealAminCo: intNumberOfIssueForTejaratElectronicRahbordEidealAminCo,
+          numberOfIssueForFanavaranElectronicHoviyatAmnCo: intNumberOfIssueForFanavaranElectronicHoviyatAmnCo,
           fanarAllNumberOfIssue: faanarAllNumberOfIssue,
           fanarRaList: fanarRaList
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:issue_statistics/presentation/page_helpers/const/app_colors.dart';
 import '../../data/model/issue_model.dart';
 import '../bloc/set_date_bloc/bloc.dart';
 import '../bloc/set_date_bloc/event.dart';
@@ -41,12 +42,13 @@ class AddAllNumberOfIssues extends StatelessWidget {
               ),
               content: SizedBox(
                 height: 50,
-                width: 50,
+                width: 30,
                 child: TextFormField(
                   controller: controller,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'تعداد کل گواهی',
+                    hintTextDirection: TextDirection.rtl
                   ),
                 ),
               ),
@@ -57,13 +59,17 @@ class AddAllNumberOfIssues extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: SizedBox(
-                        height: 50,
+                        height: 40,
                         width: 60,
                         child: ElevatedButton(
-                            style:
-                            ElevatedButton.styleFrom(
-                                backgroundColor:
-                                Colors.green),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(AppColors.contentColorGreenLike),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10.0),
+                                    )
+                                )
+                            ),
                             onPressed: () {
                               late IssueModel issueModel = IssueModel();
 
@@ -76,6 +82,7 @@ class AddAllNumberOfIssues extends StatelessWidget {
                               print("dateeeee                    "+j1.toString());
                               print("dateeeee                    "+j1.year.toString());
                               issueModel.issueDate = date;
+                              issueModel.issueMonth = j1.month.toString();
                               issueModel.issueYear = j1.year.toString();
                               issueModel.allIssueNumberNumber = int.parse(controller.text);
                               issueModel.allFanarIssueNumberPerDate = allFanarIssueNumberPerDate;
@@ -87,10 +94,14 @@ class AddAllNumberOfIssues extends StatelessWidget {
 
                               Navigator.of(ctx).pop();
                             },
-                            child: Text(
-                              "ثبت",
-                              style: TextStyle(
-                                  fontSize: width / 25),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                "ثبت",
+                                style: TextStyle(
+                                    fontSize: width / 25,
+                                color: AppColors.contentColorBlack),
+                              ),
                             ))),
                   ),
                 )
