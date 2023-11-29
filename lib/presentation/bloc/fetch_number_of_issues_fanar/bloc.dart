@@ -24,7 +24,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
     int intNumberOfIssueForToseeTejaratTeniyanCo = 0;
     int intNumberOfIssueForRahkarHushmandAmnCo = 0;
     int intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo = 0;
-    int intNumberOfIssueForKiyakushanAriyaCo = 0;
+    int intNumberOfIssueForKiyaHushanAriyaCo = 0;
     int intNumberOfIssueForToseeNovinHamrahKishCo = 0;
     int intNumberOfIssueForTabanAtiPardazCo = 0;
     int intNumberOfIssueForZherfAndishanHushmandDibaRayanCo = 0;
@@ -72,7 +72,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
       Iterable l5 = json.decode(responseNumberOfIssueForKiyakushanAriyaCo.body);
       List<ResponseModel> numberOfIssueForKiyakushanAriyaCo = List<ResponseModel>.from(l5.map((model)=> ResponseModel.fromJson(model)));
       for(int i = 0; i < l5.length ; i++){
-        intNumberOfIssueForKiyakushanAriyaCo = intNumberOfIssueForKiyakushanAriyaCo + numberOfIssueForKiyakushanAriyaCo[i].count!;
+        intNumberOfIssueForKiyaHushanAriyaCo = intNumberOfIssueForKiyaHushanAriyaCo + numberOfIssueForKiyakushanAriyaCo[i].count!;
       }
 
       final responseNumberOfIssueForToseeNovinHamrahKishCo = await numberOfIssuesRepository.getNumberOfIssueForToseeNovinHamrahKishCo(event.startDate, event.endDate);
@@ -153,41 +153,41 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
       }
 
       final faanarAllNumberOfIssue = numberOfIssuesRepository.getFanarAllNumberOfIssue(
-        intNumberOfIssueForFinTekParsCo,
-        intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-        intNumberOfIssueForFanAvaranEtemadRaahbarCo ,
-        intNumberOfIssueForPishgamanEtemadDijitalIraniyanCo ,
-        intNumberOfIssueForBankTejaratCo ,
-        intNumberOfIssueForPardazeshEttelaatMaliPartCo ,
-        intNumberOfIssueForZherfAndishanHushmandDibaRayanCo ,
-        intNumberOfIssueForTabanAtiPardazCo ,
-        intNumberOfIssueForToseeNovinHamrahKishCo ,
-        intNumberOfIssueForKiyakushanAriyaCo ,
-        intNumberOfIssueForToseeTejaratTeniyanCo ,
-        intNumberOfIssueForRahkarHushmandAmnCo,
-        intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo ,
-        intNumberOfIssueForAsrDaneshAfzarCo ,
-        intNumberOfIssueForTejaratElectronicRahbordEidealAminCo ,
-        intNumberOfIssueForFanavaranElectronicHoviyatAmnCo
+          intNumberOfIssueForAsrDaneshAfzarCo,
+          intNumberOfIssueForToseeTejaratTeniyanCo ,
+          intNumberOfIssueForRahkarHushmandAmnCo ,
+          intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo ,
+          intNumberOfIssueForKiyaHushanAriyaCo ,
+          intNumberOfIssueForToseeNovinHamrahKishCo ,
+          intNumberOfIssueForTabanAtiPardazCo ,
+          intNumberOfIssueForZherfAndishanHushmandDibaRayanCo ,
+          intNumberOfIssueForPardazeshEttelaatMaliPartCo ,
+          intNumberOfIssueForBankTejaratCo ,
+          intNumberOfIssueForPishgamanEtemadDijitalIraniyanCo ,
+          intNumberOfIssueForFanAvaranEtemadRaahbarCo ,
+          intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+          intNumberOfIssueForFinTekParsCo,
+          intNumberOfIssueForTejaratElectronicRahbordEidealAminCo,
+          intNumberOfIssueForFanavaranElectronicHoviyatAmnCo
       );
 
       await numberOfIssuesRepository.writeFanarAllNumberOfIssues(event.startDate, event.endDate, faanarAllNumberOfIssue);
 
       final fanarRaList = numberOfIssuesRepository.fanarRaList(
-          intNumberOfIssueForFinTekParsCo,
-          intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
-          intNumberOfIssueForFanAvaranEtemadRaahbarCo ,
-          intNumberOfIssueForPishgamanEtemadDijitalIraniyanCo ,
-          intNumberOfIssueForBankTejaratCo ,
-          intNumberOfIssueForPardazeshEttelaatMaliPartCo ,
-          intNumberOfIssueForZherfAndishanHushmandDibaRayanCo ,
-          intNumberOfIssueForTabanAtiPardazCo ,
-          intNumberOfIssueForToseeNovinHamrahKishCo ,
-          intNumberOfIssueForKiyakushanAriyaCo ,
-          intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo ,
-          intNumberOfIssueForRahkarHushmandAmnCo ,
-          intNumberOfIssueForToseeTejaratTeniyanCo ,
           intNumberOfIssueForAsrDaneshAfzarCo,
+          intNumberOfIssueForToseeTejaratTeniyanCo ,
+          intNumberOfIssueForRahkarHushmandAmnCo ,
+          intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo ,
+          intNumberOfIssueForKiyaHushanAriyaCo ,
+          intNumberOfIssueForToseeNovinHamrahKishCo ,
+          intNumberOfIssueForTabanAtiPardazCo ,
+          intNumberOfIssueForZherfAndishanHushmandDibaRayanCo ,
+          intNumberOfIssueForPardazeshEttelaatMaliPartCo ,
+          intNumberOfIssueForBankTejaratCo ,
+          intNumberOfIssueForPishgamanEtemadDijitalIraniyanCo ,
+          intNumberOfIssueForFanAvaranEtemadRaahbarCo ,
+          intNumberOfIssueForGrouhTejaratElectronicSadraKiyanCo,
+          intNumberOfIssueForFinTekParsCo,
           intNumberOfIssueForTejaratElectronicRahbordEidealAminCo,
           intNumberOfIssueForFanavaranElectronicHoviyatAmnCo);
 
@@ -198,7 +198,7 @@ class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFana
           numberOfIssueForToseeTejaratTeniyanCo: intNumberOfIssueForToseeTejaratTeniyanCo,
           numberOfIssueForRahkarHushmandAmnCo: intNumberOfIssueForRahkarHushmandAmnCo,
           numberOfIssueForToseeEttelaatVaErtebatatITSazaCo: intNumberOfIssueForToseeEttelaatVaErtebatatITSazaCo,
-          numberOfIssueForKiyakushanAriyaCo: intNumberOfIssueForKiyakushanAriyaCo,
+          numberOfIssueForKiyakushanAriyaCo: intNumberOfIssueForKiyaHushanAriyaCo,
           numberOfIssueForToseeNovinHamrahKishCo: intNumberOfIssueForToseeNovinHamrahKishCo,
           numberOfIssueForTabanAtiPardazCo: intNumberOfIssueForTabanAtiPardazCo,
           numberOfIssueForZherfAndishanHushmandDibaRayanCo: intNumberOfIssueForZherfAndishanHushmandDibaRayanCo,

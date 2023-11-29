@@ -32,65 +32,13 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
 
-    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: AppColors.contentColorBlue,
-        //   elevation: 0,
-        //
-        //   bottom: PreferredSize(
-        //     preferredSize: const Size.fromHeight(0.0),
-        //     child: Container(
-        //       decoration: BoxDecoration(
-        //         color: AppColors.contentColorBlue,
-        //           borderRadius: BorderRadius.circular(15)
-        //       ),
-        //       height: 50,
-        //       padding: const EdgeInsets.symmetric(
-        //           vertical: 5,
-        //           horizontal: 15
-        //       ),
-        //       child: Container(
-        //         decoration: BoxDecoration(
-        //             color: Colors.grey[200],
-        //             borderRadius: BorderRadius.circular(15)
-        //         ),
-        //         child: TabBar(
-        //           dividerHeight: 0,
-        //           controller: tabController,
-        //           unselectedLabelColor: Colors.black,
-        //           labelColor: Colors.white,
-        //           indicator: BoxDecoration(
-        //               color: AppColors.mainColor,
-        //               borderRadius: BorderRadius.circular(15)
-        //           ),
-        //           indicatorSize: TabBarIndicatorSize.tab,
-        //           labelStyle: const TextStyle(
-        //               fontWeight: FontWeight.w700,
-        //               fontSize: 15
-        //           ),
-        //           tabs: const [
-        //             Tab(
-        //               text: "آمار روزانه",
-        //             ),
-        //             Tab(
-        //               text: "آمار چند روزه",
-        //             ),
-        //             Tab(
-        //               text: "نمودار ماهانه",
-        //             ),
-        //           ],
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
         body: Container(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 20,
             bottom: 20
           ),
@@ -116,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(15)
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       child: TabBar(
                         dividerHeight: 0,

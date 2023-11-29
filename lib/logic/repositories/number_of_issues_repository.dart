@@ -162,7 +162,7 @@ class NumberOfIssuesRepository {
       int? numberOfIssueForToseeTejaratTeniyanCoCount,
       int? numberOfIssueForRahkarHushmandAmnCoCount,
       int? numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount,
-      int? numberOfIssueForKiyakushanAriyaCoCount,
+      int? numberOfIssueForKiyaHushanAriyaCoCount,
       int? numberOfIssueForToseeNovinHamrahKishCoCount,
       int? numberOfIssueForTabanAtiPardazCoCount,
       int? numberOfIssueForZherfAndishanHushmandDibaRayanCoCount,
@@ -181,7 +181,7 @@ class NumberOfIssuesRepository {
     fanarRaList.add(numberOfIssueForToseeTejaratTeniyanCoCount);
     fanarRaList.add(numberOfIssueForRahkarHushmandAmnCoCount);
     fanarRaList.add(numberOfIssueForToseeEttelaatVaErtebatatITSazaCoCount);
-    fanarRaList.add(numberOfIssueForKiyakushanAriyaCoCount);
+    fanarRaList.add(numberOfIssueForKiyaHushanAriyaCoCount);
     fanarRaList.add(numberOfIssueForToseeNovinHamrahKishCoCount);
     fanarRaList.add(numberOfIssueForTabanAtiPardazCoCount);
     fanarRaList.add(numberOfIssueForZherfAndishanHushmandDibaRayanCoCount);

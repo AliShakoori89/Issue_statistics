@@ -54,7 +54,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
         ),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(15)
+          borderRadius: BorderRadius.circular(15),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,6 +82,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               return child!;
             },
           ))!;
+
           if (picked != selectedDate) {
             setState(() {
               label = picked.toJalaliDateTime();
@@ -118,11 +119,12 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
 
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
 
+          String gregorianYear = "${j2g1.year}";
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: gregorianDate,
-              month: gregorianMonth));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
+          BlocProvider.of<SetDateBloc>(context)
+              .add(AddToDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
 
@@ -139,7 +141,6 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
             right: width / 10,
             left: width / 10,
           ),
-          // key: keyButton2,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20)),
           child: Row(
@@ -175,21 +176,19 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           DateTime g = DateTime.parse(date);
           Jalali j = Jalali(g.year, g.month, g.day);
           Gregorian j2g1 = j.toGregorian();
-          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
+          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
-          //
-          print("gregorianDate                     "+gregorianDate);
+          String gregorianYear = "${j2g1.year}";
 
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
-          BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: gregorianDate,
-              month: gregorianMonth));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
+          BlocProvider.of<SetDateBloc>(context)
+              .add(AddToDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
-              .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate ));
+              .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<SetDateBloc>(context)
@@ -199,7 +198,6 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           width: width / 20,
           height: height / 40,
           child: Image.asset(
-              // key: keyButton1,
               "assets/main_page_first_container_logo/left_arrow.png"),
         ),
       ),
@@ -217,17 +215,15 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           DateTime g = DateTime.parse(date);
           Jalali j = Jalali(g.year, g.month, g.day);
           Gregorian j2g1 = j.toGregorian();
-          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
 
+          String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
-          //
-          print("gregorianDate                     "+gregorianDate);
+          String gregorianYear = "${j2g1.year}";
 
           BlocProvider.of<SetDateBloc>(context)
-              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth));
+              .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
-              date: gregorianDate,
-              month: gregorianMonth));
+              date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)

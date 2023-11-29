@@ -148,20 +148,23 @@ class SeveralDatePickerCalendarState extends State<SeveralDatePickerCalendar> {
         DateTime gEnd = DateTime.parse(date);
         Jalali jEnd = Jalali(gEnd.year, gEnd.month, gEnd.day);
         Gregorian j2g1End = jEnd.toGregorian();
+
         String gregorianEndDate = "${j2g1End.year}/${j2g1End.month}/${j2g1End.day}";
-
         String gregorianEndMonth = "${j2g1End.year}/${j2g1End.month}";
+        String gregorianEndYear = "${j2g1End.year}";
 
         BlocProvider.of<SetDateBloc>(context)
-            .add(WriteDateEvent(date: gregorianStartDate, month: gregorianStartMonth));
+            .add(WriteDateEvent(date: gregorianStartDate, month: gregorianStartMonth, year: gregorianEndYear));
         BlocProvider.of<SetDateBloc>(context)
-            .add(WriteDateEvent(date: gregorianEndDate, month: gregorianEndMonth));
+            .add(WriteDateEvent(date: gregorianEndDate, month: gregorianEndMonth, year: gregorianEndYear));
         BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
             date: gregorianStartDate,
-            month: gregorianStartMonth));
+            month: gregorianStartMonth,
+            year: gregorianEndYear));
         BlocProvider.of<SetDateBloc>(context).add(AddToDateEvent(
             date: gregorianEndDate,
-            month: gregorianEndMonth));
+            month: gregorianEndMonth,
+            year: gregorianEndYear));
         BlocProvider.of<SetDateBloc>(context)
             .add(ReadDateEvent());
 

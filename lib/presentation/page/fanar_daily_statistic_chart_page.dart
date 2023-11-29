@@ -15,37 +15,43 @@ class FanarDailyStatisticChartPage extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      appBar: AppBar(
-        elevation: 0,
-        title: const Align(
-            alignment: Alignment.centerRight,
-            child: Text("نمودار صدور گواهی روزانه")),
-        titleTextStyle: const TextStyle(
-          fontSize: 15
-        ),
-        backgroundColor: AppColors.mainColor,
-      ),
       body: Container(
-        margin: EdgeInsets.only(
-          left: width / 30,
-          right: width / 30,
-          top: height / 100,
-          bottom: height / 30
+        decoration: const BoxDecoration(
+            gradient:  LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+                  AppColors.contentColorBlue,
+                  AppColors.backgroundColor
+                ])
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text("مراکز صدور شرکت فنار",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: width / 22),),
-            SizedBox(height: height / 50,),
-            FanarDailyBarChart(fanarRaList: fanarRaList),
-            SizedBox(height: height / 4,),
-            FanarPieDailyChart(fanarRaList: fanarRaList,)
-          ],
+        child: Container(
+          margin: EdgeInsets.only(
+              left: width / 30,
+              right: width / 30,
+              top: height / 100,
+              bottom: height / 30
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const SizedBox(height: 20),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Icon(Icons.arrow_back_ios,
+                      color: Colors.white),
+                  Text('نمودار مراکز صدور گواهی شرکت فنار',
+                  style: TextStyle(color: Colors.white,
+                  fontSize: 18),)
+                ],
+              ),
+              SizedBox(height: height / 10,),
+              FanarDailyBarChart(fanarRaList: fanarRaList),
+              SizedBox(height: height / 6,),
+              FanarPieDailyChart(fanarRaList: fanarRaList,)
+            ],
+          ),
         ),
       ),
     );

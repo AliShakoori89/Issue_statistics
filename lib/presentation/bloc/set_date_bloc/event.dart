@@ -5,31 +5,31 @@ abstract class SetDateEvent{
 }
 
 class InitialDateEvent extends SetDateEvent {}
-//
+
 class ReadDateEvent extends SetDateEvent {}
-//
-// class ReadMonthEvent extends SetDateEvent {}
-//
+
 class WriteDateEvent extends SetDateEvent {
   final String date;
   final String month;
+  final String year;
 
   WriteDateEvent(
-      {required this.date, required this.month});
+      {required this.date, required this.month, required this.year});
 
   @override
-  List<Object> get props => [date, month];
+  List<Object> get props => [date, month, year];
 }
 
 class AddToDateEvent extends SetDateEvent{
   final String date;
   final String month;
+  final String year;
 
   AddToDateEvent(
-      {required this.date, required this.month});
+      {required this.date, required this.month, required this.year});
 
   @override
-  List<Object> get props => [date, month];
+  List<Object> get props => [date, month, year];
 }
 
 class ReduceDateEvent extends SetDateEvent{

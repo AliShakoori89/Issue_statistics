@@ -6,6 +6,8 @@ import '../bloc/set_date_bloc/bloc.dart';
 import '../bloc/set_date_bloc/event.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 
+import '../bloc/set_date_bloc/state.dart';
+
 
 class AddAllNumberOfIssues extends StatelessWidget {
 
@@ -16,8 +18,8 @@ class AddAllNumberOfIssues extends StatelessWidget {
   final int allFanarIssueNumberPerDate;
   final int allPendarIssueNumberPerDate;
   const AddAllNumberOfIssues({super.key, required this.width, required this.height,
-  required this.controller, required this.date, required this.allFanarIssueNumberPerDate,
-  required this.allPendarIssueNumberPerDate});
+    required this.controller, required this.date, required this.allFanarIssueNumberPerDate,
+    required this.allPendarIssueNumberPerDate});
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +48,9 @@ class AddAllNumberOfIssues extends StatelessWidget {
                 child: TextFormField(
                   controller: controller,
                   decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: 'تعداد کل گواهی',
-                    hintTextDirection: TextDirection.rtl
+                      border: OutlineInputBorder(),
+                      hintText: 'تعداد کل گواهی',
+                      hintTextDirection: TextDirection.rtl
                   ),
                 ),
               ),
@@ -61,48 +63,44 @@ class AddAllNumberOfIssues extends StatelessWidget {
                     child: SizedBox(
                         height: 40,
                         width: 60,
-                        child: ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(AppColors.contentColorGreenLike),
-                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0),
-                                    )
-                                )
-                            ),
-                            onPressed: () {
-                              late IssueModel issueModel = IssueModel();
+                        child: BlocBuilder<SetDateBloc, SetDateState>(
+                            builder: (context, state) {
+                              return ElevatedButton(
+                                  style: ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all<Color>(AppColors.contentColorGreenLike),
+                                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10.0),
+                                          )
+                                      )
+                                  ),
+                                  onPressed: () {
+                                    late IssueModel issueModel = IssueModel();
 
-                              print("dateeeee                    "+date);
-                              String newDate = date.replaceAll('/','-');
-                              print("dateeeee                    "+newDate);
-                              DateTime g = DateTime.parse(newDate);
-                              print("dateeeee                    "+g.toString());
-                              Jalali j1 = g.toJalali();
-                              print("dateeeee                    "+j1.toString());
-                              print("dateeeee                    "+j1.year.toString());
-                              issueModel.issueDate = date;
-                              issueModel.issueMonth = j1.month.toString();
-                              issueModel.issueYear = j1.year.toString();
-                              issueModel.allIssueNumberNumber = int.parse(controller.text);
-                              issueModel.allFanarIssueNumberPerDate = allFanarIssueNumberPerDate;
+                                    issueModel.issueDate = state.date;
+                                    issueModel.issueMonth = state.month.toString();
+                                    issueModel.issueYear = state.year;
+                                    issueModel.allIssueNumberNumber = int.parse(controller.text);
+                                    issueModel.allFanarIssueNumberPerDate = allFanarIssueNumberPerDate;
 
-                              BlocProvider.of<SetDateBloc>(context)
-                                  .add(AddNumberOfIssueEvent(
-                                      issueModel: issueModel,
-                                      date: date));
+                                    BlocProvider.of<SetDateBloc>(context)
+                                        .add(AddNumberOfIssueEvent(
+                                        issueModel: issueModel,
+                                        date: date));
 
-                              Navigator.of(ctx).pop();
-                            },
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                "ثبت",
-                                style: TextStyle(
-                                    fontSize: width / 25,
-                                color: AppColors.contentColorBlack),
-                              ),
-                            ))),
+                                    Navigator.of(ctx).pop();
+                                  },
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "ثبت",
+                                      style: TextStyle(
+                                          fontSize: width / 25,
+                                          color: AppColors.contentColorBlack),
+                                    ),
+                                  ));
+                            })
+                    ),
                   ),
                 )
               ],

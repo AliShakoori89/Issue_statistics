@@ -8,6 +8,7 @@ import '../bloc/fetch_number_of_issues_pendar/state.dart';
 import '../bloc/set_date_bloc/bloc.dart';
 import '../bloc/set_date_bloc/event.dart';
 import '../bloc/set_date_bloc/state.dart';
+import '../page_helpers/const/app_colors.dart';
 import '../page_helpers/const/no_data_page.dart';
 import '../page_helpers/fanar_issuer_list.dart';
 import '../page_helpers/pendar_issuer_list.dart';
@@ -49,6 +50,15 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
 
     return Container(
       alignment: Alignment.topCenter,
+      decoration: BoxDecoration(
+          gradient:  LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                AppColors.contentColorBlue,
+                AppColors.backgroundColor
+              ])
+      ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
