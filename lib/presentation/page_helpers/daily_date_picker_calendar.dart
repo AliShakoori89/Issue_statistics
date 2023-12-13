@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_all_issue_per_date/bloc.dart';
+import 'package:issue_statistics/presentation/bloc/fetch_number_of_all_issue_per_date/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
@@ -128,6 +130,8 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
 
+          BlocProvider.of<FetchNumberOfAllIssuePerDateBloc>(context)
+              .add(FetchNumberOfAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
@@ -181,12 +185,16 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
           String gregorianYear = "${j2g1.year}";
 
+          print(gregorianDate);
+
           BlocProvider.of<SetDateBloc>(context)
               .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(AddToDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
+          BlocProvider.of<FetchNumberOfAllIssuePerDateBloc>(context)
+              .add(FetchNumberOfAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
@@ -226,6 +234,8 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
+          BlocProvider.of<FetchNumberOfAllIssuePerDateBloc>(context)
+              .add(FetchNumberOfAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)

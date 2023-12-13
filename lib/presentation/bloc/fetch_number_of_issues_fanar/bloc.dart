@@ -6,7 +6,7 @@ import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarFanarEvent, NumberOfFanarIssuesState> {
+class NumberOfFanarIssuesBloc extends Bloc<NumberOfFanarEvent, NumberOfFanarIssuesState> {
 
   NumberOfIssuesRepository numberOfIssuesRepository;
   SetDateRepository setDateRepository;

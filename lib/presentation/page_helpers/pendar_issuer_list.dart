@@ -18,10 +18,10 @@ class PendarIssuerList extends StatelessWidget {
   final String allIssueBetweenDays;
 
   const PendarIssuerList({super.key, required this.state, required this.height,
-  required this.width, required this.controller,
-  required this.allIssuePerDate, required this.allPendarIssueNumberPerDate,
-  required this.allFanarIssueNumberPerDate, required this.date,
-  required this.pageName, required this.allIssueBetweenDays});
+    required this.width, required this.controller,
+    required this.allIssuePerDate, required this.allPendarIssueNumberPerDate,
+    required this.allFanarIssueNumberPerDate, required this.date,
+    required this.pageName, required this.allIssueBetweenDays});
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +33,14 @@ class PendarIssuerList extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) =>
                   PendarDailyStatisticChartPage(
-                    pendarRaList: state.pendarRaList,
-                    pendarIssues:  pageName == "DailyStatisticsPage"
-                        ? int.parse(allIssuePerDate) -
-                        allPendarIssueNumberPerDate -
-                        allFanarIssueNumberPerDate
-                        : int.parse(allIssueBetweenDays) -
-                        allPendarIssueNumberPerDate -
-                        allFanarIssueNumberPerDate
+                      pendarRaList: state.pendarRaList,
+                      pendarIssues:  pageName == "DailyStatisticsPage"
+                          ? int.parse(allIssuePerDate) -
+                          allPendarIssueNumberPerDate -
+                          allFanarIssueNumberPerDate
+                          : int.parse(allIssueBetweenDays) -
+                          allPendarIssueNumberPerDate -
+                          allFanarIssueNumberPerDate
                   )),
             );
           },
@@ -189,13 +189,13 @@ class PendarIssuerList extends StatelessWidget {
                     children: [
                       pageName == "DailyStatisticsPage"
                           ? Text("${state.pendarAllNumberOfIssue+int.parse(allIssuePerDate) -
-                              allPendarIssueNumberPerDate
-                              -
-                              allFanarIssueNumberPerDate}")
+                          allPendarIssueNumberPerDate
+                          -
+                          allFanarIssueNumberPerDate}")
                           : Text("${state.pendarAllNumberOfIssue+int.parse(allIssueBetweenDays) -
-                              allPendarIssueNumberPerDate
-                              -
-                              allFanarIssueNumberPerDate}"),
+                          allPendarIssueNumberPerDate
+                          -
+                          allFanarIssueNumberPerDate}"),
                       SizedBox(
                         height: height / 80,
                       ),
@@ -216,41 +216,41 @@ class PendarIssuerList extends StatelessWidget {
 
   Container allIssuesContainer() {
     return Container(
-        decoration: BoxDecoration(
+      decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15)
+      ),
+      child: Container(
+        margin: const EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: 10
         ),
-        child: Container(
-          margin: const EdgeInsets.only(
-              top: 10,
-              left: 10,
-              right: 10,
-              bottom: 10
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              pageName == "DailyStatisticsPage"
-                  ? Text(allIssuePerDate,
-                  style: const TextStyle(color: Colors.black))
-                  : Text(allIssueBetweenDays,
-                  style: const TextStyle(color: Colors.black)),
-              pageName == "DailyStatisticsPage"
-                  ? Row(
-                children: [
-                        AddAllNumberOfIssues(width: width, height: height, controller: controller,
-                        date: date, allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
-                        allPendarIssueNumberPerDate: allPendarIssueNumberPerDate),
-                        const Text("تعداد کل گواهی های صادر شده",
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(color: Colors.black)),
-                      ],)
-                  : const Text("تعداد کل گواهی های صادر شده",
-                  textDirection: TextDirection.rtl,
-                  style: TextStyle(color: Colors.black))
-            ],
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            pageName == "DailyStatisticsPage"
+                ? Text(allIssuePerDate,
+                style: const TextStyle(color: Colors.black))
+                : Text(allIssueBetweenDays,
+                style: const TextStyle(color: Colors.black)),
+            pageName == "DailyStatisticsPage"
+                ? Row(
+              children: [
+                AddAllNumberOfIssues(width: width, height: height, controller: controller,
+                    date: date, allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
+                    allPendarIssueNumberPerDate: allPendarIssueNumberPerDate),
+                const Text("تعداد کل گواهی های صادر شده",
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(color: Colors.black)),
+              ],)
+                : const Text("تعداد کل گواهی های صادر شده",
+                textDirection: TextDirection.rtl,
+                style: TextStyle(color: Colors.black))
+          ],
         ),
-      );
+      ),
+    );
   }
 }

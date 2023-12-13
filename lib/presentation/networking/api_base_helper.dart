@@ -4,14 +4,41 @@ import 'dart:async';
 import 'http_exception.dart';
 
 class ApiBaseHelper {
-  // final String _baseUrl = 'http://coddy.ir';
-  // final String mainUrl = 'coddy.ir';
 
-  // Future<dynamic> get(String url, {String query = ''}) async {
+  FutureOr<dynamic> post(Uri url, {String? body}) async {
+    try {
+      // print("body                 "+body.toString());
+
+
+      // final Uri address =
+      // Uri.parse(url);
+      Map<String, String> headers;
+      headers = {
+        'Content-Type': 'application/json; charset=UTF-8',
+      };
+
+      // print("address                 "+address.toString());
+      print("body                 "+body!);
+      // print("queryParameters                 "+queryParameters!.toString());
+
+      http.Response response = await http.post(url, body: body, headers: headers);
+      // print("address                 "+response.body);
+      return response;
+    } on SocketException {
+      throw FetchDataException('No Internet connection');
+    }
+  }
+
+  // Future<dynamic> get(dynamic body) async {
   //   try {
+  //
   //     final Uri address = Uri(
-  //         host: mainUrl, scheme: "https", query: query, path: url);
-  //     Map<String, String>? headers;
+  //         host: "https://repb.raahbartrust.ir:8081/api/CaDashboard/GetAll", scheme: "https", port: 8081);
+  //
+  //     Map<String, String> headers;
+  //     headers = {
+  //       'Content-Type': 'application/json; charset=UTF-8',
+  //     };
   //
   //     final response = await http.get(address, headers: headers);
   //     var responseJson = _returnResponse(response);
@@ -20,39 +47,8 @@ class ApiBaseHelper {
   //     throw FetchDataException('No Internet connection');
   //   }
   // }
-
-  FutureOr<dynamic> post(String url, dynamic body) async {
-    try {
-      final Uri address =
-      Uri.parse(url);
-      Map<String, String> headers;
-      headers = {
-        'Content-Type': 'application/json; charset=UTF-8',
-      };
-      http.Response response = await http.post(address, body: body, headers: headers);
-      return response;
-    } on SocketException {
-      throw FetchDataException('No Internet connection');
-    }
-  }
-
 }
 
 http.Response _returnResponse(http.Response response) {
   return response;
-  // switch (response.statusCode) {
-  //   case 200:
-  //     var responseJson = json.decode(response.body.toString());
-  //     print(responseJson);
-  //     return responseJson;
-  //   case 400:
-  //     throw BadRequestException(response.body.toString());
-  //   case 401:
-  //   case 403:
-  //     throw UnauthorisedException(response.body.toString());
-  //   case 500:
-  //   default:
-  //     throw FetchDataException(
-  //         'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
-  // }
 }

@@ -30,8 +30,8 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
   @override
   void initState() {
     controller = TextEditingController();
-      final now = DateTime.now();
-      String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
+    final now = DateTime.now();
+    String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
     BlocProvider.of<SetDateBloc>(context).add(ReadNumberOfIssueBetweenDaysEvent(startDate: selectedDate, endDate: selectedDate));
     super.initState();
   }
@@ -107,16 +107,16 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
                         );
                       }if (state.status.isSuccess) {
                         return PendarIssuerList(
-                            state: state,
-                            height: height,
-                            width: width,
-                            controller: controller,
-                            allIssuePerDate: allIssuePerDate,
-                            allPendarIssueNumberPerDate: allPendarIssueNumberPerDate,
-                            allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
-                            date: date,
-                            allIssueBetweenDays: allIssueBetweenDays,
-                            pageName: "SeveralDaysStatisticsPage",);
+                          state: state,
+                          height: height,
+                          width: width,
+                          controller: controller,
+                          allIssuePerDate: allIssuePerDate,
+                          allPendarIssueNumberPerDate: allPendarIssueNumberPerDate,
+                          allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
+                          date: date,
+                          allIssueBetweenDays: allIssueBetweenDays,
+                          pageName: "SeveralDaysStatisticsPage",);
                       }
                       if (state.status.isError) {
                         return Container();

@@ -107,7 +107,7 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
       await setDateRepository.addNumberOfIssue(event.issueModel);
-      final String allIssuePerDate = await setDateRepository.readNumberOfIssuePerDate(event.date);
+      final String allIssuePerDate = await setDateRepository.fetchAllNumberOfIssuePerDate(event.date);
       emit(
         state.copyWith(
             status: SetDateStatus.success,
@@ -123,7 +123,7 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
       ReadNumberOfIssuePerDateEvent event, Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
-      final String allIssuePerDate = await setDateRepository.readNumberOfIssuePerDate(event.startDate);
+      final String allIssuePerDate = await setDateRepository.fetchAllNumberOfIssuePerDate(event.startDate);
       emit(
         state.copyWith(
             status: SetDateStatus.success,

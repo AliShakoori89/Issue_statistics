@@ -1,8 +1,8 @@
-abstract class NumberOfFanarFanarEvent{
-  const NumberOfFanarFanarEvent();
+abstract class NumberOfFanarEvent{
+  const NumberOfFanarEvent();
 }
 
-class GetNumberOfIssuesFanarEvent extends NumberOfFanarFanarEvent {
+class GetNumberOfIssuesFanarEvent extends NumberOfFanarEvent {
   final String startDate;
   final String endDate;
 
