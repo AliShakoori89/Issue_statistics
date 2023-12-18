@@ -50,7 +50,7 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
 
     return Container(
       alignment: Alignment.topCenter,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient:  LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -89,7 +89,7 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
           return BlocBuilder<SetDateBloc, SetDateState>(
               builder: (context, state) {
 
-                String allIssuePerDate = state.allIssuePerDate;
+                var allIssuePerDate = state.allIssuePerDate;
                 String allIssueBetweenDays = state.allIssueBetweenDays;
                 var date = state.date;
 

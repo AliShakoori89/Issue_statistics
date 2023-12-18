@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:issue_statistics/data/model/all_issues_per_day_model.dart';
 import 'package:issue_statistics/logic/repositories/date_time_repository.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/event.dart';
 import 'package:issue_statistics/presentation/bloc/set_date_bloc/state.dart';
@@ -8,7 +9,7 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
   SetDateRepository setDateRepository = SetDateRepository();
 
   SetDateBloc(this.setDateRepository) : super(
-      const SetDateState()) {
+      SetDateState.initial()) {
     on<InitialDateEvent>(_mapInitialDateEventToState);
     on<ReadDateEvent>(_mapReadDateEventToState);
     on<WriteDateEvent>(_mapWriteDateEventToState);
@@ -107,7 +108,9 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
       await setDateRepository.addNumberOfIssue(event.issueModel);
-      final String allIssuePerDate = await setDateRepository.fetchAllNumberOfIssuePerDate(event.date);
+      AllIssuePerDayModel allIssuePerDate = await setDateRepository.fetchAllNumberOfIssuePerDate(event.date);
+      print("44444444444444444444444444");
+      print("1111111111111111111111              "+allIssuePerDate.message.toString());
       emit(
         state.copyWith(
             status: SetDateStatus.success,
@@ -123,7 +126,9 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
       ReadNumberOfIssuePerDateEvent event, Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
-      final String allIssuePerDate = await setDateRepository.fetchAllNumberOfIssuePerDate(event.startDate);
+      print("dateeeeeeeeeeeeeeee             "+event.startDate);
+      AllIssuePerDayModel allIssuePerDate = await setDateRepository.fetchAllNumberOfIssuePerDate(event.startDate);
+
       emit(
         state.copyWith(
             status: SetDateStatus.success,

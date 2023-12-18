@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:issue_statistics/logic/repositories/date_time_repository.dart';
 import 'package:issue_statistics/logic/repositories/monthly_chart_repository.dart';
 import 'package:issue_statistics/logic/repositories/number_of_issues_repository.dart';
-import 'package:issue_statistics/presentation/bloc/fetch_number_of_all_issue_per_date/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/monthly_chart/bloc.dart';
@@ -35,9 +34,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (BuildContext context) =>
                 MonthlyChartBloc(MonthlyChartRepository())),
-        BlocProvider(
-            create: (BuildContext context) =>
-                FetchNumberOfAllIssuePerDateBloc(SetDateRepository()))
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

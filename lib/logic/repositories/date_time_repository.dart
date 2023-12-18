@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
-
+import 'dart:io';
 import 'package:issue_statistics/data/data_base/data_base.dart';
 import 'package:issue_statistics/data/model/issue_model.dart';
 import 'package:issue_statistics/presentation/networking/api_base_helper.dart';
 import 'package:shamsi_date/shamsi_date.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../data/model/all_issues_per_day_model.dart';
 
 class SetDateRepository {
 
@@ -65,33 +66,21 @@ class SetDateRepository {
     return await helper.addNumberOfIssue(issueModel);
   }
 
-  // FutureOr<String> readNumberOfIssuePerDate(String date) async {
-  //   final String allNumberOfIssue = await helper.readNumberOfIssuePerDate(date) ?? "";
-  //   return allNumberOfIssue;
-  // }
   FutureOr<dynamic> fetchAllNumberOfIssuePerDate(String date) async {
 
-    print("BBBloc           "+date);
+    final queryParameters = {
+      'PersianDate': date};
 
-    // DateTime g = DateTime.parse(date);
-    // Jalali j = Jalali(g.year, g.month, g.day);
-    // Gregorian j2g1 = j.toGregorian();
-    //
-    // String gregorianDate = "${j2g1.year}/${j2g1.month}/${j2g1.day}";
+    final Uri address=
+    Uri.https('repb.raahbartrust.ir:8081', '/api/CaDashboard/GetByPersianDate', queryParameters);
 
-    var body = jsonEncode({"PersianDate":"1402/07/10"});
-    print("#################################################################################################           ");
+    var response = await api.post(address, headers: {
+    HttpHeaders.contentTypeHeader: 'application/json'});
 
-    final Uri address =
-    Uri.parse("https://repb.raahbartrust.ir:8081/api/CaDashboard/GetByPersianDate");
+    print(response.body);
+    final productJson = json.decode(response.body);
 
-    // final uri =
-    // Uri.https("repb.raahbartrust.ir:8081/api/CaDashboard/GetByPersianDate", "", queryParameters);
-
-    // print("@@@@@@@@@@@@@@@@@@@@@@@@"+uri.toString());
-
-    var response = await api.post(address,body: body);
-    return response;
+    return AllIssuePerDayModel.fromJson(productJson);
   }
 
   FutureOr<String> readNumberOfIssueBetweenDays(String startDate, String endDate) async {

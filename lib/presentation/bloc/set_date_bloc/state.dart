@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:issue_statistics/data/model/all_issues_per_day_model.dart';
 import 'package:issue_statistics/data/model/issue_model.dart';
 
 enum SetDateStatus { initial, success, error, loading }
@@ -13,24 +14,23 @@ extension SetDateStatusX on SetDateStatus {
 class SetDateState extends Equatable {
 
   const SetDateState({
-    this.status = SetDateStatus.initial,
-    String? date,
-    String? month,
-    String? year,
-    List<IssueModel>? issueDetails,
-    String? selectDate,
-    String? allIssuePerDate,
-    String? calculatePendarNumberOfIssue,
-    String? allIssueBetweenDays
-  }): date = date ?? '' ,
-      month = month ?? '',
-      year = year ?? '',
-      issueDetails = issueDetails ?? const[],
-      selectDate = selectDate ?? '',
-      allIssuePerDate = allIssuePerDate ?? '0',
-      calculatePendarNumberOfIssue = calculatePendarNumberOfIssue ?? '0',
-      allIssueBetweenDays = allIssueBetweenDays ?? '0';
+    required this.status, required this.date, required this.month,
+    required this.year, required this.issueDetails,
+    required this.selectDate, required this.allIssuePerDate,
+    required this.calculatePendarNumberOfIssue, required this.allIssueBetweenDays
+  });
 
+  static SetDateState initial() => const SetDateState(
+    status: SetDateStatus.initial,
+    date: "",
+    month: "",
+    year: "",
+    issueDetails: [],
+    selectDate: "",
+    allIssuePerDate: null,
+    calculatePendarNumberOfIssue: "",
+    allIssueBetweenDays: "",
+  );
 
   final SetDateStatus status;
   final String date;
@@ -38,13 +38,13 @@ class SetDateState extends Equatable {
   final String year;
   final List<IssueModel> issueDetails;
   final String selectDate;
-  final String allIssuePerDate;
+  final AllIssuePerDayModel? allIssuePerDate;
   final String calculatePendarNumberOfIssue;
   final String allIssueBetweenDays;
 
   @override
   // TODO: implement props
-  List<Object> get props => [status, date, month, year,
+  List<Object?> get props => [status, date, month, year,
     issueDetails, selectDate, allIssuePerDate,
     calculatePendarNumberOfIssue, allIssueBetweenDays];
 
@@ -55,7 +55,7 @@ class SetDateState extends Equatable {
     String? year,
     List<IssueModel>? issueDetails,
     String? selectDate,
-    String? allIssuePerDate,
+    AllIssuePerDayModel? allIssuePerDate,
     String? calculatePendarNumberOfIssue,
     String? allIssueBetweenDays,
   }) {

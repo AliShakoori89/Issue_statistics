@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:issue_statistics/data/model/all_issues_per_day_model.dart';
 import 'package:issue_statistics/presentation/page_helpers/add_all_number_of_issues.dart';
 import '../bloc/fetch_number_of_issues_pendar/state.dart';
 import '../page/pendar_daily_statistic_chart_page.dart';
@@ -10,7 +11,7 @@ class PendarIssuerList extends StatelessWidget {
   final double height;
   final double width;
   final TextEditingController controller;
-  final String allIssuePerDate;
+  final AllIssuePerDayModel? allIssuePerDate;
   final int allFanarIssueNumberPerDate;
   final int allPendarIssueNumberPerDate;
   final String date;
@@ -35,7 +36,7 @@ class PendarIssuerList extends StatelessWidget {
                   PendarDailyStatisticChartPage(
                       pendarRaList: state.pendarRaList,
                       pendarIssues:  pageName == "DailyStatisticsPage"
-                          ? int.parse(allIssuePerDate) -
+                          ? int.parse(allIssuePerDate!.data![0].cnt.toString()) -
                           allPendarIssueNumberPerDate -
                           allFanarIssueNumberPerDate
                           : int.parse(allIssueBetweenDays) -
@@ -166,13 +167,15 @@ class PendarIssuerList extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       pageName == "DailyStatisticsPage"
-                          ? Text("${int.parse(allIssuePerDate) -
+                      ? allIssuePerDate!.data!.isNotEmpty
+                          ? Text("${int.parse(allIssuePerDate!.data![0].cnt.toString()) -
                           allPendarIssueNumberPerDate -
                           allFanarIssueNumberPerDate}",
                           style: const TextStyle(color: Colors.black))
-                          : Text("${int.parse(allIssueBetweenDays) -
-                          allPendarIssueNumberPerDate -
-                          allFanarIssueNumberPerDate}",
+                          : Text("0")
+                        : Text("${int.parse(allIssueBetweenDays) -
+                        allPendarIssueNumberPerDate -
+                        allFanarIssueNumberPerDate}",
                           style: const TextStyle(color: Colors.black)),
                       SizedBox(
                         height: height / 80,
@@ -188,14 +191,16 @@ class PendarIssuerList extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       pageName == "DailyStatisticsPage"
-                          ? Text("${state.pendarAllNumberOfIssue+int.parse(allIssuePerDate) -
-                          allPendarIssueNumberPerDate
-                          -
-                          allFanarIssueNumberPerDate}")
-                          : Text("${state.pendarAllNumberOfIssue+int.parse(allIssueBetweenDays) -
-                          allPendarIssueNumberPerDate
-                          -
-                          allFanarIssueNumberPerDate}"),
+                        ? allIssuePerDate!.data!.isNotEmpty
+                          ? Text("${allPendarIssueNumberPerDate
+                          + int.parse(allIssuePerDate!.data![0].cnt.toString())
+                          - allPendarIssueNumberPerDate
+                          - allFanarIssueNumberPerDate}")
+                          : Text("0")
+                          : Text("${state.pendarAllNumberOfIssue
+                          + int.parse(allIssueBetweenDays)
+                          - allPendarIssueNumberPerDate
+                          - allFanarIssueNumberPerDate}"),
                       SizedBox(
                         height: height / 80,
                       ),
@@ -231,10 +236,12 @@ class PendarIssuerList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             pageName == "DailyStatisticsPage"
-                ? Text(allIssuePerDate,
+                ? allIssuePerDate!.data!.isNotEmpty
+                ? Text(allIssuePerDate!.data![0].cnt.toString(),
                 style: const TextStyle(color: Colors.black))
-                : Text(allIssueBetweenDays,
-                style: const TextStyle(color: Colors.black)),
+                : Text("0")
+              : Text(allIssueBetweenDays,
+              style: const TextStyle(color: Colors.black)),
             pageName == "DailyStatisticsPage"
                 ? Row(
               children: [

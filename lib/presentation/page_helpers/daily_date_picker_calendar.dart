@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:issue_statistics/presentation/bloc/fetch_number_of_all_issue_per_date/bloc.dart';
-import 'package:issue_statistics/presentation/bloc/fetch_number_of_all_issue_per_date/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/event.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_pendar/bloc.dart';
@@ -129,15 +127,16 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               .add(AddToDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
-
-          BlocProvider.of<FetchNumberOfAllIssuePerDateBloc>(context)
-              .add(FetchNumberOfAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
+
+          var date1 = DateFormat('yyyy/MM/dd')
+              .format(DateTime.parse(date));
+
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianDate, endDate: gregorianDate));
+              .add(ReadNumberOfIssuePerDateEvent(startDate: date1, endDate: date1));
         },
         child: Container(
           height: height / 20,
@@ -157,7 +156,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
                 width: width / 20,
               ),
               Text(
-                  DateFormat('yyyy / MM / dd')
+                  DateFormat('yyyy/MM/dd')
                       .format(DateTime.parse(date))
                       .toPersianDigit(),
                   style: TextStyle(
@@ -193,14 +192,14 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               .add(AddToDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
-          BlocProvider.of<FetchNumberOfAllIssuePerDateBloc>(context)
-              .add(FetchNumberOfAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
+          var date1 = DateFormat('yyyy/MM/dd')
+              .format(DateTime.parse(date));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianDate, endDate: gregorianDate));
+              .add(ReadNumberOfIssuePerDateEvent(startDate: date1, endDate: date1));
         },
         child: SizedBox(
           width: width / 20,
@@ -234,14 +233,14 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadDateEvent());
-          BlocProvider.of<FetchNumberOfAllIssuePerDateBloc>(context)
-              .add(FetchNumberOfAllIssuePerDateEvent(date: gregorianDate));
           BlocProvider.of<NumberOfIssuesPendarBloc>(context)
               .add(GetNumberOfIssuesPendarEvent(startDate: gregorianDate, endDate: gregorianDate));
           BlocProvider.of<NumberOfFanarIssuesBloc>(context)
               .add(GetNumberOfIssuesFanarEvent(startDate: gregorianDate, endDate: gregorianDate));
+          var date1 = DateFormat('yyyy/MM/dd')
+              .format(DateTime.parse(date));
           BlocProvider.of<SetDateBloc>(context)
-              .add(ReadNumberOfIssuePerDateEvent(startDate: gregorianDate, endDate: gregorianDate));
+              .add(ReadNumberOfIssuePerDateEvent(startDate: date1, endDate: date1));
         },
         child: SizedBox(
           width: width / 20,

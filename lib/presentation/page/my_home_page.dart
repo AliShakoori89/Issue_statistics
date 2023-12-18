@@ -67,7 +67,6 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: TabBar(
-                        dividerHeight: 0,
                         controller: tabController,
                         unselectedLabelColor: Colors.black,
                         labelColor: Colors.white,

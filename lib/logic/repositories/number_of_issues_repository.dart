@@ -13,10 +13,15 @@ class NumberOfIssuesRepository {
       var body = jsonEncode({"reportkey":"0S2DXd7ISt3nGSL8DqSi+zKpMA0=","customercode":"10101586520",
         "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+      Map<String, String> headers;
+      headers = {
+        'Content-Type': 'application/json; charset=UTF-8',
+      };
+
       final Uri address =
       Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-      var response = await api.post(address, body: body);
+      var response = await api.post(address, body: body, headers: headers);
       return response;
     }
 
@@ -25,10 +30,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"0j0UVtan1zl+TOzFJioZemMx93A=","customercode":"10320408934",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -37,10 +47,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"z86QSWd3EsgwuyZHO1bTnLWlTgU=","customercode":"14008132883",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -49,10 +64,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"viqwUtP89+ywIk7D9qkOHi4HPV0=","customercode":"14008019700",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -61,10 +81,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"viqwUtP89+ywIk7D9qkOHi4HPV0=","customercode":"14008019700",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -73,10 +98,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"z/VbuOIyV9FaKmppGB9F/z6PAzA=","customercode":"14008335076",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -85,10 +115,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"QRV8GKfQSCEQ3GIT+rGEV/xAOe4=","customercode":"14007345928",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -97,10 +132,15 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"C587lmNrh1B0zkcAQNfXXvL1Xlg=","customercode":"14010464575",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -109,94 +149,134 @@ class NumberOfIssuesRepository {
     var body = jsonEncode({"reportkey":"4b8ngUfvEnA/4AiSB76+kqz2Ztk=","customercode":"10320874334",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
     final Uri address =
     Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
 
-    var response = await api.post(address, body: body);
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForBankTejaratCoFanar(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"fpLNU2BPeWZE0lNdK/FfeqAXcn4=","customercode":"10100834460",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForPishgamanEtemadDijitalIraniyanCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"TE6SEHJpXLkbAZROFmp8twK/W00=","customercode":"14010501932",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForFanAvaranEtemadRaahbarCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"l3oRfI3cGMlQhHF5kaLWXReqH3o=","customercode":"10320475120",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForGrouhTejaratElectronicSadraKiyantCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"why3uzWhBRzXjbmBoliCXbe2B6o=","customercode":"14008265639",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForFinTekParsCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"YhbM9AQp1oNKcVSNCOe+UUcDnNY=","customercode":"14007651115",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForTejaratElectronicRahbordEidealAminCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"y9Bp5ZBhOzCKa2nq5jQ5sbfFoUQ=","customercode":"14009655202",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForFanavaranHoviyatElectroniciAmnCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"OoRMg5WDOcW7z7ZoMfi10pwRuRc=","customercode":"14006592448",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
 
-    var response = await api.post(address, body: body);
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
@@ -306,89 +386,137 @@ class NumberOfIssuesRepository {
 
   FutureOr<dynamic> getNumberOfIssueForPardazeshEttelaatMaliPartCoPendar(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"4b8ngUfvEnA/4AiSB76+kqz2Ztk=","customercode":"10320874334",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForBankTejaratCoPendar(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"fpLNU2BPeWZE0lNdK/FfeqAXcn4=","customercode":"10100834460",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForBankParsianCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"GPeiwBmRp6rshYiNDrL2mdBhsoY=","customercode":"10102203401",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForShabakeKaranSamaCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"SsQlkXfyG372NSpiagJZUSD6U84=","customercode":"14005082159",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getFanavariVaRahHalhayeHushmandSepehrCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"G1T8lcl3llsvBdMip0otcGi4xHM=","customercode":"14005371250",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForBankMellat(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"u39ttGp4ayh9aKDP5En0W7Ykgh4=","customercode":"10100834967",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForTataCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"CQnD7n7pso7BHamsszIkeclglX4=","customercode":"14003888568",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 
   FutureOr<dynamic> getNumberOfIssueForSimorghTejaratCo(String startDate, String endDate) async {
 
-    final Uri address =
-    Uri.parse("https://api.raahbartrust.ir/api/IssuingReport");
-
     var body = jsonEncode({"reportkey":"t0ndZfTHBnruM4a2XkXdQWw350I=","customercode":"10320747147",
       "startdate":startDate,"enddate":endDate,"type":"PerCA"});
-    var response = await api.post(address, body: body);
+
+    Map<String, String> headers;
+    headers = {
+      'Content-Type': 'application/json; charset=UTF-8',
+    };
+
+    final Uri address =
+    Uri.parse("https://api.pki.co.ir/api/IssuingReport");
+
+    var response = await api.post(address, body: body, headers: headers);
     return response;
   }
 

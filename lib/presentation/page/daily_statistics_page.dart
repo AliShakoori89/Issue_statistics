@@ -110,7 +110,7 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
           return BlocBuilder<SetDateBloc, SetDateState>(
               builder: (context, state) {
 
-            String allIssuePerDate = state.allIssuePerDate;
+            var allIssuePerDate = state.allIssuePerDate;
             var date = state.date;
 
             return BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(

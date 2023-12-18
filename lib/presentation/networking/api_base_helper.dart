@@ -5,24 +5,10 @@ import 'http_exception.dart';
 
 class ApiBaseHelper {
 
-  FutureOr<dynamic> post(Uri url, {String? body}) async {
+  FutureOr<dynamic> post(Uri url, {String? body, required Map<String, String> headers}) async {
     try {
-      // print("body                 "+body.toString());
-
-
-      // final Uri address =
-      // Uri.parse(url);
-      Map<String, String> headers;
-      headers = {
-        'Content-Type': 'application/json; charset=UTF-8',
-      };
-
-      // print("address                 "+address.toString());
-      print("body                 "+body!);
-      // print("queryParameters                 "+queryParameters!.toString());
 
       http.Response response = await http.post(url, body: body, headers: headers);
-      // print("address                 "+response.body);
       return response;
     } on SocketException {
       throw FetchDataException('No Internet connection');
