@@ -46,13 +46,12 @@ class ReduceDateEvent extends SetDateEvent{
 class AddNumberOfIssueEvent extends SetDateEvent {
 
   final IssueModel issueModel;
-  final String date;
 
   AddNumberOfIssueEvent(
-      {required this.issueModel, required this.date});
+      {required this.issueModel});
 
   @override
-  List<Object> get props => [issueModel, date];
+  List<Object> get props => [issueModel];
 }
 
 class ReadNumberOfIssuePerDateEvent extends SetDateEvent {

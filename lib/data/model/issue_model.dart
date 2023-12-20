@@ -4,10 +4,10 @@ class IssueModel {
   String? issueMonth;
   String? issueYear;
   int? allFanarIssueNumberPerDate;
-  int? allIssueNumberNumber;
+  int? allIssueNumber;
 
   IssueModel({ this.id, this.issueDate, this.issueMonth, this.issueYear,
-    this.allFanarIssueNumberPerDate, this.allIssueNumberNumber});
+    this.allFanarIssueNumberPerDate, this.allIssueNumber});
 
   factory IssueModel.fromJson(Map<String, dynamic> json) => IssueModel(
     id: json['id'],
@@ -15,7 +15,7 @@ class IssueModel {
     issueMonth: json['issueMonth'],
     issueYear: json['issueYear'],
     allFanarIssueNumberPerDate: json['allFanarIssueNumberPerDate'],
-    allIssueNumberNumber: json['allIssueNumberNumber'],
+    allIssueNumber: json['allIssueNumber'],
   );
 
   Map<String, dynamic> toJson() => {
@@ -24,6 +24,6 @@ class IssueModel {
     'issueMonth' : issueMonth,
     'issueYear' : issueYear,
     'allFanarIssueNumberPerDate': allFanarIssueNumberPerDate,
-    'allIssueNumberNumber' : allIssueNumberNumber,
+    'allIssueNumber' : allIssueNumber,
   };
 }

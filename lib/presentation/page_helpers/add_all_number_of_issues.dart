@@ -47,6 +47,7 @@ class AddAllNumberOfIssues extends StatelessWidget {
                 width: 30,
                 child: TextFormField(
                   controller: controller,
+                  keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'تعداد کل گواهی',
@@ -77,16 +78,40 @@ class AddAllNumberOfIssues extends StatelessWidget {
                                   onPressed: () {
                                     late IssueModel issueModel = IssueModel();
 
-                                    issueModel.issueDate = state.date;
-                                    issueModel.issueMonth = state.month.toString();
-                                    issueModel.issueYear = state.year;
-                                    issueModel.allIssueNumberNumber = int.parse(controller.text);
+
+                                    Gregorian g = Gregorian(int.parse(state.date.substring(0, 4)),
+                                        int.parse(state.date.substring(5, 7)),
+                                        int.parse(state.date.substring(8, 10)));
+
+                                    Jalali g2j1 = g.toJalali();
+
+                                    String month;
+                                    String day;
+
+                                    if(g2j1.month < 10){
+                                      month = "0${g2j1.month}";
+                                    }else{
+                                      month = "${g2j1.month}";
+                                    }
+
+                                    if(g2j1.day < 10){
+                                      day = "0${g2j1.day}";
+                                    }else{
+                                      day = "${g2j1.day}";
+                                    }
+
+                                    print("monthmonthmonth           "+month);
+                                    print("daydaydaydayday             "+day);
+
+                                    issueModel.issueDate = "${g2j1.year}/${g2j1.month}/${g2j1.day}";
+                                    issueModel.issueMonth = month;
+                                    issueModel.issueYear = day;
+                                    issueModel.allIssueNumber = int.parse(controller.text);
                                     issueModel.allFanarIssueNumberPerDate = allFanarIssueNumberPerDate;
 
                                     BlocProvider.of<SetDateBloc>(context)
                                         .add(AddNumberOfIssueEvent(
-                                        issueModel: issueModel,
-                                        date: date));
+                                        issueModel: issueModel));
 
                                     Navigator.of(ctx).pop();
                                   },
