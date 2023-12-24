@@ -30,6 +30,13 @@ class PendarIssuerList extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: (){
+
+            allIssuePerDate!.data!.isEmpty
+                ? ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("لطفا تعداد کل گواهی این روز را وارد نمایید.",
+              textDirection: TextDirection.rtl),
+            ))
+                :
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) =>

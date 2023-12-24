@@ -62,10 +62,6 @@ class SetDateRepository {
     await prefs.setString('dateMonth', month);
   }
 
-  // addNumberOfIssue(IssueModel issueModel) async {
-  //   return await helper.addNumberOfIssue(issueModel);
-  // }
-
   addNumberOfIssue(IssueModel issueModel) async {
 
     ApiBaseHelper api = ApiBaseHelper();
@@ -73,12 +69,8 @@ class SetDateRepository {
     var body = jsonEncode({'cnt': issueModel.allIssueNumber, 'persianDate': issueModel.issueDate,
       'year': issueModel.issueYear , 'month': issueModel.issueMonth});
 
-    print("11111             "+body);
-
     final Uri address =
     Uri(host: "repb.raahbartrust.ir", scheme: "https", port: 8081, path: "/api/CaDashboard/AddCaDashboard");
-
-    print("11111             "+address.toString());
 
     final response = await api.post(address, body: body, headers: {
       HttpHeaders.contentTypeHeader: 'application/json'});
@@ -102,8 +94,6 @@ class SetDateRepository {
     var response = await api.post(address, headers: {
     HttpHeaders.contentTypeHeader: 'application/json'});
 
-    print("###########################################################################");
-    print(response.body);
     final productJson = json.decode(response.body);
 
     return AllIssuePerDayModel.fromJson(productJson);

@@ -16,6 +16,7 @@ class FanarDailyStatisticChartPage extends StatelessWidget {
 
     return Scaffold(
       body: Container(
+        height: double.infinity,
         decoration: const BoxDecoration(
             gradient:  LinearGradient(
                 begin: Alignment.topLeft,
@@ -25,32 +26,35 @@ class FanarDailyStatisticChartPage extends StatelessWidget {
                   AppColors.backgroundColor
                 ])
         ),
-        child: Container(
-          margin: EdgeInsets.only(
-              left: width / 30,
-              right: width / 30,
-              top: height / 100,
-              bottom: height / 30
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const SizedBox(height: 20),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: SafeArea(
+          child: Container(
+            margin: EdgeInsets.only(
+                left: width / 30,
+                right: width / 30,
+                bottom: height / 30
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Icon(Icons.arrow_back_ios,
-                      color: Colors.white),
-                  Text('نمودار مراکز صدور گواهی شرکت فنار',
-                  style: TextStyle(color: Colors.white,
-                  fontSize: 18),)
+                  const SizedBox(height: 20),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(Icons.arrow_back_ios,
+                          color: Colors.black),
+                      Text('نمودار مراکز صدور گواهی شرکت فنار',
+                      style: TextStyle(color: Colors.black,
+                      fontSize: 18),)
+                    ],
+                  ),
+                  SizedBox(height: height / 10,),
+                  FanarDailyBarChart(fanarRaList: fanarRaList),
+                  SizedBox(height: height / 6,),
+                  FanarPieDailyChart(fanarRaList: fanarRaList,)
                 ],
               ),
-              SizedBox(height: height / 10,),
-              FanarDailyBarChart(fanarRaList: fanarRaList),
-              SizedBox(height: height / 6,),
-              FanarPieDailyChart(fanarRaList: fanarRaList,)
-            ],
+            ),
           ),
         ),
       ),

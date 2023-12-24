@@ -11,8 +11,8 @@ class ApiBaseHelper {
       http.Response response = await http.post(url, body: body, headers: headers);
 
       var responseJson = _returnResponse(response);
-      print("3333333333333               "+responseJson.body);
-      return response;
+
+      return responseJson;
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }

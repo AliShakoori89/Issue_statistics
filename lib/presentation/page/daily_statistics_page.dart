@@ -75,7 +75,7 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
 
     return SafeArea(
       child: Container(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           top: 20
         ),
         alignment: Alignment.topCenter,
@@ -140,7 +140,7 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                         pageName: "DailyStatisticsPage",);
                   }
                   if (state.status.isError) {
-                    return Container();
+                    return const NoDataPage();
                   } else {
                     return const NoDataPage();
                   }
@@ -153,8 +153,6 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
   BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState> fanarWrapperItemList(double width, double height) {
     return BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState>(
                   builder: (context, state) {
-
-                    print(state.fanarRaList);
 
                 if (state.status.isLoading) {
                   return CustomShimmer(
@@ -177,10 +175,8 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                       child: FanarIssuerList(state: state, height: height));
                 }
                 if (state.status.isError) {
-                  print("state.status.isError");
                   return Container();
                 } else {
-                  print("state");
                   return Container();
                 }
               });

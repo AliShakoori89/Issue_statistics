@@ -153,7 +153,7 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
                 child: FanarIssuerList(state: state, height: height));
           }
           if (state.status.isError) {
-            return Container();
+            return const NoDataPage();
           } else {
             return Container();
           }

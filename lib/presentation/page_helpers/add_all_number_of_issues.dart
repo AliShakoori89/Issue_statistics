@@ -5,7 +5,6 @@ import '../../data/model/issue_model.dart';
 import '../bloc/set_date_bloc/bloc.dart';
 import '../bloc/set_date_bloc/event.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
-
 import '../bloc/set_date_bloc/state.dart';
 
 
@@ -100,10 +99,8 @@ class AddAllNumberOfIssues extends StatelessWidget {
                                       day = "${g2j1.day}";
                                     }
 
-                                    print("monthmonthmonth           "+month);
-                                    print("daydaydaydayday             "+day);
 
-                                    issueModel.issueDate = "${g2j1.year}/${g2j1.month}/${g2j1.day}";
+                                    issueModel.issueDate = "${g2j1.year}/$month/$day";
                                     issueModel.issueMonth = month;
                                     issueModel.issueYear = day;
                                     issueModel.allIssueNumber = int.parse(controller.text);

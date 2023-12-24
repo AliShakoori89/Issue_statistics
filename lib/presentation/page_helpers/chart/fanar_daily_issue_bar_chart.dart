@@ -1,6 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
 import '../const/app_colors.dart';
 import '../const/indicator.dart';
 
