@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       ),
                       child: TabBar(
                         controller: tabController,
+                        dividerHeight: 0,
                         unselectedLabelColor: Colors.black,
                         labelColor: Colors.white,
                         indicator: BoxDecoration(

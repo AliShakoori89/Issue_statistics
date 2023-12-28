@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:issue_statistics/presentation/bloc/fetch_number_of_issues_fanar/bloc.dart';
@@ -16,7 +18,7 @@ import 'package:issue_statistics/presentation/page_helpers/pendar_issuer_list.da
 import '../page_helpers/daily_date_picker_calendar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart' as intl;
-
+import 'package:connectivity_plus/connectivity_plus.dart';
 import '../page_helpers/const/shimmer.dart';
 
 class DailyStatisticsPage extends StatefulWidget {
@@ -30,10 +32,18 @@ class DailyStatisticsPage extends StatefulWidget {
 class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
 
   late TextEditingController controller;
+  ConnectivityResult connectivityResult = ConnectivityResult.none;
+  Connectivity connectivity = Connectivity();
 
   @override
   void initState() {
     controller = TextEditingController();
+    connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      setState(() {
+        connectivityResult = result;
+      });
+      log(result.name);
+    });
     super.initState();
   }
 
@@ -75,9 +85,6 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
 
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.only(
-          top: 20
-        ),
         alignment: Alignment.topCenter,
         child: SingleChildScrollView(
             child: Column(
@@ -87,11 +94,17 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                 SizedBox(
                   height: height / 50,
                 ),
-                fanarWrapperItemList(width, height),
-                SizedBox(
-                  height: height / 50,
-                ),
-                allIssueNumbers(height, width),
+                connectivityResult == ConnectivityResult.none
+                    ? const NoDataPage()
+                    : Column(
+                    children: [
+                      fanarWrapperItemList(width, height),
+                      SizedBox(
+                        height: height / 50,
+                      ),
+                      allIssueNumbers(height, width),
+                    ],
+                  ),
                 SizedBox(
                   height: height / 50,
                 ),

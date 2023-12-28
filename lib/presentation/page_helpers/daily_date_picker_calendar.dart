@@ -135,8 +135,6 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           var date1 = DateFormat('yyyy/MM/dd')
               .format(DateTime.parse(date));
 
-          print("                                                           "  + date1);
-
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadNumberOfIssuePerDateEvent(startDate: date1, endDate: date1));
         },

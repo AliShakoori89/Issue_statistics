@@ -144,11 +144,11 @@ class SetDateBloc extends Bloc<SetDateEvent, SetDateState> {
       ReadNumberOfIssueBetweenDaysEvent event, Emitter<SetDateState> emit) async {
     try {
       emit(state.copyWith(status: SetDateStatus.loading));
-      final String allIssueBetweenDays = await setDateRepository.readNumberOfIssueBetweenDays(event.startDate, event.endDate);
+      // final String allIssueBetweenDays = await setDateRepository.readNumberOfIssueBetweenDays(event.startDate, event.endDate);
       emit(
         state.copyWith(
             status: SetDateStatus.success,
-            allIssueBetweenDays: allIssueBetweenDays
+            // allIssueBetweenDays: allIssueBetweenDays
         ),
       );
     } catch (error) {

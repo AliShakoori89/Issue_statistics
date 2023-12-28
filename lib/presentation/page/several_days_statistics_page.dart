@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:issue_statistics/presentation/page_helpers/several_days_date_picker_calendar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,8 @@ import '../page_helpers/pendar_issuer_list.dart';
 import '../page_helpers/const/shimmer.dart';
 import 'package:intl/intl.dart' as intl;
 import 'fanar_daily_statistic_chart_page.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+
 
 class SeveralDaysStatisticsPage extends StatefulWidget {
   const SeveralDaysStatisticsPage({Key? key}) : super(key: key);
@@ -26,9 +30,17 @@ class SeveralDaysStatisticsPage extends StatefulWidget {
 class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
 
   late TextEditingController controller;
+  ConnectivityResult connectivityResult = ConnectivityResult.none;
+  Connectivity connectivity = Connectivity();
 
   @override
   void initState() {
+    connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      setState(() {
+        connectivityResult = result;
+      });
+      log(result.name);
+    });
     controller = TextEditingController();
     final now = DateTime.now();
     String  selectedDate = intl.DateFormat('yyyy/MM/dd').format(now);
@@ -48,34 +60,42 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
 
-    return Container(
-      alignment: Alignment.topCenter,
-      decoration: const BoxDecoration(
-          gradient:  LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: <Color>[
-                AppColors.contentColorBlue,
-                AppColors.backgroundColor
-              ])
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            const SeveralDatePickerCalendar(),
-            SizedBox(
-              height: height / 50,
-            ),
-            fanarWrapperItemList(width, height),
-            SizedBox(
-              height: height / 50,
-            ),
-            allIssueNumbers(height, width),
-            SizedBox(
-              height: height / 50,
-            ),
-          ],
+    return SafeArea(
+      child: Container(
+        alignment: Alignment.topCenter,
+        decoration: const BoxDecoration(
+            gradient:  LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: <Color>[
+                  AppColors.contentColorBlue,
+                  AppColors.backgroundColor
+                ])
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const SeveralDatePickerCalendar(),
+              SizedBox(
+                height: height / 50,
+              ),
+              connectivityResult == ConnectivityResult.none
+                  ? const NoDataPage()
+                  : Column(
+                children: [
+                  fanarWrapperItemList(width, height),
+                  SizedBox(
+                    height: height / 50,
+                  ),
+                  allIssueNumbers(height, width),
+                ],
+              ),
+              SizedBox(
+                height: height / 50,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:issue_statistics/presentation/bloc/monthly_chart/bloc.dart';
 import 'package:issue_statistics/presentation/bloc/monthly_chart/state.dart';
@@ -6,6 +8,10 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/monthly_chart/event.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+
+import '../page_helpers/const/no_data_page.dart';
+
 
 class MonthlyChart extends StatefulWidget {
   const MonthlyChart({super.key});
@@ -17,6 +23,19 @@ class MonthlyChart extends StatefulWidget {
 class _MonthlyChartState extends State<MonthlyChart> {
   
   int currentHorizontalIntValue = 1402;
+  ConnectivityResult connectivityResult = ConnectivityResult.none;
+  Connectivity connectivity = Connectivity();
+
+  @override
+  void initState() {
+    connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      setState(() {
+        connectivityResult = result;
+      });
+      log(result.name);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +57,8 @@ class _MonthlyChartState extends State<MonthlyChart> {
           width: width,
           child: Padding(
             padding: EdgeInsets.only(
-              top: height / 6,
-              bottom: height / 6
+              top: height / 12,
+              bottom: height / 12
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +90,9 @@ class _MonthlyChartState extends State<MonthlyChart> {
                     border: Border.all(color: Colors.white),
                   ),
                 ),
-                BlocBuilder<MonthlyChartBloc, MonthlyChartState>(
+                connectivityResult == ConnectivityResult.none
+                    ? const NoDataPage()
+                    : BlocBuilder<MonthlyChartBloc, MonthlyChartState>(
                 builder: (context, state) {
 
                   return SfCartesianChart(

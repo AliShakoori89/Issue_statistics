@@ -10,12 +10,12 @@ import '../../data/model/all_issues_per_day_model.dart';
 
 class SetDateRepository {
 
-  late final DatabaseHelper helper;
+  // late final DatabaseHelper helper;
   ApiBaseHelper api = ApiBaseHelper();
 
-  SetDateRepository() {
-    helper = DatabaseHelper();
-  }
+  // SetDateRepository() {
+  //   helper = DatabaseHelper();
+  // }
 
   initialDate() async{
     final prefs = await SharedPreferences.getInstance();
@@ -64,8 +64,6 @@ class SetDateRepository {
 
   addNumberOfIssue(IssueModel issueModel) async {
 
-    ApiBaseHelper api = ApiBaseHelper();
-
     var body = jsonEncode({'cnt': issueModel.allIssueNumber, 'persianDate': issueModel.issueDate,
       'year': issueModel.issueYear , 'month': issueModel.issueMonth});
 
@@ -99,9 +97,9 @@ class SetDateRepository {
     return AllIssuePerDayModel.fromJson(productJson);
   }
 
-  FutureOr<String> readNumberOfIssueBetweenDays(String startDate, String endDate) async {
-    final String allNumberOfIssue = await helper.readNumberOfIssuePerBetweenDays(startDate, endDate) ?? "";
-    return allNumberOfIssue;
-  }
+  // FutureOr<String> readNumberOfIssueBetweenDays(String startDate, String endDate) async {
+    // final String allNumberOfIssue = await helper.readNumberOfIssuePerBetweenDays(startDate, endDate) ?? "";
+    // return allNumberOfIssue;
+  // }
 
 }
