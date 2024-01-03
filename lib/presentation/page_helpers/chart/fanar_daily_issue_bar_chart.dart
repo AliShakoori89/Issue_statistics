@@ -20,7 +20,7 @@ class _BarChart extends StatelessWidget {
           barGroups: barGroups,
           gridData: const FlGridData(show: false),
           alignment: BarChartAlignment.spaceAround,
-          maxY: double.parse(fanarRaList[8].toString()),
+          // maxY: double.parse(fanarRaList[8].toString()),
         ),
       ),
     );

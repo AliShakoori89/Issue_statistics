@@ -80,9 +80,10 @@ class _SeveralDaysStatisticsPageState extends State<SeveralDaysStatisticsPage> {
               SizedBox(
                 height: height / 50,
               ),
-              connectivityResult == ConnectivityResult.none
-                  ? const NoDataPage()
-                  : Column(
+              // connectivityResult == ConnectivityResult.none
+              //     ? const NoDataPage()
+              //     :
+              Column(
                 children: [
                   fanarWrapperItemList(width, height),
                   SizedBox(

@@ -30,7 +30,8 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
       ? "${Jalali.now().year}-0${Jalali.now().month}-0${Jalali.now().day}"
       : Jalali.now().month < 10
       ? "${Jalali.now().year}-0${Jalali.now().month}-${Jalali.now().day}"
-      : "${Jalali.now().year}-${Jalali.now().month}-0${Jalali.now().day}";
+      : "${Jalali.now().year}-${Jalali.now().month}-${Jalali.now().day}";
+
 
   @override
   void initState() {
@@ -184,8 +185,6 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
           String gregorianMonth = "${j2g1.year}/${j2g1.month}";
           String gregorianYear = "${j2g1.year}";
 
-          print(gregorianDate);
-
           BlocProvider.of<SetDateBloc>(context)
               .add(WriteDateEvent(date: gregorianDate, month: gregorianMonth, year: gregorianYear));
           BlocProvider.of<SetDateBloc>(context)
@@ -200,6 +199,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               .format(DateTime.parse(date));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadNumberOfIssuePerDateEvent(startDate: date1, endDate: date1));
+          print(date1);
         },
         child: SizedBox(
           width: width / 20,
@@ -241,6 +241,7 @@ class DailyDatePickerCalendarState extends State<DailyDatePickerCalendar> {
               .format(DateTime.parse(date));
           BlocProvider.of<SetDateBloc>(context)
               .add(ReadNumberOfIssuePerDateEvent(startDate: date1, endDate: date1));
+          print(date1);
         },
         child: SizedBox(
           width: width / 20,

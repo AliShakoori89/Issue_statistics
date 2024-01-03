@@ -174,12 +174,12 @@ class PendarIssuerList extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       pageName == "DailyStatisticsPage"
-                      ? allIssuePerDate!.data!.isNotEmpty
+                        ? allIssuePerDate!.data!.isNotEmpty
                           ? Text("${int.parse(allIssuePerDate!.data![0].cnt.toString()) -
                           allPendarIssueNumberPerDate -
                           allFanarIssueNumberPerDate}",
                           style: const TextStyle(color: Colors.black))
-                          : Text("0")
+                          : const Text("0")
                         : Text("${int.parse(allIssueBetweenDays) -
                         allPendarIssueNumberPerDate -
                         allFanarIssueNumberPerDate}",

@@ -18,7 +18,7 @@ class NoDataPage extends StatelessWidget {
           height: height / 2,
           width: width,
         ),
-        ErrorNotification()
+        const ErrorNotification()
       ],
     );
   }

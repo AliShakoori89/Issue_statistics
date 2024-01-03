@@ -42,7 +42,8 @@ class FanarDailyStatisticChartPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.arrow_back_ios,
-                          color: Colors.black),
+                          color: Colors.black,
+                          size: 15),
                       Text('نمودار مراکز صدور گواهی شرکت فنار',
                       style: TextStyle(color: Colors.black,
                       fontSize: 18),)

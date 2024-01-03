@@ -97,9 +97,8 @@ class SetDateRepository {
     return AllIssuePerDayModel.fromJson(productJson);
   }
 
-  // FutureOr<String> readNumberOfIssueBetweenDays(String startDate, String endDate) async {
-    // final String allNumberOfIssue = await helper.readNumberOfIssuePerBetweenDays(startDate, endDate) ?? "";
-    // return allNumberOfIssue;
-  // }
+  FutureOr<dynamic> fetchAllNumberOfIssueBetweenDays(String startDate, String endDate) async {
+
+  }
 
 }

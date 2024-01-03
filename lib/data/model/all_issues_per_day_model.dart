@@ -19,13 +19,13 @@ class AllIssuePerDayModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
-    data['success'] = this.success;
-    data['message'] = this.message;
-    data['lastPage'] = this.lastPage;
+    data['success'] = success;
+    data['message'] = message;
+    data['lastPage'] = lastPage;
     return data;
   }
 }
@@ -48,12 +48,12 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['cnt'] = this.cnt;
-    data['persianDate'] = this.persianDate;
-    data['year'] = this.year;
-    data['month'] = this.month;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['cnt'] = cnt;
+    data['persianDate'] = persianDate;
+    data['year'] = year;
+    data['month'] = month;
     return data;
   }
 }

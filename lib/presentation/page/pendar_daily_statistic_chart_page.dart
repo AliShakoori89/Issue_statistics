@@ -43,13 +43,14 @@ class PendarDailyStatisticChartPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Icon(Icons.arrow_back_ios,
-                          color: Colors.black),
+                          color: Colors.black,
+                      size: 15),
                       Text("نمودار مراکز صدور شرکت پندار",
                         style: TextStyle(color: Colors.black,
                             fontSize: 18),)
                     ],
                   ),
-                  SizedBox(height: height / 50,),
+                  SizedBox(height: height / 10,),
                   PendarDailyBarChart(pendarRaList: pendarRaList, pendarIssues: pendarIssues),
                   SizedBox(height: height / 4,),
                   PendarPieDailyChart(pendarRaList: pendarRaList, pendarIssues: pendarIssues,)

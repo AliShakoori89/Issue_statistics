@@ -13,7 +13,7 @@ class ErrorNotification extends StatelessWidget {
             textDirection: TextDirection.rtl,
             child: Text('لطفا از اتصال به اینترنت اطمینان حاصل نمایید!',
                 style: TextStyle(
-                    color: Colors.grey,
+                    color: Colors.white,
                     fontWeight: FontWeight.w700,
                     fontSize: 15)),
           )),

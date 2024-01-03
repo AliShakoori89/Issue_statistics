@@ -90,21 +90,22 @@ class _MonthlyChartState extends State<MonthlyChart> {
                     border: Border.all(color: Colors.white),
                   ),
                 ),
-                connectivityResult == ConnectivityResult.none
-                    ? const NoDataPage()
-                    : BlocBuilder<MonthlyChartBloc, MonthlyChartState>(
+                // connectivityResult == ConnectivityResult.none
+                //     ? const NoDataPage()
+                //     :
+                BlocBuilder<MonthlyChartBloc, MonthlyChartState>(
                 builder: (context, state) {
 
                   return SfCartesianChart(
                     // Initialize category axis
-                      primaryXAxis: CategoryAxis(
+                      primaryXAxis: const CategoryAxis(
                           labelRotation: 90,
                         labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.white
                         ),
                       ),
-                      primaryYAxis: CategoryAxis(
+                      primaryYAxis: const CategoryAxis(
                         maximum: 1500000,
                         minimum: 0,
                         borderColor: Colors.white,

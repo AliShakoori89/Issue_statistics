@@ -77,10 +77,14 @@ class AddAllNumberOfIssues extends StatelessWidget {
                                   onPressed: () {
                                     late IssueModel issueModel = IssueModel();
 
+                                    final dateList = state.date.split("/");
 
-                                    Gregorian g = Gregorian(int.parse(state.date.substring(0, 4)),
-                                        int.parse(state.date.substring(5, 7)),
-                                        int.parse(state.date.substring(8, 10)));
+                                    print(dateList);
+
+
+                                    Gregorian g = Gregorian(int.parse(dateList[0]),
+                                        int.parse(dateList[1]),
+                                        int.parse(dateList[2]));
 
                                     Jalali g2j1 = g.toJalali();
 
@@ -98,6 +102,9 @@ class AddAllNumberOfIssues extends StatelessWidget {
                                     }else{
                                       day = "${g2j1.day}";
                                     }
+
+                                    print("11111111111111111111                         "+month);
+                                    print("22222222222222222222                         "+day);
 
 
                                     issueModel.issueDate = "${g2j1.year}/$month/$day";

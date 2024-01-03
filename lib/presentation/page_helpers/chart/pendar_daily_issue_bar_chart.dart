@@ -23,7 +23,7 @@ class _BarChart extends StatelessWidget {
           barGroups: barGroups,
           gridData: const FlGridData(show: false),
           alignment: BarChartAlignment.spaceAround,
-          maxY: 15000,
+          // maxY: 15000,
         ),
       ),
     );
@@ -215,6 +215,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarRaList[0].toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],
@@ -225,6 +226,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarRaList[1].toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],
@@ -235,6 +237,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarRaList[2].toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],
@@ -245,6 +248,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarRaList[3].toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],
@@ -255,6 +259,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarRaList[4].toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],
@@ -265,6 +270,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarRaList[5].toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],
@@ -275,6 +281,7 @@ class _BarChart extends StatelessWidget {
         BarChartRodData(
           toY: double.parse(pendarIssues.toString()),
           gradient: _barsGradient,
+            width: 20
         )
       ],
       showingTooltipIndicators: [0],

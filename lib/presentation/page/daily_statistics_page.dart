@@ -41,6 +41,7 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
     connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       setState(() {
         connectivityResult = result;
+        print(connectivityResult);
       });
       log(result.name);
     });
@@ -97,14 +98,14 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
                 connectivityResult == ConnectivityResult.none
                     ? const NoDataPage()
                     : Column(
-                    children: [
-                      fanarWrapperItemList(width, height),
-                      SizedBox(
-                        height: height / 50,
-                      ),
-                      allIssueNumbers(height, width),
-                    ],
-                  ),
+                  children: [
+                    fanarWrapperItemList(width, height),
+                    SizedBox(
+                      height: height / 50,
+                    ),
+                    allIssueNumbers(height, width),
+                  ],
+                ),
                 SizedBox(
                   height: height / 50,
                 ),
@@ -123,75 +124,73 @@ class _DailyStatisticsPageState extends State<DailyStatisticsPage> {
           return BlocBuilder<SetDateBloc, SetDateState>(
               builder: (context, state) {
 
-            var allIssuePerDate = state.allIssuePerDate;
-            var date = state.date;
+                var allIssuePerDate = state.allIssuePerDate;
+                var date = state.date;
 
-            return BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
-                builder: (context, state) {
+                return BlocBuilder<NumberOfIssuesPendarBloc, NumberOfIssuesPendarState>(
+                    builder: (context, state) {
 
-                  int allPendarIssueNumberPerDate = state.pendarAllNumberOfIssue;
+                      int allPendarIssueNumberPerDate = state.pendarAllNumberOfIssue;
 
-                  print(state.pendarRaList);
+                      if (state.status.isLoading) {
+                        return CustomShimmer(
+                          width: width,
+                          height: height,
+                          itemCount: 7,
+                        );
+                      }if (state.status.isSuccess) {
+                        return PendarIssuerList(
+                          state: state,
+                          height: height,
+                          width: width,
+                          controller: controller,
+                          allIssuePerDate: allIssuePerDate,
+                          allPendarIssueNumberPerDate: allPendarIssueNumberPerDate,
+                          allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
+                          date: date,
+                          allIssueBetweenDays: '0',
+                          pageName: "DailyStatisticsPage",);
+                      }
+                      if (state.status.isError) {
+                        return const NoDataPage();
+                      } else {
+                        return const NoDataPage();
+                      }
 
-                  if (state.status.isLoading) {
-                    return CustomShimmer(
-                      width: width,
-                      height: height,
-                      itemCount: 7,
-                    );
-                  }if (state.status.isSuccess) {
-                    return PendarIssuerList(
-                        state: state,
-                        height: height,
-                        width: width,
-                        controller: controller,
-                        allIssuePerDate: allIssuePerDate,
-                        allPendarIssueNumberPerDate: allPendarIssueNumberPerDate,
-                        allFanarIssueNumberPerDate: allFanarIssueNumberPerDate,
-                        date: date,
-                        allIssueBetweenDays: '0',
-                        pageName: "DailyStatisticsPage",);
-                  }
-                  if (state.status.isError) {
-                    return const NoDataPage();
-                  } else {
-                    return const NoDataPage();
-                  }
-
-                });
-          });
+                    });
+              });
         });
   }
 
   BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState> fanarWrapperItemList(double width, double height) {
     return BlocBuilder<NumberOfFanarIssuesBloc, NumberOfFanarIssuesState>(
-                  builder: (context, state) {
+        builder: (context, state) {
 
-                if (state.status.isLoading) {
-                  return CustomShimmer(
-                    width: width,
-                    height: height,
-                    itemCount: 15,
+          if (state.status.isLoading) {
+            return CustomShimmer(
+              width: width,
+              height: height,
+              itemCount: 15,
+            );
+          }
+          if (state.status.isSuccess) {
+            return GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) =>
+                        FanarDailyStatisticChartPage(
+                          fanarRaList: state.fanarRaList,
+                        )),
                   );
-                }
-                if (state.status.isSuccess) {
-                  return GestureDetector(
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) =>
-                          FanarDailyStatisticChartPage(
-                            fanarRaList: state.fanarRaList,
-                          )),
-                        );
-                      },
-                      child: FanarIssuerList(state: state, height: height));
-                }
-                if (state.status.isError) {
-                  return Container();
-                } else {
-                  return Container();
-                }
-              });
+                },
+                child: FanarIssuerList(state: state, height: height));
+          }
+          if (state.status.isError) {
+            return Container();
+          } else {
+            return Container();
+          }
+        });
   }
 }
